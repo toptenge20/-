@@ -433,8 +433,26 @@ function setupApp() {
   });
   window.addEventListener('appinstalled', () => { btn.hidden = true; });
 
-  window.addEventListener('online', () => { setOffline(false); refresh(); });
+  window.addEventListener('online', () => { setOffline(false); reload(); });
   window.addEventListener('offline', () => setOffline(true));
+
+  showIosInstallHint();
+}
+
+/* 아이폰 사파리는 beforeinstallprompt 를 지원하지 않는다.
+   설치 버튼이 뜰 수 없으므로 '공유 → 홈 화면에 추가' 를 한 번 알려 준다. */
+function showIosInstallHint() {
+  const isIos = /iP(hone|ad|od)/.test(navigator.userAgent);
+  const standalone = window.navigator.standalone === true
+    || window.matchMedia('(display-mode: standalone)').matches;
+  if (!isIos || standalone || localStorage.getItem('pokewatch-ios-hint') === 'done') return;
+
+  const bar = $('#ios-hint');
+  bar.hidden = false;
+  $('#ios-hint-close').addEventListener('click', () => {
+    bar.hidden = true;
+    localStorage.setItem('pokewatch-ios-hint', 'done');
+  });
 }
 
 // 홈화면 바로가기(manifest shortcuts)로 열면 ?sort=price 같은 값이 붙어 온다.

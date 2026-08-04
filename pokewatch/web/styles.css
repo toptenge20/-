@@ -193,6 +193,17 @@ td.name { white-space: normal; font-weight: 600; }
   padding: 8px 14px; font-size: 12.5px; font-weight: 600;
 }
 
+/* 아이폰 사파리에는 설치 버튼 API 가 없어서 안내로 대신한다 */
+.hintbar {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--panel-2); color: var(--text); border-bottom: 1px solid var(--line);
+  padding: 10px 14px; font-size: 12.5px; line-height: 1.4;
+}
+.hintbar button {
+  background: none; border: 0; color: var(--muted);
+  font-size: 20px; line-height: 1; cursor: pointer; padding: 0 4px; flex: none;
+}
+
 /* ── 휴대폰 / 홈화면 설치 실행 ─────────────────────────── */
 /* 아이폰 노치·홈바 영역을 피한다 (standalone 으로 실행될 때 특히 중요) */
 body {
