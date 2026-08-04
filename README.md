@@ -105,11 +105,11 @@ Cloudflare Pages 를 쓰는 이유는 **비공개 저장소도 무료로 서비�
 확인하세요. 숫자 ID 형태라면 `"cafe_url"` 대신 `"club_id": 12345678` 로 적으면 됩니다.
 
 사이트 이름을 바꾸려면 같은 화면의 **Variables** 탭에 `CF_PAGES_PROJECT` 를
-추가하세요 (기본값 `pokewatch`).
+추가하세요 (기본값은 `pokewatch-<깃허브아이디>` 라서 보통 그냥 두면 됩니다).
 
 #### 4) 첫 실행 — **Actions → 시세 수집 후 사이트 갱신 → Run workflow**
 
-2~3분 뒤 로그 맨 아래에 `https://pokewatch.pages.dev` 같은 주소가 찍힙니다.
+2~3분 뒤 로그에 `앱 주소 → https://pokewatch-<아이디>.pages.dev` 가 찍힙니다.
 
 > 카페 설정(`POKEWATCH_CONFIG_JSON`)을 아직 안 넣었다면 **예제 데이터로 사이트가
 > 만들어집니다.** 화면부터 확인하고 나중에 카페를 연결해도 됩니다.
