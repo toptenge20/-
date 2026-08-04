@@ -1,0 +1,27 @@
+{
+  "db_path": "data/pokewatch.db",
+  "delay": 0.8,
+  "timeout": 15,
+  "host": "127.0.0.1",
+  "port": 8765,
+  "min_confidence": 0.0,
+  "_auto_collect_note": "앱을 켜 둔 채 N분마다 자동 수집합니다. 0이면 끔. 너무 짧게 두지 마세요.",
+  "auto_collect_minutes": 60,
+  "_cookie_note": "회원 전용 게시판은 POKEWATCH_COOKIE 환경변수로 쿠키를 넘기세요. 설정 파일에 적지 마세요.",
+  "cafes": [
+    {
+      "name": "포켓몬카드 카페",
+      "cafe_url": "카페주소",
+      "menu_name_filter": ["장터", "거래", "판매"],
+      "pages": 3,
+      "per_page": 50
+    },
+    {
+      "name": "게시판 ID를 직접 지정하는 예",
+      "club_id": 12345678,
+      "menu_ids": [12, 34],
+      "pages": 2,
+      "per_page": 50
+    }
+  ]
+}

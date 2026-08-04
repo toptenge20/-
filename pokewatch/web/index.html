@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>포켓몬 카드 시세 한눈에 보기</title>
+  <meta name="description" content="네이버 카페 장터 글에서 뽑은 포켓몬 카드 시세를 한눈에 봅니다.">
+  <link rel="stylesheet" href="/static/styles.css">
+
+  <!-- 홈화면 설치용 (PWA) -->
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#0f1117">
+  <link rel="icon" href="/icons/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <!-- iOS 사파리에서 '홈 화면에 추가' 했을 때 전체화면 앱처럼 열리게 한다 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="카드시세">
+  <!--MODE-->
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="ball" aria-hidden="true"></span>
+    <div>
+      <h1>포켓몬 카드 시세 보드</h1>
+      <p class="sub" id="source-line">네이버 카페 장터 글을 모아 카드별 시세로 정리합니다</p>
+    </div>
+  </div>
+  <div class="topbar-actions">
+    <button id="install-btn" class="btn ghost" hidden>앱 설치</button>
+    <button id="collect-btn" class="btn">새로 수집</button>
+    <button id="theme-btn" class="btn ghost" title="밝게/어둡게">◐</button>
+  </div>
+</header>
+
+<div id="offline-bar" class="offlinebar" hidden>
+  오프라인입니다 · 마지막으로 받아 둔 시세를 보여주고 있습니다
+</div>
+
+<div id="ios-hint" class="hintbar" hidden>
+  <span>아래 <strong>공유 <span aria-hidden="true">⬆︎</span></strong> → <strong>홈 화면에 추가</strong> 를 누르면 앱처럼 쓸 수 있어요</span>
+  <button id="ios-hint-close" type="button" aria-label="닫기">×</button>
+</div>
+
+<section class="stats" id="stats"></section>
+
+<section class="controls">
+  <input id="q" class="search" type="search" placeholder="카드 이름 검색 (예: 리자몽, 블래키, Charizard)" autocomplete="off">
+  <div class="filters">
+    <select id="trade" class="sel" title="거래 유형">
+      <option value="">거래 전체</option>
+      <option value="sell">판매</option>
+      <option value="buy">구매</option>
+      <option value="trade">교환</option>
+    </select>
+    <select id="rarity" class="sel" title="레어도"><option value="">레어도 전체</option></select>
+    <select id="lang" class="sel" title="언어"><option value="">언어 전체</option></select>
+    <select id="days" class="sel" title="기간">
+      <option value="">전체 기간</option>
+      <option value="7">최근 7일</option>
+      <option value="30" selected>최근 30일</option>
+      <option value="90">최근 90일</option>
+    </select>
+    <select id="sort" class="sel" title="정렬">
+      <option value="listings">매물 많은 순</option>
+      <option value="price">비싼 순</option>
+      <option value="recent">최신 순</option>
+      <option value="trend">상승률 순</option>
+      <option value="name">이름 순</option>
+    </select>
+    <label class="chk"><input type="checkbox" id="graded"> 감정(PSA/BGS)만</label>
+    <label class="chk"><input type="checkbox" id="named" checked> 카드 인식된 것만</label>
+    <label class="chk"><input type="checkbox" id="nobundle" checked> 일괄 제외</label>
+    <div class="viewtoggle">
+      <button data-view="grid" class="active">카드</button>
+      <button data-view="table">표</button>
+    </div>
+  </div>
+</section>
+
+<main id="results" class="grid"></main>
+<p id="empty" class="empty" hidden></p>
+
+<div id="detail" class="drawer" hidden>
+  <div class="drawer-backdrop" data-close></div>
+  <aside class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+    <button class="drawer-close" data-close aria-label="닫기">×</button>
+    <div id="detail-body"></div>
+  </aside>
+</div>
+
+<footer class="foot">
+  <span id="foot-note"></span>
+</footer>
+
+<script src="/static/data.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>
