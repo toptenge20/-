@@ -5,6 +5,8 @@
   "host": "127.0.0.1",
   "port": 8765,
   "min_confidence": 0.0,
+  "_auto_collect_note": "앱을 켜 둔 채 N분마다 자동 수집합니다. 0이면 끔. 너무 짧게 두지 마세요.",
+  "auto_collect_minutes": 60,
   "_cookie_note": "회원 전용 게시판은 POKEWATCH_COOKIE 환경변수로 쿠키를 넘기세요. 설정 파일에 적지 마세요.",
   "cafes": [
     {

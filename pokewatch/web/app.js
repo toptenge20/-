@@ -121,18 +121,28 @@ async function refresh() {
   state.loading = true;
   const p = params();
   try {
-    const [overview, cards] = await Promise.all([
-      fetch('/api/overview?' + p).then((r) => r.json()),
-      fetch('/api/cards?' + p).then((r) => r.json()),
+    const [overviewRes, cardsRes] = await Promise.all([
+      fetch('/api/overview?' + p),
+      fetch('/api/cards?' + p),
     ]);
+    // 서비스 워커가 캐시로 응답하면 이 헤더가 붙는다.
+    setOffline(overviewRes.headers.get('X-Pokewatch-Offline') === '1');
+    const [overview, cards] = await Promise.all([overviewRes.json(), cardsRes.json()]);
     state.cards = cards.cards || [];
     renderStats(overview);
     render();
   } catch (e) {
+    setOffline(true);
     toast('데이터를 불러오지 못했습니다: ' + e.message);
   } finally {
     state.loading = false;
   }
+}
+
+function setOffline(isOffline) {
+  state.offline = isOffline;
+  $('#offline-bar').hidden = !isOffline;
+  $('#collect-btn').disabled = isOffline;
 }
 
 function renderStats(o) {
@@ -154,7 +164,7 @@ function renderStats(o) {
     : (cafes ? `수집 대상: ${cafes}` : '네이버 카페 장터 글을 모아 카드별 시세로 정리합니다');
   $('#foot-note').textContent =
     `카드 ${o.cards || 0}종 · 매물 ${o.listings || 0}건 · 제목에서 자동 추출한 값이라 실제 거래가와 다를 수 있습니다`;
-  $('#collect-btn').disabled = !!o.collecting;
+  $('#collect-btn').disabled = !!o.collecting || !!state.offline;
   $('#collect-btn').textContent = o.collecting ? '수집 중…' : '새로 수집';
 }
 
@@ -340,6 +350,49 @@ function debounce(fn, ms) {
   return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); };
 }
 
+// ── 앱 설치 / 오프라인 ───────────────────────────────────────────────────────
+function setupApp() {
+  // 서비스 워커는 보안 컨텍스트에서만 등록된다. localhost 는 되지만 http://192.168.x.x
+  // 처럼 LAN IP 로 접속하면 브라우저가 막는다. 그때는 그냥 일반 웹페이지로 동작한다.
+  if ('serviceWorker' in navigator && window.isSecureContext) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').catch((e) => {
+        console.info('서비스 워커 등록 안 됨:', e.message);
+      });
+    });
+  }
+
+  // 안드로이드/데스크톱 크롬의 설치 배너를 우리 버튼으로 받는다.
+  let deferred = null;
+  const btn = $('#install-btn');
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferred = e;
+    btn.hidden = false;
+  });
+  btn.addEventListener('click', async () => {
+    if (!deferred) return;
+    deferred.prompt();
+    const { outcome } = await deferred.userChoice;
+    deferred = null;
+    btn.hidden = true;
+    if (outcome === 'accepted') toast('홈화면에 설치했습니다.');
+  });
+  window.addEventListener('appinstalled', () => { btn.hidden = true; });
+
+  window.addEventListener('online', () => { setOffline(false); refresh(); });
+  window.addEventListener('offline', () => setOffline(true));
+}
+
+// 홈화면 바로가기(manifest shortcuts)로 열면 ?sort=price 같은 값이 붙어 온다.
+function applyUrlParams() {
+  const q = new URLSearchParams(location.search);
+  for (const id of ['sort', 'days', 'trade', 'rarity', 'lang', 'q']) {
+    const v = q.get(id);
+    if (v !== null && $('#' + id)) $('#' + id).value = v;
+  }
+}
+
 function init() {
   const saved = localStorage.getItem('pokewatch-theme');
   if (saved) document.documentElement.dataset.theme = saved;
@@ -395,8 +448,14 @@ function init() {
     if (e.key === '/' && document.activeElement !== $('#q')) { e.preventDefault(); $('#q').focus(); }
   });
 
+  setupApp();
+  applyUrlParams();
   loadFacets();
   refresh();
+
+  // 앱을 켜 둔 채로 서버가 새로 수집하면 화면도 따라 갱신되게 한다.
+  setInterval(() => { if (!document.hidden && !state.offline) refresh(); }, 120000);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
 }
 
 init();

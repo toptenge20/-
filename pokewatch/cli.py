@@ -19,6 +19,7 @@ CONFIG_TEMPLATE = {
     "host": "127.0.0.1",
     "port": 8765,
     "min_confidence": 0.0,
+    "auto_collect_minutes": 0,
     "_cookie_note": "회원 전용 게시판은 POKEWATCH_COOKIE 환경변수로 쿠키를 넘기세요.",
     "cafes": [
         {
@@ -52,10 +53,17 @@ def main(argv: list[str] | None = None) -> int:
     p_serve = sub.add_parser("serve", help="대시보드를 띄웁니다")
     p_serve.add_argument("--port", type=int)
     p_serve.add_argument("--host")
+    p_serve.add_argument("--lan", action="store_true",
+                         help="같은 와이파이의 휴대폰에서도 접속할 수 있게 엽니다")
+    p_serve.add_argument("--open", action="store_true", help="브라우저를 자동으로 엽니다")
+    p_serve.add_argument("--auto-collect", type=int, metavar="분",
+                         help="N분마다 자동으로 새 글을 수집합니다")
 
     p_demo = sub.add_parser("demo", help="예제 데이터를 넣고 대시보드를 띄웁니다")
     p_demo.add_argument("--count", type=int, default=420)
     p_demo.add_argument("--no-serve", action="store_true")
+    p_demo.add_argument("--lan", action="store_true")
+    p_demo.add_argument("--open", action="store_true")
 
     sub.add_parser("reparse", help="저장된 제목을 파서로 다시 해석합니다")
 
@@ -91,9 +99,15 @@ def main(argv: list[str] | None = None) -> int:
                 cfg.port = args.port
             if args.host:
                 cfg.host = args.host
-            return cmd_serve(conn, cfg)
+            if args.lan:
+                cfg.host = "0.0.0.0"
+            if args.auto_collect:
+                cfg.auto_collect_minutes = args.auto_collect
+            return cmd_serve(conn, cfg, args.open)
         if args.command == "demo":
-            return cmd_demo(conn, cfg, args.count, args.no_serve)
+            if args.lan:
+                cfg.host = "0.0.0.0"
+            return cmd_demo(conn, cfg, args.count, args.no_serve, args.open)
         if args.command == "reparse":
             n = _reparse(conn)
             print(f"{n:,}건 다시 해석했습니다.")
@@ -165,16 +179,16 @@ def cmd_collect(conn, cfg: Config, pages: int | None) -> int:
     return 1 if report["errors"] and not report["cafes"] else 0
 
 
-def cmd_serve(conn, cfg: Config) -> int:
+def cmd_serve(conn, cfg: Config, open_browser: bool = False) -> int:
     from .server import serve
 
     if db.totals(conn)["articles"] == 0:
         print("  (아직 수집된 글이 없습니다. `collect` 또는 `demo` 를 먼저 실행하세요.)")
-    serve(conn, cfg)
+    serve(conn, cfg, open_browser=open_browser)
     return 0
 
 
-def cmd_demo(conn, cfg: Config, count: int, no_serve: bool) -> int:
+def cmd_demo(conn, cfg: Config, count: int, no_serve: bool, open_browser: bool = False) -> int:
     from .demo import generate
 
     n = generate(conn, count=count)
@@ -183,7 +197,7 @@ def cmd_demo(conn, cfg: Config, count: int, no_serve: bool) -> int:
         return 0
     from .server import serve
 
-    serve(conn, cfg)
+    serve(conn, cfg, open_browser=open_browser)
     return 0
 
 

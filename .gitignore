@@ -7,6 +7,10 @@ config.json
 *.db-wal
 *.db-shm
 
+# PyInstaller 빌드 결과물
+build/
+dist/
+
 __pycache__/
 *.py[cod]
 .venv/

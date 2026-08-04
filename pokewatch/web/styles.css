@@ -188,9 +188,40 @@ td.name { white-space: normal; font-weight: 600; }
   padding: 11px 18px; border-radius: 11px; box-shadow: var(--shadow); font-size: 13px; z-index: 90;
 }
 
+.offlinebar {
+  background: #b45309; color: #fff; text-align: center;
+  padding: 8px 14px; font-size: 12.5px; font-weight: 600;
+}
+
+/* ── 휴대폰 / 홈화면 설치 실행 ─────────────────────────── */
+/* 아이폰 노치·홈바 영역을 피한다 (standalone 으로 실행될 때 특히 중요) */
+body {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.topbar { padding-top: calc(18px + env(safe-area-inset-top)); }
+
 @media (max-width: 640px) {
   .topbar, .stats, .controls, .grid, .tablewrap { padding-left: 14px; padding-right: 14px; }
+  .topbar { gap: 10px; }
+  .brand h1 { font-size: 16px; }
+  .sub { display: none; }
+  .btn { padding: 8px 12px; font-size: 12.5px; }
+  .stats { grid-template-columns: repeat(2, 1fr); gap: 9px; }
+  .stat { padding: 11px 12px; }
+  .stat .v { font-size: 18px; }
   .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 11px; }
+  .card .name { font-size: 13px; }
+  .price { font-size: 16px; }
   .drawer-panel { padding: 20px 16px 36px; }
+  .detail-head img { width: 96px; }
   .viewtoggle { margin-left: 0; }
+  /* 손가락으로 누르기 좋은 최소 높이 */
+  .sel, .chk, .viewtoggle button { min-height: 38px; }
+}
+
+/* 홈화면에서 실행했을 때는 브라우저 주소창이 없으므로 여백을 조금 줄인다 */
+@media (display-mode: standalone) {
+  .topbar { padding-top: calc(12px + env(safe-area-inset-top)); }
 }

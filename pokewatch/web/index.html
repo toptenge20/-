@@ -4,8 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>포켓몬 카드 시세 한눈에 보기</title>
+  <meta name="description" content="네이버 카페 장터 글에서 뽑은 포켓몬 카드 시세를 한눈에 봅니다.">
   <link rel="stylesheet" href="/static/styles.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23ef4444'/><path d='M2 16h28' stroke='%23111' stroke-width='3'/><circle cx='16' cy='16' r='5' fill='%23fff' stroke='%23111' stroke-width='3'/></svg>">
+
+  <!-- 홈화면 설치용 (PWA) -->
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="theme-color" content="#0f1117">
+  <link rel="icon" href="/icons/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <!-- iOS 사파리에서 '홈 화면에 추가' 했을 때 전체화면 앱처럼 열리게 한다 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="카드시세">
 </head>
 <body>
 <header class="topbar">
@@ -17,10 +28,15 @@
     </div>
   </div>
   <div class="topbar-actions">
+    <button id="install-btn" class="btn ghost" hidden>앱 설치</button>
     <button id="collect-btn" class="btn">새로 수집</button>
     <button id="theme-btn" class="btn ghost" title="밝게/어둡게">◐</button>
   </div>
 </header>
+
+<div id="offline-bar" class="offlinebar" hidden>
+  오프라인입니다 · 마지막으로 받아 둔 시세를 보여주고 있습니다
+</div>
 
 <section class="stats" id="stats"></section>
 

@@ -44,6 +44,7 @@ class Config:
     port: int = 8765
     keep_days: int = 365
     min_confidence: float = 0.0
+    auto_collect_minutes: int = 0  # 0이면 자동 수집 안 함
 
     @classmethod
     def load(cls, path: str | Path | None = None) -> "Config":
@@ -63,6 +64,7 @@ class Config:
             port=int(raw.get("port", cls.port)),
             keep_days=int(raw.get("keep_days", cls.keep_days)),
             min_confidence=float(raw.get("min_confidence", cls.min_confidence)),
+            auto_collect_minutes=int(raw.get("auto_collect_minutes", cls.auto_collect_minutes)),
         )
 
         # 쿠키는 설정 파일보다 환경변수를 우선한다 (실수로 커밋되는 일을 줄이기 위해).
