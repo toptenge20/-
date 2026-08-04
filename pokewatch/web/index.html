@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>포켓몬 카드 시세 한눈에 보기</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23ef4444'/><path d='M2 16h28' stroke='%23111' stroke-width='3'/><circle cx='16' cy='16' r='5' fill='%23fff' stroke='%23111' stroke-width='3'/></svg>">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="ball" aria-hidden="true"></span>
+    <div>
+      <h1>포켓몬 카드 시세 보드</h1>
+      <p class="sub" id="source-line">네이버 카페 장터 글을 모아 카드별 시세로 정리합니다</p>
+    </div>
+  </div>
+  <div class="topbar-actions">
+    <button id="collect-btn" class="btn">새로 수집</button>
+    <button id="theme-btn" class="btn ghost" title="밝게/어둡게">◐</button>
+  </div>
+</header>
+
+<section class="stats" id="stats"></section>
+
+<section class="controls">
+  <input id="q" class="search" type="search" placeholder="카드 이름 검색 (예: 리자몽, 블래키, Charizard)" autocomplete="off">
+  <div class="filters">
+    <select id="trade" class="sel" title="거래 유형">
+      <option value="">거래 전체</option>
+      <option value="sell">판매</option>
+      <option value="buy">구매</option>
+      <option value="trade">교환</option>
+    </select>
+    <select id="rarity" class="sel" title="레어도"><option value="">레어도 전체</option></select>
+    <select id="lang" class="sel" title="언어"><option value="">언어 전체</option></select>
+    <select id="days" class="sel" title="기간">
+      <option value="">전체 기간</option>
+      <option value="7">최근 7일</option>
+      <option value="30" selected>최근 30일</option>
+      <option value="90">최근 90일</option>
+    </select>
+    <select id="sort" class="sel" title="정렬">
+      <option value="listings">매물 많은 순</option>
+      <option value="price">비싼 순</option>
+      <option value="recent">최신 순</option>
+      <option value="trend">상승률 순</option>
+      <option value="name">이름 순</option>
+    </select>
+    <label class="chk"><input type="checkbox" id="graded"> 감정(PSA/BGS)만</label>
+    <label class="chk"><input type="checkbox" id="named" checked> 카드 인식된 것만</label>
+    <label class="chk"><input type="checkbox" id="nobundle" checked> 일괄 제외</label>
+    <div class="viewtoggle">
+      <button data-view="grid" class="active">카드</button>
+      <button data-view="table">표</button>
+    </div>
+  </div>
+</section>
+
+<main id="results" class="grid"></main>
+<p id="empty" class="empty" hidden></p>
+
+<div id="detail" class="drawer" hidden>
+  <div class="drawer-backdrop" data-close></div>
+  <aside class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+    <button class="drawer-close" data-close aria-label="닫기">×</button>
+    <div id="detail-body"></div>
+  </aside>
+</div>
+
+<footer class="foot">
+  <span id="foot-note"></span>
+</footer>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

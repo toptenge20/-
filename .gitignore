@@ -1,0 +1,14 @@
+# 로컬 설정 (쿠키가 들어갈 수 있으므로 커밋 금지)
+config.json
+
+# 수집 데이터 (pokewatch/data 의 카드 이름 사전은 제외하면 안 되므로 최상위만 지정)
+/data/
+*.db
+*.db-wal
+*.db-shm
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
