@@ -48,41 +48,78 @@ python3 app.py --no-window  # 서버만 실행
 
 **깃허브 액션**이 정해진 시간마다 카페 글을 수집해 정적 사이트로 만들고,
 **Cloudflare Pages** 에 올립니다. 폰은 그 주소를 열어 홈화면에 추가하기만 하면 됩니다.
-컴퓨터는 **처음 설정할 때 한 번만** 필요합니다.
+
+**컴퓨터는 필요 없습니다.** 아래 과정은 전부 폰 브라우저에서 할 수 있습니다.
+(파이썬 설치도, 코드 내려받기도 하지 않습니다.)
 
 Cloudflare Pages 를 쓰는 이유는 **비공개 저장소도 무료로 서비스**해 주기 때문입니다.
 (깃허브 페이지는 무료 요금제에서 비공개 저장소를 지원하지 않습니다.)
 
-**1) Cloudflare 준비** — [dash.cloudflare.com](https://dash.cloudflare.com) 가입(무료)
+#### 1) 코드를 main 브랜치로 합치기 ⚠️ 꼭 필요합니다
 
-- **계정 ID**: 대시보드 우측 하단 또는 주소창의 `dash.cloudflare.com/<계정ID>` 부분
-- **API 토큰**: 내 프로필 → **API Tokens** → **Create Token**
-  → *Edit Cloudflare Workers* 템플릿 선택 (Pages 배포 권한이 포함됩니다)
+깃허브의 **예약 실행(cron)은 기본 브랜치(main)에 있는 워크플로만** 동작합니다.
+작업 브랜치에 두면 자동 수집이 영영 돌지 않습니다.
 
-**2) 깃허브 시크릿 등록** — 저장소 **Settings → Secrets and variables → Actions**
+깃허브 앱이나 폰 브라우저에서 저장소 → **Pull requests → New pull request** →
+`claude/naver-cafe-pokemon-cards-0i0yz0` → `main` 으로 만들고 **Merge** 하세요.
 
-| 이름 | 값 |
-|---|---|
-| `CLOUDFLARE_API_TOKEN` | 위에서 만든 토큰 |
-| `CLOUDFLARE_ACCOUNT_ID` | 계정 ID |
-| `POKEWATCH_CONFIG_JSON` | `config.json` 내용을 통째로 붙여넣기 |
-| `POKEWATCH_COOKIE` | (회원 전용 게시판을 볼 때만) `NID_AUT=...; NID_SES=...` |
+#### 2) Cloudflare 준비 — [dash.cloudflare.com](https://dash.cloudflare.com) 가입(무료)
+
+- **계정 ID**: 로그인 후 주소창의 `dash.cloudflare.com/<여기가 계정ID>` 부분
+- **API 토큰**: 오른쪽 위 프로필 → **API Tokens** → **Create Token**
+  → **Edit Cloudflare Workers** 템플릿 → 계정 선택 후 생성 (Pages 배포 권한 포함)
+  → **토큰은 이때 한 번만 보입니다. 바로 복사해 두세요.**
+
+#### 3) 깃허브 시크릿 등록 — 저장소 **Settings → Secrets and variables → Actions**
+
+**New repository secret** 으로 하나씩 추가합니다.
+
+| 이름 | 값 | 필수 |
+|---|---|---|
+| `CLOUDFLARE_API_TOKEN` | 위에서 만든 토큰 | 예 |
+| `CLOUDFLARE_ACCOUNT_ID` | 계정 ID | 예 |
+| `POKEWATCH_CONFIG_JSON` | 아래 설정 내용 | 나중에 추가해도 됨 |
+| `POKEWATCH_COOKIE` | `NID_AUT=...; NID_SES=...` | 회원 전용 게시판일 때만 |
+
+`POKEWATCH_CONFIG_JSON` 에 넣을 내용은 이게 전부입니다. **게시판 ID를 몰라도 됩니다.**
+게시판 *이름*에 이 단어들이 들어간 곳을 알아서 찾습니다.
+
+```json
+{
+  "cafes": [
+    {
+      "name": "포켓몬카드 카페",
+      "cafe_url": "카페주소",
+      "menu_name_filter": ["장터", "거래", "판매"],
+      "pages": 3
+    }
+  ]
+}
+```
+
+`카페주소` 는 폰 브라우저로 카페에 들어갔을 때 주소창의 `cafe.naver.com/` **뒤에 붙는
+부분**입니다. 네이버 카페 앱이라 주소가 안 보이면, 카페 글을 **공유 → 링크 복사** 해서
+확인하세요. 숫자 ID 형태라면 `"cafe_url"` 대신 `"club_id": 12345678` 로 적으면 됩니다.
 
 사이트 이름을 바꾸려면 같은 화면의 **Variables** 탭에 `CF_PAGES_PROJECT` 를
 추가하세요 (기본값 `pokewatch`).
 
-**3) 첫 실행** — **Actions → 시세 수집 후 사이트 갱신 → Run workflow**
+#### 4) 첫 실행 — **Actions → 시세 수집 후 사이트 갱신 → Run workflow**
 
-끝나면 로그에 `https://pokewatch.pages.dev` 같은 주소가 찍힙니다.
+2~3분 뒤 로그 맨 아래에 `https://pokewatch.pages.dev` 같은 주소가 찍힙니다.
 
-**4) 아이폰에 설치** — 사파리로 그 주소를 열고 **공유 → 홈 화면에 추가**
+> 카페 설정(`POKEWATCH_CONFIG_JSON`)을 아직 안 넣었다면 **예제 데이터로 사이트가
+> 만들어집니다.** 화면부터 확인하고 나중에 카페를 연결해도 됩니다.
 
-(사파리에는 설치 버튼 API 가 없어서, 처음 열면 화면 위에 안내 띠가 한 번 뜹니다.)
+#### 5) 아이폰에 설치 — 사파리로 그 주소를 열고 **공유 → 홈 화면에 추가**
+
+사파리에는 설치 버튼 API 가 없어서, 처음 열면 화면 위에 안내 띠가 한 번 뜹니다.
 안드로이드 크롬이면 메뉴 → **앱 설치**.
 
-HTTPS 주소라서 **오프라인 캐시까지 완전히 동작합니다.** 지하철처럼 신호가 없는 곳에서도
-마지막으로 받아 둔 시세가 그대로 보입니다. 수집 주기는 `.github/workflows/collect.yml`
-의 `cron` 에서 바꿉니다(기본: 한국시간 오전 9시·오후 9시).
+이제 끝입니다. HTTPS 주소라서 **오프라인 캐시까지 완전히 동작합니다.** 지하철처럼
+신호가 없는 곳에서도 마지막으로 받아 둔 시세가 그대로 보입니다. 수집 주기는
+`.github/workflows/collect.yml` 의 `cron` 에서 바꿉니다
+(기본: 한국시간 오전 9시·오후 9시).
 
 > **미리 알아 두실 점**
 > - 네이버가 데이터센터 IP를 막을 수 있어 **클라우드에서 수집이 실패할 가능성이 있습니다.**
