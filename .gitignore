@@ -7,9 +7,10 @@ config.json
 *.db-wal
 *.db-shm
 
-# PyInstaller 빌드 결과물
+# 빌드 결과물
 build/
 dist/
+site/
 
 __pycache__/
 *.py[cod]

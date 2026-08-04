@@ -150,5 +150,68 @@ class PipelineSmokeTest(unittest.TestCase):
             conn.close()
 
 
+class ExportTest(unittest.TestCase):
+    """정적 사이트 내보내기 (핸드폰만으로 쓰기 위한 호스팅용)."""
+
+    def test_export_site(self):
+        import json
+        import tempfile
+        from pathlib import Path
+
+        from pokewatch import db
+        from pokewatch.demo import generate
+        from pokewatch.export import export_site
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp = Path(tmp)
+            conn = db.connect(tmp / "t.db")
+            generate(conn, count=150, seed=5)
+
+            result = export_site(conn, tmp / "site", cafes=["테스트"])
+            site = tmp / "site"
+
+            for name in ("index.html", "app.js", "data.js", "styles.css",
+                         "sw.js", "manifest.webmanifest", ".nojekyll"):
+                self.assertTrue((site / name).exists(), f"{name} 이(가) 없습니다")
+            self.assertTrue((site / "icons" / "icon-192.png").exists())
+
+            snap = json.loads((site / "data" / "snapshot.json").read_text(encoding="utf-8"))
+            self.assertEqual(len(snap["listings"]), result["listings"])
+            self.assertIn("rarity", snap["labels"])
+            self.assertGreater(snap["totals"]["articles"], 0)
+
+            html = (site / "index.html").read_text(encoding="utf-8")
+            self.assertIn('window.POKEWATCH_MODE="static"', html)
+            # 하위 경로 호스팅을 위해 절대 경로가 남아 있으면 안 된다
+            self.assertNotIn('src="/static/', html)
+            self.assertNotIn('href="/manifest', html)
+
+            manifest = json.loads((site / "manifest.webmanifest").read_text(encoding="utf-8"))
+            self.assertEqual(manifest["start_url"], ".")
+            for icon in manifest["icons"]:
+                self.assertFalse(icon["src"].startswith("/"))
+
+            conn.close()
+
+
+class ParityTest(unittest.TestCase):
+    """파이썬 집계와 브라우저 집계가 같은 결과를 내는지."""
+
+    def test_python_and_js_agree(self):
+        import shutil
+        import subprocess
+        from pathlib import Path
+
+        if not shutil.which("node"):
+            self.skipTest("node 가 없어 건너뜁니다")
+
+        root = Path(__file__).resolve().parent.parent
+        proc = subprocess.run(
+            ["python3", str(root / "tools" / "check_parity.py")],
+            capture_output=True, text=True, cwd=root,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+
+
 if __name__ == "__main__":
     unittest.main()

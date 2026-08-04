@@ -65,6 +65,12 @@ def main(argv: list[str] | None = None) -> int:
     p_demo.add_argument("--lan", action="store_true")
     p_demo.add_argument("--open", action="store_true")
 
+    p_export = sub.add_parser(
+        "export", help="정적 사이트로 내보냅니다 (핸드폰만으로 쓰기 위한 호스팅용)")
+    p_export.add_argument("-o", "--out", default="site", help="출력 폴더 (기본: site)")
+    p_export.add_argument("--days", type=int, help="최근 N일치만 내보내기")
+    p_export.add_argument("--limit", type=int, help="최대 매물 수")
+
     sub.add_parser("reparse", help="저장된 제목을 파서로 다시 해석합니다")
 
     p_parse = sub.add_parser("parse", help="제목 하나를 파싱해 결과를 봅니다")
@@ -108,6 +114,8 @@ def main(argv: list[str] | None = None) -> int:
             if args.lan:
                 cfg.host = "0.0.0.0"
             return cmd_demo(conn, cfg, args.count, args.no_serve, args.open)
+        if args.command == "export":
+            return cmd_export(conn, cfg, args.out, args.days, args.limit)
         if args.command == "reparse":
             n = _reparse(conn)
             print(f"{n:,}건 다시 해석했습니다.")
@@ -201,6 +209,22 @@ def cmd_demo(conn, cfg: Config, count: int, no_serve: bool, open_browser: bool =
     return 0
 
 
+def cmd_export(conn, cfg: Config, out: str, days: int | None, limit: int | None) -> int:
+    from .export import export_site
+
+    if db.totals(conn)["articles"] == 0:
+        print("  내보낼 데이터가 없습니다. `collect` 를 먼저 실행하세요.", file=sys.stderr)
+        return 1
+
+    result = export_site(conn, out, cafes=[c.name for c in cfg.cafes], days=days, limit=limit)
+    size_kb = result["bytes"] / 1024
+    print(f"  {result['dir']}/ 에 내보냈습니다.")
+    print(f"    매물 {result['listings']:,}건 · 스냅샷 {size_kb:,.0f}KB")
+    print("\n  이 폴더를 정적 호스팅(깃허브 페이지 등)에 올리면 핸드폰에서 앱처럼 쓸 수 있습니다.")
+    print(f"  먼저 확인해 보려면:  python3 -m http.server -d {result['dir']} 8080")
+    return 0
+
+
 def cmd_parse(title: str) -> int:
     info = parse_title(title)
     print(f"\n  제목: {info.title}\n")
@@ -240,9 +264,7 @@ def cmd_top(conn, n: int, sort: str, days: int | None) -> int:
         return 1
 
     cards = stats.aggregate_cards(rows)
-    from .server import _sort_key
-
-    cards.sort(key=_sort_key(sort), reverse=True)
+    cards.sort(key=stats.sort_key(sort), reverse=True)
 
     print(f"\n  카드{' ' * 28}{'중앙값':>10}{'최저':>10}{'최고':>10}{'매물':>6}  추이")
     print("  " + "─" * 82)

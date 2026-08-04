@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import math
 import statistics
 import time
 from collections import Counter, defaultdict
@@ -9,6 +10,15 @@ from collections import Counter, defaultdict
 from .parsing import CONDITION_LABELS, LANGUAGE_LABELS, RARITY_LABELS, TRADE_LABELS
 
 DAY = 86_400
+
+
+def _round(value: float) -> int:
+    """자바스크립트 Math.round 와 같은 방식으로 반올림한다.
+
+    파이썬 int() 는 버리고 round() 는 짝수로 맞춘다. 화면(web/data.js)과 터미널이
+    1원씩 다르게 나오지 않도록 여기서 규칙을 맞춘다.
+    """
+    return math.floor(value + 0.5)
 
 
 def aggregate_cards(rows: list[dict], history_days: int = 90) -> list[dict]:
@@ -111,8 +121,8 @@ def _summarize(card_key: str, items: list[dict], history_days: int) -> dict:
             {
                 "min_price": min(pool),
                 "max_price": max(pool),
-                "median_price": int(statistics.median(pool)),
-                "avg_price": int(statistics.fmean(pool)),
+                "median_price": _round(statistics.median(pool)),
+                "avg_price": _round(statistics.fmean(pool)),
                 "latest_price": next(
                     (r["price"] for r in priced if r.get("trade_type") == "sell"), priced[0]["price"]
                 ),
@@ -162,7 +172,7 @@ def _trend(priced: list[dict]) -> dict:
     if not old:
         return {"direction": "flat", "percent": None, "basis": len(sale)}
 
-    pct = round((new - old) / old * 100, 1)
+    pct = _round((new - old) / old * 1000) / 10
     direction = "up" if pct > 3 else "down" if pct < -3 else "flat"
     return {"direction": direction, "percent": pct, "basis": len(sale)}
 
@@ -180,7 +190,7 @@ def _history(priced: list[dict], days: int) -> list[dict]:
         buckets[ts - (ts % DAY)].append(r["price"])
 
     return [
-        {"date": day, "price": int(statistics.median(vals)), "count": len(vals)}
+        {"date": day, "price": _round(statistics.median(vals)), "count": len(vals)}
         for day, vals in sorted(buckets.items())
     ]
 
@@ -193,7 +203,20 @@ def overview(rows: list[dict], cards: list[dict]) -> dict:
         "priced": len(prices),
         "cards": len(cards),
         "identified_rate": round(identified / len(rows) * 100) if rows else 0,
-        "median_price": int(statistics.median(prices)) if prices else None,
+        "median_price": _round(statistics.median(prices)) if prices else None,
         "total_value": sum(prices),
         "newest": max((r.get("written_at") or 0 for r in rows), default=0),
     }
+
+
+def sort_key(sort: str):
+    """`top` 명령의 정렬 기준. 웹 화면은 web/data.js 에서 같은 순서로 정렬한다."""
+    if sort == "price":
+        return lambda c: c["median_price"] or 0
+    if sort == "recent":
+        return lambda c: c["last_seen"] or 0
+    if sort == "trend":
+        return lambda c: (c["trend"]["percent"] or 0)
+    if sort == "name":
+        return lambda c: c["display_name"]
+    return lambda c: c["listing_count"]

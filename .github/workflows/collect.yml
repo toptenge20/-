@@ -1,0 +1,99 @@
+name: 시세 수집 후 사이트 갱신
+
+# 컴퓨터를 켜 두지 않아도 클라우드가 대신 수집하고, 핸드폰은 주소만 열면 되게 한다.
+on:
+  schedule:
+    # UTC 기준이다. 한국시간 오전 9시 / 오후 9시 (KST = UTC+9)
+    - cron: "0 0,12 * * *"
+  workflow_dispatch:        # 원할 때 손으로 실행
+  push:
+    branches: [main]
+    paths:
+      - "pokewatch/**"
+      - ".github/workflows/collect.yml"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 앞 실행이 끝나지 않았으면 기다린다 (DB 커밋이 겹치지 않게)
+concurrency:
+  group: pokewatch-collect
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # 지난 실행에서 쌓아 둔 시세 DB를 복원한다. 이게 있어야 가격 '추이'가 이어진다.
+      - name: 이전 시세 DB 복원
+        uses: actions/cache/restore@v4
+        with:
+          path: data
+          key: pokewatch-db-${{ github.run_id }}
+          restore-keys: |
+            pokewatch-db-
+
+      - name: 설정 파일 준비
+        env:
+          POKEWATCH_CONFIG_JSON: ${{ secrets.POKEWATCH_CONFIG_JSON }}
+        run: |
+          if [ -n "$POKEWATCH_CONFIG_JSON" ]; then
+            printf '%s' "$POKEWATCH_CONFIG_JSON" > config.json
+            echo "저장소 시크릿의 설정을 사용합니다."
+          elif [ -f config.json ]; then
+            echo "저장소의 config.json 을 사용합니다."
+          else
+            echo "::warning::설정이 없어 예제 데이터로 사이트를 만듭니다."
+          fi
+
+      - name: 카페 글 수집
+        id: collect
+        env:
+          POKEWATCH_COOKIE: ${{ secrets.POKEWATCH_COOKIE }}
+          POKEWATCH_DB: data/pokewatch.db
+        run: |
+          if [ -f config.json ]; then
+            # 수집이 실패해도(네이버 차단·형식 변경 등) 지난 스냅샷으로 사이트는 유지한다.
+            python3 -m pokewatch -v collect || echo "::warning::수집에 실패했습니다. 이전 데이터로 사이트를 만듭니다."
+          fi
+          if [ ! -f data/pokewatch.db ]; then
+            echo "::notice::데이터가 없어 예제 데이터를 넣습니다."
+            python3 -m pokewatch demo --no-serve --count 400
+          fi
+
+      - name: 정적 사이트 만들기
+        env:
+          POKEWATCH_DB: data/pokewatch.db
+        run: |
+          python3 -m pokewatch export -o site --days 180
+          ls -la site
+
+      - name: 시세 DB 저장 (다음 실행에서 추이를 잇기 위해)
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: data
+          key: pokewatch-db-${{ github.run_id }}
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: collect
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
