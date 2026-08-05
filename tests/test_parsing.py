@@ -194,6 +194,46 @@ class ExportTest(unittest.TestCase):
             conn.close()
 
 
+class CafeUrlTest(unittest.TestCase):
+    """카페를 가리키는 여러 형태의 주소에서 ID/주소를 뽑아내기.
+
+    휴대폰에서는 '공유 → 링크 복사' 로 얻은 링크밖에 없는 경우가 많다.
+    """
+
+    def test_club_id_from_mobile_url(self):
+        from pokewatch.naver import _club_id_from_url
+
+        cases = {
+            "https://m.cafe.naver.com/ca-fe/web/cafes/12345678/articles/99": 12345678,
+            "https://cafe.naver.com/ca-fe/cafes/30288016/articles/1": 30288016,
+            "https://cafe.naver.com/ArticleList.nhn?search.clubid=10050146": 10050146,
+            "https://apis.naver.com/x?cafeId=777": 777,
+            "https://cafe.naver.com/pokecardkorea": None,
+        }
+        for url, expected in cases.items():
+            self.assertEqual(_club_id_from_url(url), expected, url)
+
+    def test_slug_from_url(self):
+        from pokewatch.naver import cafe_slug_from_url
+
+        cases = {
+            "https://cafe.naver.com/pokecardkorea": "pokecardkorea",
+            "https://cafe.naver.com/pokecardkorea/12345": "pokecardkorea",
+            "https://m.cafe.naver.com/pokecardkorea": "pokecardkorea",
+            "https://m.cafe.naver.com/ca-fe/web/cafes/123/articles/1": None,
+            "https://naver.me/abcd1234": None,
+        }
+        for url, expected in cases.items():
+            self.assertEqual(cafe_slug_from_url(url), expected, url)
+
+    def test_numeric_input_needs_no_network(self):
+        from pokewatch.naver import NaverCafeClient
+
+        # 숫자를 주면 네트워크를 타지 않아야 한다
+        self.assertEqual(NaverCafeClient().resolve_club_id("12345678"), 12345678)
+        self.assertEqual(NaverCafeClient().resolve_club_id("  12345678 "), 12345678)
+
+
 class ParityTest(unittest.TestCase):
     """파이썬 집계와 브라우저 집계가 같은 결과를 내는지."""
 
