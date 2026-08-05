@@ -70,6 +70,11 @@ jobs:
             # 수집이 실패해도(네이버 차단·형식 변경 등) 지난 스냅샷으로 사이트는 유지한다.
             python3 -m pokewatch -v collect 2>&1 | tee 수집로그.txt \
               || echo "::warning::수집에 실패했습니다. 이전 데이터로 사이트를 만듭니다."
+            # 실제 글이 들어왔으면 예제 데이터는 지운다. 섞여 있으면 시세가 엉망이 된다.
+            python3 -m pokewatch clean-demo 2>&1 | tee -a 수집로그.txt || true
+            # 실제 제목이 어떻게 해석되는지 남겨 둔다 (파서를 고칠 때 필요하다)
+            python3 -m pokewatch sample -n 25 2>&1 | tee -a 수집로그.txt || true
+            python3 -m pokewatch top -n 15 2>&1 | tee -a 수집로그.txt || true
           fi
           if [ ! -f data/pokewatch.db ]; then
             echo "::notice::데이터가 없어 예제 데이터를 넣습니다."
