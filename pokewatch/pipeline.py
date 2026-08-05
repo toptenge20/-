@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+import re
 import sqlite3
 import time
 
@@ -12,6 +13,9 @@ from .naver import NaverCafeClient, NaverCafeError
 from .parsing import parse_title
 
 log = logging.getLogger(__name__)
+
+# 본문이 실제로 어떻게 오는지 몇 건만 로그로 남기기 위한 카운터
+_body_samples_logged = 0
 
 
 def collect(conn: sqlite3.Connection, cfg: Config, progress=None) -> dict:
@@ -135,6 +139,16 @@ def _price_from_body(client: NaverCafeClient, club_id: int, article_id: int, inf
         return False
 
     text = (body.get("text") or "").strip()
+
+    # 본문을 읽었는데 가격이 하나도 안 나오면, 실제로 무엇이 왔는지 봐야 한다.
+    # (회원 전용이라 빈 본문이 오는 경우와 구분이 안 되기 때문)
+    global _body_samples_logged
+    if _body_samples_logged < 3:
+        _body_samples_logged += 1
+        log.info("본문 표본 %s: 글 %s, 제목 %r, 본문 %d자 — %s",
+                 _body_samples_logged, article_id, body.get("subject", "")[:30],
+                 len(text), re.sub(r"\s+", " ", text[:200]) or "(비어 있음)")
+
     if not text:
         return False
 
