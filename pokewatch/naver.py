@@ -67,18 +67,72 @@ class NaverCafeClient:
     _last_request: float = field(default=0.0, repr=False)
 
     # ── 공개 API ────────────────────────────────────────────────────────────
-    def resolve_club_id(self, cafe_url: str) -> int:
-        """카페 주소(예: 'pokecardkorea')로 숫자 clubId 를 찾는다."""
-        cafe_url = cafe_url.strip().rstrip("/").split("/")[-1]
-        if cafe_url.isdigit():
-            return int(cafe_url)
+    def resolve_club_id(self, cafe: str) -> int:
+        """카페를 가리키는 무엇이든 받아서 숫자 clubId 로 바꾼다.
 
-        html = self._get_text(f"https://cafe.naver.com/{urllib.parse.quote(cafe_url)}")
-        for pattern in (r'"cafeId"\s*:\s*"?(\d+)', r"clubid=(\d+)", r"g_sClubId\s*=\s*[\"'](\d+)"):
+        다음을 모두 받는다:
+          - 숫자 ID            12345678
+          - 카페 주소          pokecardkorea
+          - 전체 주소          https://cafe.naver.com/pokecardkorea
+          - 모바일 주소        https://m.cafe.naver.com/ca-fe/web/cafes/12345678/...
+          - 공유 짧은 링크     https://naver.me/xxxxxxxx
+
+        휴대폰에서는 '공유 → 링크 복사' 로 얻은 짧은 링크밖에 없는 경우가 많아서,
+        그것도 그대로 넣을 수 있게 했다.
+        """
+        cafe = cafe.strip()
+        if cafe.isdigit():
+            return int(cafe)
+
+        if cafe.startswith(("http://", "https://")):
+            return self._resolve_from_url(cafe)
+
+        # 주소만 준 경우 (예: 'pokecardkorea')
+        slug = cafe.rstrip("/").split("/")[-1]
+        return self._resolve_from_url(f"https://cafe.naver.com/{urllib.parse.quote(slug)}")
+
+    def _resolve_from_url(self, url: str) -> int:
+        final_url, html = self._follow(url)
+
+        club_id = _club_id_from_url(final_url)
+        if club_id:
+            return club_id
+
+        for pattern in (r'"cafeId"\s*:\s*"?(\d+)', r"clubid=(\d+)",
+                        r"g_sClubId\s*=\s*[\"'](\d+)", r'"cafeUrl"\s*:\s*"([^"]+)"'):
             m = re.search(pattern, html, re.IGNORECASE)
+            if not m:
+                continue
+            value = m.group(1)
+            if value.isdigit():
+                return int(value)
+            # 주소만 찾았으면 그 주소로 한 번 더 시도한다
+            if value != final_url:
+                return self._resolve_from_url(f"https://cafe.naver.com/{urllib.parse.quote(value)}")
+
+        raise NaverCafeError(
+            f"카페 ID를 찾지 못했습니다: {url}\n"
+            f"  (최종 주소: {final_url})\n"
+            "  카페 대문에서 'cafe.naver.com/○○○' 의 ○○○ 부분을 넣어 보세요."
+        )
+
+    def _follow(self, url: str) -> tuple[str, str]:
+        """리다이렉트를 따라가 최종 주소와 본문을 돌려준다 (짧은 링크 해석용)."""
+        final_url, body = self._get_bytes_with_url(url)
+        text = body.decode("utf-8", errors="replace")
+
+        # 자바스크립트나 meta 로 한 번 더 넘기는 경우가 있다
+        for pattern in (r'<meta[^>]+http-equiv=["\']refresh["\'][^>]+url=([^"\'>\s]+)',
+                        r'location\.(?:replace|href)\s*=\s*["\']([^"\']+)["\']'):
+            m = re.search(pattern, text, re.IGNORECASE)
             if m:
-                return int(m.group(1))
-        raise NaverCafeError(f"카페 ID를 찾지 못했습니다: {cafe_url}")
+                nxt = urllib.parse.urljoin(final_url, _unescape(m.group(1)))
+                if nxt != final_url and "naver.com" in nxt:
+                    final_url, body = self._get_bytes_with_url(nxt)
+                    text = body.decode("utf-8", errors="replace")
+                break
+
+        return final_url, text
 
     def list_menus(self, club_id: int) -> list[dict]:
         """게시판(메뉴) 목록. 어떤 menu_id 를 수집할지 고를 때 쓴다."""
@@ -195,6 +249,30 @@ class NaverCafeClient:
 
         raise NaverCafeError(f"요청에 실패했습니다: {url} ({last_error})")
 
+    def _get_bytes_with_url(self, url: str) -> tuple[str, bytes]:
+        """본문과 함께 (리다이렉트를 따라간) 최종 주소도 돌려준다."""
+        last_error: Exception | None = None
+        for attempt in range(self.max_retries):
+            self._throttle()
+            req = urllib.request.Request(url, headers=self._headers())
+            try:
+                with urllib.request.urlopen(req, timeout=self.timeout) as resp:
+                    payload = resp.read()
+                    if resp.headers.get("Content-Encoding") == "gzip":
+                        payload = gzip.decompress(payload)
+                    return resp.geturl(), payload
+            except urllib.error.HTTPError as e:
+                if e.code in (401, 403):
+                    raise NaverCafeError(
+                        f"접근이 거부되었습니다 (HTTP {e.code}). 회원 전용 게시판이라면 "
+                        "로그인 쿠키(NID_AUT, NID_SES)를 설정하세요."
+                    ) from e
+                last_error = e
+            except (urllib.error.URLError, TimeoutError, OSError) as e:
+                last_error = e
+            time.sleep(2 ** attempt)
+        raise NaverCafeError(f"요청에 실패했습니다: {url} ({last_error})")
+
     def _get_text(self, url: str, params: dict | None = None) -> str:
         return self._get_bytes(url, params).decode("utf-8", errors="replace")
 
@@ -208,6 +286,34 @@ class NaverCafeClient:
 
 
 # ── 파싱 도우미 ─────────────────────────────────────────────────────────────
+# 주소 안에 숫자 카페 ID 가 들어 있는 형태들
+_CLUB_ID_PATTERNS = [
+    re.compile(r"/cafes/(\d+)"),          # m.cafe.naver.com/ca-fe/web/cafes/12345678/...
+    # 'search.clubid=' 처럼 앞에 점이 붙는 형태도 있어서 단어 경계로 잡는다
+    re.compile(r"\bclubid=(\d+)", re.I),
+    re.compile(r"\bcafeId=(\d+)", re.I),
+    re.compile(r"cafe\.naver\.com/ca-fe/cafes/(\d+)"),
+]
+
+
+def _club_id_from_url(url: str) -> int | None:
+    for pattern in _CLUB_ID_PATTERNS:
+        m = pattern.search(url)
+        if m:
+            return int(m.group(1))
+    return None
+
+
+def cafe_slug_from_url(url: str) -> str | None:
+    """'https://cafe.naver.com/pokecardkorea/123' → 'pokecardkorea'."""
+    m = re.search(r"(?:m\.)?cafe\.naver\.com/([A-Za-z0-9_-]+)", url)
+    if not m:
+        return None
+    slug = m.group(1)
+    # 경로용 예약어는 카페 주소가 아니다
+    return None if slug in ("ca-fe", "ArticleRead", "ArticleList", "MyCafeIntro") else slug
+
+
 def _dig(data, *keys):
     cur = data
     for k in keys:
