@@ -304,14 +304,27 @@ def _club_id_from_url(url: str) -> int | None:
     return None
 
 
+# 카페가 아니라 네이버 내부 페이지를 가리키는 경로 조각
+_RESERVED_SLUGS = {"ca-fe", "articleread", "articlelist", "mycafeintro",
+                   "cafesearch", "gate", "home", "joincafe"}
+
+
 def cafe_slug_from_url(url: str) -> str | None:
-    """'https://cafe.naver.com/pokecardkorea/123' → 'pokecardkorea'."""
-    m = re.search(r"(?:m\.)?cafe\.naver\.com/([A-Za-z0-9_-]+)", url)
+    """'https://cafe.naver.com/pokecardkorea/123' → 'pokecardkorea'.
+
+    카페 주소에는 점이 들어갈 수 있다(예: 'pokemontcg.cafe'). 그래서 점을 허용하되,
+    'ArticleRead.nhn' 같은 내부 페이지와 구분한다.
+    """
+    m = re.search(r"(?:m\.)?cafe\.naver\.com/([A-Za-z0-9_.-]+)", url)
     if not m:
         return None
-    slug = m.group(1)
-    # 경로용 예약어는 카페 주소가 아니다
-    return None if slug in ("ca-fe", "ArticleRead", "ArticleList", "MyCafeIntro") else slug
+
+    slug = m.group(1).rstrip(".")
+    if slug.lower().endswith((".nhn", ".naver", ".html")):
+        return None
+    if slug.lower() in _RESERVED_SLUGS or slug.lower().split(".")[0] in _RESERVED_SLUGS:
+        return None
+    return slug
 
 
 def _dig(data, *keys):
