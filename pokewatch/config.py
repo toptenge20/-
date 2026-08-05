@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -14,6 +15,31 @@ DEFAULT_MENU_EXCLUDE = (
     "후기", "인증", "공지", "질문", "잡담", "자유", "가입", "출석",
     "등업", "신고", "정보", "이벤트", "회원",
 )
+
+
+def clean_cookie(raw: str | None) -> str | None:
+    """붙여넣기 과정에서 섞인 줄바꿈·여분 공백을 걷어낸다.
+
+    실제로 'NID_SES= AAAB...' 처럼 = 뒤에 공백이 들어가고 끝에 줄바꿈이 붙어
+    있었다. 그 상태로 HTTP 헤더에 넣으면 파이썬이 값을 통째로 담은 예외를
+    던지고, 그 예외가 로그에 남아 쿠키가 노출된다. 그래서 여기서 정리한다.
+    """
+    if not raw:
+        return None
+
+    pairs = []
+    for chunk in re.split(r"[;\r\n]+", raw):
+        chunk = chunk.strip()
+        if not chunk or "=" not in chunk:
+            continue
+        name, value = chunk.split("=", 1)
+        name, value = name.strip(), value.strip()
+        # 헤더에 들어가면 안 되는 문자가 남아 있으면 그 조각은 버린다
+        if not name or not value or re.search(r"[\r\n\x00-\x1f]", name + value):
+            continue
+        pairs.append(f"{name}={value}")
+
+    return "; ".join(pairs) or None
 
 
 @dataclass
@@ -87,6 +113,7 @@ class Config:
         env_cookie = os.environ.get("POKEWATCH_COOKIE")
         if env_cookie:
             cfg.cookie = env_cookie
+        cfg.cookie = clean_cookie(cfg.cookie)
         if os.environ.get("POKEWATCH_DB"):
             cfg.db_path = os.environ["POKEWATCH_DB"]
         if os.environ.get("POKEWATCH_PORT"):

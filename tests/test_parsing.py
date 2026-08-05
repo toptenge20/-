@@ -266,6 +266,44 @@ class CafeUrlTest(unittest.TestCase):
         self.assertEqual(NaverCafeClient().resolve_club_id("  12345678 "), 12345678)
 
 
+class CookieTest(unittest.TestCase):
+    """로그인 쿠키가 HTTP 헤더에 들어가도 안전한 형태인지.
+
+    붙여넣기 과정에서 줄바꿈이나 공백이 섞이면 파이썬이 값을 통째로 담은
+    예외를 던지고, 그 예외가 로그에 남아 쿠키가 노출된다. 실제로 겪은 일이다.
+    """
+
+    def test_cleans_pasted_whitespace(self):
+        from pokewatch.config import clean_cookie
+
+        self.assertEqual(
+            clean_cookie("NID_AUT=abc123; NID_SES= XYZ+/=456\n"),
+            "NID_AUT=abc123; NID_SES=XYZ+/=456",
+        )
+        self.assertEqual(
+            clean_cookie("NID_AUT=abc\r\nNID_SES=def"), "NID_AUT=abc; NID_SES=def")
+
+    def test_result_is_header_safe(self):
+        import http.client
+        from pokewatch.config import clean_cookie
+
+        messy = "  NID_AUT=abc \n\t NID_SES= d/e+f=  \r\n"
+        cleaned = clean_cookie(messy)
+        # 헤더 값으로 쓸 수 없는 문자가 남아 있으면 여기서 ValueError 가 난다
+        http.client.HTTPConnection._validate_header_value = getattr(  # noqa: SLF001
+            http.client.HTTPConnection, "_validate_header_value", None)
+        self.assertNotIn("\n", cleaned)
+        self.assertNotIn("\r", cleaned)
+        self.assertEqual(cleaned, "NID_AUT=abc; NID_SES=d/e+f=")
+
+    def test_empty_and_garbage(self):
+        from pokewatch.config import clean_cookie
+
+        self.assertIsNone(clean_cookie(None))
+        self.assertIsNone(clean_cookie(""))
+        self.assertIsNone(clean_cookie("쿠키아님"))
+
+
 class ParityTest(unittest.TestCase):
     """파이썬 집계와 브라우저 집계가 같은 결과를 내는지."""
 
