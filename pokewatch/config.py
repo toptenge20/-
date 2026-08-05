@@ -28,6 +28,10 @@ class CafeTarget:
     menu_name_exclude: list[str] = field(default_factory=lambda: list(DEFAULT_MENU_EXCLUDE))
     pages: int = 3
     per_page: int = 50
+    # 이 카페들은 제목에 가격을 안 쓰고 본문에 적는다. 그래서 제목에서 가격을
+    # 못 찾은 글은 본문까지 읽는다. 요청이 글 하나당 하나씩 늘어나므로 상한을 둔다.
+    fetch_bodies: bool = True
+    body_limit: int = 120
 
     @classmethod
     def from_dict(cls, d: dict) -> "CafeTarget":
@@ -40,6 +44,8 @@ class CafeTarget:
             menu_name_exclude=list(d.get("menu_name_exclude", DEFAULT_MENU_EXCLUDE)),
             pages=int(d.get("pages", 3)),
             per_page=int(d.get("per_page", 50)),
+            fetch_bodies=bool(d.get("fetch_bodies", True)),
+            body_limit=int(d.get("body_limit", 120)),
         )
 
 

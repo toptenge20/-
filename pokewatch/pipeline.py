@@ -67,17 +67,34 @@ def _collect_cafe(conn, client: NaverCafeClient, target: CafeTarget, progress=No
         log.info("%s: 수집할 게시판 %s개 — %s", target.name, len(menu_ids),
                  ", ".join(m["name"] for m in chosen) or "(없음)")
 
-    result = {"name": target.name, "club_id": club_id, "new": 0, "updated": 0, "seen": 0}
+    result = {"name": target.name, "club_id": club_id, "new": 0, "updated": 0, "seen": 0,
+              "bodies": 0, "body_prices": 0}
+    body_budget = target.body_limit if target.fetch_bodies else 0
 
     for menu_id in menu_ids or [None]:
         for article in client.iter_articles(club_id, menu_id, target.pages, target.per_page):
             existed = conn.execute(
-                "SELECT 1 FROM articles WHERE club_id=? AND article_id=?",
+                "SELECT price_source FROM listings WHERE club_id=? AND article_id=?",
                 (club_id, article.article_id),
             ).fetchone()
 
             db.upsert_article(conn, article, cafe_name=target.name)
             info = parse_title(article.subject)
+            info.price_source = "title" if info.price is not None else None
+
+            # 이 카페들은 제목에 가격을 안 쓰고 본문에 적는다. 제목에서 못 찾았고
+            # 아직 본문을 본 적 없는 글이면 본문을 읽어 본다.
+            if (info.price is None and body_budget > 0
+                    and (existed is None or existed["price_source"] != "body")
+                    and _worth_reading(info)):
+                body_budget -= 1
+                result["bodies"] += 1
+                if _price_from_body(client, club_id, article.article_id, info):
+                    result["body_prices"] += 1
+                else:
+                    # 다음 실행 때 같은 글을 또 읽지 않도록 표시해 둔다
+                    info.price_source = "body-none"
+
             db.upsert_listing(conn, club_id, article.article_id, info, article.written_at)
 
             result["seen"] += 1
@@ -90,7 +107,51 @@ def _collect_cafe(conn, client: NaverCafeClient, target: CafeTarget, progress=No
 
         conn.commit()
 
+    if result["bodies"]:
+        log.info("%s: 본문 %s건을 읽어 가격 %s건을 찾았습니다",
+                 target.name, result["bodies"], result["body_prices"])
     return result
+
+
+def _worth_reading(info) -> bool:
+    """본문까지 읽어 볼 만한 글인지. 요청을 아끼려고 카드 거래글만 읽는다.
+
+    거래 게시판 글이라도 제목에 '판매' 같은 말이 없는 경우가 흔해서
+    (예: '일판 뮤,이상해씨'), 거래 유형은 조건으로 쓰지 않는다.
+    """
+    if info.trade_type in ("free", "info"):
+        return False
+    return bool(info.card_name or info.rarity)
+
+
+def _price_from_body(client: NaverCafeClient, club_id: int, article_id: int, info) -> bool:
+    """본문에서 가격을 찾아 info 에 채운다. 찾았으면 True."""
+    from .parsing import parse_price
+
+    try:
+        body = client.get_article_body(club_id, article_id)
+    except NaverCafeError as e:
+        log.debug("본문을 읽지 못했습니다 (%s): %s", article_id, e)
+        return False
+
+    text = (body.get("text") or "").strip()
+    if not text:
+        return False
+
+    price = parse_price(text[:2000])   # 앞부분에 가격을 적는 글이 대부분이다
+    if price.price is None:
+        return False
+
+    info.price = price.price
+    info.price_max = price.price_max
+    info.price_text = price.price_text
+    info.is_bundle = info.is_bundle or price.is_bundle
+    info.shipping_included = info.shipping_included or price.shipping_included
+    info.negotiable = info.negotiable or price.negotiable
+    info.price_source = "body"
+    # 본문에서 온 가격은 제목보다 덜 확실하다 (여러 카드가 섞여 있을 수 있다)
+    info.confidence = round(min(1.0, info.confidence + 0.2), 2)
+    return True
 
 
 def reparse(conn: sqlite3.Connection) -> int:
