@@ -29,6 +29,19 @@
         "싱글"
       ],
       "pages": 3
+    },
+    {
+      "name": "새 카페 (공유 링크)",
+      "cafe_url": "https://naver.me/Fx2wJYIp",
+      "menu_name_filter": [
+        "장터",
+        "거래",
+        "판매",
+        "분양",
+        "삽니다",
+        "싱글"
+      ],
+      "pages": 3
     }
   ]
 }
