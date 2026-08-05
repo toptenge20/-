@@ -233,6 +233,25 @@ class CafeUrlTest(unittest.TestCase):
         for url, expected in cases.items():
             self.assertEqual(cafe_slug_from_url(url), expected, url)
 
+    def test_club_id_from_share_token(self):
+        """카페 앱 공유 링크의 art 토큰에 카페 번호가 들어 있다 (실제 사례)."""
+        from pokewatch.naver import _club_id_from_url
+
+        url = (
+            "https://m.cafe.naver.com/pokemontcg/559991?art="
+            "aW50ZXJuYWwtY2FmZS1hcnRpY2xlLXJlYWQtc2hhcmUtbGluaw."
+            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9."
+            "eyJjYWZlVHlwZSI6IkNBRkVfSUQiLCJhcnRpY2xlSWQiOjU1OTk5MSwiaXNzdWVkQXQiOjE3"
+            "ODU4OTEyODY5OTQsImNhZmVJZCI6MTk0ODAyNDZ9.ZwpBUMM8CrN9xt8nbOVi6-8ujrUA2kv"
+        )
+        self.assertEqual(_club_id_from_url(url), 19480246)
+
+    def test_share_token_garbage_is_ignored(self):
+        from pokewatch.naver import _club_id_from_url
+
+        self.assertIsNone(_club_id_from_url("https://m.cafe.naver.com/x/1?art=not-base64"))
+        self.assertIsNone(_club_id_from_url("https://m.cafe.naver.com/x/1?art=."))
+
     def test_numeric_input_needs_no_network(self):
         from pokewatch.naver import NaverCafeClient
 
