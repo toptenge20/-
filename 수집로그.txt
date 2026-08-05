@@ -1,13 +1,15 @@
 INFO 포켓몬카드 카페: 게시판 135개 — Cafe, 커뮤니티 공지사항, 필독 공지사항, 등업 게시판, 카페 건의 게시판, 카페 보유 이벤트 상품, Information, 새소식 &amp; 포케카신문, 매장 소식 &amp; 정보, Tournament, 대전상대 구하기, 실드전 게시판, 대회/모임 공지 게시판, 대회/이벤트 후기, User Tornaments, ★ 랭킹전 게시판, ECG 리그 게시판, 시아쨩주니어리그, Closed Tornaments, Mini League, 초보자 강습 및 공지, 우승 덱 리스트, 미니리그 관련 질문, Community, 새 소식 게시판, 발매 정보 게시판(회원 전용), 자유 게시판, PTCGL 게시판, 포케카 포켓 게시판, 질문 게시판, 가짜 카드 질문 게시판, 카드 자랑 게시판, 영상 게시판, 사진 게시판, 성사모, Deck, 일반 덱 게시판, 추천 덱 게시판, 덱 평가 게시판, Column &amp; Tips, 컬럼 게시판, 팁 게시판, 카드 리스트, 인터뷰, 환경/카드 분석, Event, 카페 이벤트 게시판, 나눔 &amp; 이벤트, Trade, 싱글 카드 트레이드, 덱 트레이드, 등급 카드 트레이드, 미개봉 제품/카드용품 트레이드, 블랙리스트, 사기 정보, 사기 관련 정보, 트레이드 만남의 광장, 트레이드 후기 게시판, WebLink, 덱 제작기(포코 공홈), 포켓몬코리아(포켓몬카드), 이벤트 정보, 한글판 카드 검색, 영문판 카드 검색, Pokellector(카드정보), 공식 홈페이지(일어), Card List[XY], [XY1]컬렉션Y, [XY1]컬렉션X, [XY2]와일드블레이즈, [XY3]라이징피스트, [XY4]팬텀게이트, [XY5]가이아볼케이노, [XY5]타이달스톰, [XY6]에메랄드브레..., [XY7]밴디트링, [XY8]붉은섬광, [XY8]푸른충격, [XY9]천공의분노, [XY10]초능력의 제왕, [XY11]냉혹한 반역자, [XY11]타오르는 투사, [CP1]더블크라이시스, [CP2]레전드컬렉션, [CP3]심쿵 콜렉션, [CP4]EX&times;M&times;BREAK, [CP5]환상.전설.드림, [CP6]20th 기념, [XY-P]한글판프로모, Card List[BW], [BW1]블랙컬렉션, [BW1]화이트컬렉션, [BW2]레드컬렉션, [BW3]사이코드라이브, [BW3]헤일블리자드, [EBB]EX배틀부스트, [BW4]다크러시, [DSDC]드래곤컬렉션, [BW5]드래곤블레이드, [BW5]드래곤블라스트, [BW6]콜드플레어, [BW6]프리즈볼트, [BW7]플라스마게일, [BW8]볼트너클, [BW8]스파이럴포스, [SC]샤이니컬렉션, [BW9]메갈로캐논, [BW-P]일본판프로모, Card List[SM], [SM1S] 컬렉션 썬, [SM1M] 컬렉션 문, 사용하지 않는 게시판, KCG PTCL 리그 게시판, for Foreigner, [brg] 후기 이벤트 게시판, [brg] 오늘의 brg 카드 인증, [brg] 주문 인증 이벤트 게시판, [brg] 1주년 이벤트 게시판, 상념 게시판, 서울 지역, 기타 지역, 경기 지역, 대문 게시판, 공동 구매 게시판, 넷플 게시판, 임시 보관처, 유머 게시판, 트레이드 게시판(사용 안함), Trash, 가짜 카드 사례, 신고 게시판, PTCG 2022 프리시즌 팀리그, [brg] 이벤트 게시판, 싱글 트레이드(안심거래)
 INFO 포켓몬카드 카페: 수집할 게시판 2개 — 싱글 카드 트레이드, 싱글 트레이드(안심거래)
-INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, lastCommentedTimestamp, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
+INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useSafetyPayment, writeDateTimestamp, writerNickname
 INFO   가격 비슷한 값: {'cost': '0'}
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
 INFO   본문 주소 실패 — https://apis.naver.com/cafe-web/cafe-articleapi/v3/cafes/{club_id}/articles/{article_id}: 접근이 거부되었습니다 (HTTP 401). 회원 전용 게시판이라면 로그인 쿠키(NID_AUT, NID_SES)를 설정하세요.
 INFO   본문 주소 실패 — https://apis.naver.com/cafe-web/cafe-articleapi/v2.1/cafes/{club_id}/articles/{article_id}: 접근이 거부되었습니다 (HTTP 401). 회원 전용 게시판이라면 로그인 쿠키(NID_AUT, NID_SES)를 설정하세요.
-INFO   본문 주소 실패 — https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/{club_id}/articles/{article_id}: 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/19480246/articles/560072?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+INFO   본문 주소 실패 — https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/{club_id}/articles/{article_id}: 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/19480246/articles/560074?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
 INFO   본문 주소 실패 — https://apis.naver.com/cafe-web/cafe-mobile/CafeArticleRead.json: 본문이 비어 있음
 INFO   본문 주소 실패 — https://cafe.naver.com/ArticleRead.nhn: 본문이 비어 있음
+DEBUG 본문이 회원 전용입니다 (560074): 본문이 회원 전용입니다 (글 560074). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
 DEBUG 본문이 회원 전용입니다 (560072): 본문이 회원 전용입니다 (글 560072). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
 DEBUG 본문이 회원 전용입니다 (560070): 본문이 회원 전용입니다 (글 560070). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
@@ -25,10 +27,9 @@ WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server
 DEBUG 본문이 회원 전용입니다 (560051): 본문이 회원 전용입니다 (글 560051). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
 DEBUG 본문이 회원 전용입니다 (560050): 본문이 회원 전용입니다 (글 560050). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-DEBUG 본문이 회원 전용입니다 (560045): 본문이 회원 전용입니다 (글 560045). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
 INFO 포켓몬카드 카페: 본문이 10번 연달아 막혔습니다. 이번 실행에서는 본문 읽기를 멈춥니다 (로그인 쿠키가 있어야 가격을 볼 수 있습니다)
   … 25건 처리  … 50건 처리  … 75건 처리  … 100건 처리  … 125건 처리  … 150건 처리INFO club=19480246 menu=200 page=2: 더 이상 글이 없습니다
+INFO 포켓몬카드 카페: 글 152건 중 장터 가격이 붙은 글 2건
 INFO 포켓몬카드 카페: 본문 0건을 읽어 가격 0건을 찾았습니다 (회원 전용이라 못 읽은 글 10건)
 INFO 카드마켓 카페: 게시판 71개 — 등업게시판, MVC&rsquo;s Pick, !기본 게시판, 가입 인사 게시판, 카페 규칙, 이벤트 게시판, 회원 이벤트 게시판, 자유 게시판, 포켓몬카드 정보 게시판, 자랑 게시판(카드 개봉,수집한 카드), 거래 후기 게시판, 매장 소식 게시판, 닉네임 변경 게시판, 출석 체크 게시판, 사기 의심 알림 게시판, 등업 불가 리스트, 포켓몬카드 POCKET, 건의 게시판, !질문 게시판, 시세질문 게시판, Q AND A 질문 게시판(시세질문X), 정가품 확인 질문, !포켓몬카드 거래 게시판, 트레이드 게시판, 덱 판매/구매, 진행중인 카드 경매, 종료된 카드 경매, 무료나눔 게시판, 실시간 경매 소식 게시판, !포켓몬 띠부띠부씰 거래게시판, 띠부띠부실 거래소, 새로운 구분선, !MVC PLAY, (온라인) 카드 게임 배틀 상대 찾기, 덱  레시피 공유 게시판, 덱 피드백  요청 게시판, 카드/덱 분석 및 소개 게시판, 카드 게임/대회 후기 게시판, MVC X 협력업체, [brg 6월] WELCOME TO brg!, brg 슬랩 자랑하기 (쿠지 응모), 믿을수있는 카드 콜렉팅 KADO, 금빛박물관 게시판, 협력업체 게시판, MVC 카페들 , 유희왕 MVC, 스포츠카드 MVC, 쿠키런 브레이버스 카드 MVC , 포켓몬 가오레 MVC, 사용하지 않는 게시판, 시세 게시판, 사용하지 않는 게시판, 사용하지 않는 게시판, 가림막, [HITUP.app] 오늘의 경매, [HITUP.app] 이벤트 인증, [brg] 경매 거래 이벤트 인증 게시판, [brg] 등급 카드 인증 게시판, [멜칼] 일본 메루카리 직구, [WYYYES] 이벤트 / 라이브 / 공지 게시판, [아드] 이벤트중 - 일본 카드 국내배송
 INFO   제외: 거래 후기 게시판 ('후기' 때문)
@@ -57,7 +58,8 @@ WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server
 DEBUG 본문이 회원 전용입니다 (691790): 본문이 회원 전용입니다 (글 691790). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
 INFO 카드마켓 카페: 본문이 10번 연달아 막혔습니다. 이번 실행에서는 본문 읽기를 멈춥니다 (로그인 쿠키가 있어야 가격을 볼 수 있습니다)
   … 200건 처리  … 225건 처리  … 250건 처리  … 275건 처리  … 300건 처리INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
-  … 325건 처리  … 350건 처리  … 375건 처리  … 400건 처리  … 425건 처리  … 450건 처리INFO 카드마켓 카페: 본문 0건을 읽어 가격 0건을 찾았습니다 (회원 전용이라 못 읽은 글 10건)
+  … 325건 처리  … 350건 처리  … 375건 처리  … 400건 처리  … 425건 처리  … 450건 처리INFO 카드마켓 카페: 글 300건 중 장터 가격이 붙은 글 0건
+INFO 카드마켓 카페: 본문 0건을 읽어 가격 0건을 찾았습니다 (회원 전용이라 못 읽은 글 10건)
 INFO 카페 ID를 찾았습니다: https://naver.me/Fx2wJYIp → 30418914
 INFO https://naver.me/Fx2wJYIp → clubId 30418914
 INFO 새 카페 (공유 링크): 게시판 71개 — 등업게시판, MVC&rsquo;s Pick, !기본 게시판, 가입 인사 게시판, 카페 규칙, 이벤트 게시판, 회원 이벤트 게시판, 자유 게시판, 포켓몬카드 정보 게시판, 자랑 게시판(카드 개봉,수집한 카드), 거래 후기 게시판, 매장 소식 게시판, 닉네임 변경 게시판, 출석 체크 게시판, 사기 의심 알림 게시판, 등업 불가 리스트, 포켓몬카드 POCKET, 건의 게시판, !질문 게시판, 시세질문 게시판, Q AND A 질문 게시판(시세질문X), 정가품 확인 질문, !포켓몬카드 거래 게시판, 트레이드 게시판, 덱 판매/구매, 진행중인 카드 경매, 종료된 카드 경매, 무료나눔 게시판, 실시간 경매 소식 게시판, !포켓몬 띠부띠부씰 거래게시판, 띠부띠부실 거래소, 새로운 구분선, !MVC PLAY, (온라인) 카드 게임 배틀 상대 찾기, 덱  레시피 공유 게시판, 덱 피드백  요청 게시판, 카드/덱 분석 및 소개 게시판, 카드 게임/대회 후기 게시판, MVC X 협력업체, [brg 6월] WELCOME TO brg!, brg 슬랩 자랑하기 (쿠지 응모), 믿을수있는 카드 콜렉팅 KADO, 금빛박물관 게시판, 협력업체 게시판, MVC 카페들 , 유희왕 MVC, 스포츠카드 MVC, 쿠키런 브레이버스 카드 MVC , 포켓몬 가오레 MVC, 사용하지 않는 게시판, 시세 게시판, 사용하지 않는 게시판, 사용하지 않는 게시판, 가림막, [HITUP.app] 오늘의 경매, [HITUP.app] 이벤트 인증, [brg] 경매 거래 이벤트 인증 게시판, [brg] 등급 카드 인증 게시판, [멜칼] 일본 메루카리 직구, [WYYYES] 이벤트 / 라이브 / 공지 게시판, [아드] 이벤트중 - 일본 카드 국내배송
@@ -87,17 +89,20 @@ WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server
 DEBUG 본문이 회원 전용입니다 (691790): 본문이 회원 전용입니다 (글 691790). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
 INFO 새 카페 (공유 링크): 본문이 10번 연달아 막혔습니다. 이번 실행에서는 본문 읽기를 멈춥니다 (로그인 쿠키가 있어야 가격을 볼 수 있습니다)
   … 500건 처리  … 525건 처리  … 550건 처리  … 575건 처리  … 600건 처리INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
-  … 625건 처리  … 650건 처리  … 675건 처리  … 700건 처리  … 725건 처리  … 750건 처리INFO 새 카페 (공유 링크): 본문 0건을 읽어 가격 0건을 찾았습니다 (회원 전용이라 못 읽은 글 10건)
-                                          포켓몬카드 카페: 새 글 0 / 갱신 152
+  … 625건 처리  … 650건 처리  … 675건 처리  … 700건 처리  … 725건 처리  … 750건 처리INFO 새 카페 (공유 링크): 글 300건 중 장터 가격이 붙은 글 0건
+INFO 새 카페 (공유 링크): 본문 0건을 읽어 가격 0건을 찾았습니다 (회원 전용이라 못 읽은 글 10건)
+                                          포켓몬카드 카페: 새 글 1 / 갱신 151
   카드마켓 카페: 새 글 0 / 갱신 300
   새 카페 (공유 링크): 새 글 0 / 갱신 300
 
-  누적: 매물 507건, 카드 415종, 가격 있는 글 7건
-  예제·후기 글 0건을 지웠습니다. (남은 매물 507건)
+  누적: 매물 508건, 카드 416종, 가격 있는 글 9건
+  예제·후기 글 0건을 지웠습니다. (남은 매물 508건)
 
-  전체 507건 · 게시판 4개
+  전체 508건 · 게시판 4개
 
-  ── 싱글 카드 트레이드 (201건, 가격 3 / 카드 59) ─────────
+  ── 싱글 카드 트레이드 (202건, 가격 3 / 카드 59) ─────────
+    등급카드 및 태그팀 싱글 판매합니다~
+      → 카드 X | 가격 X | TAG
     피카츄들, 프로모 등 판매합니다
       → 피카츄 | 가격 X | PROMO
     덱소스 삽니다.
@@ -108,8 +113,6 @@ INFO 새 카페 (공유 링크): 본문이 10번 연달아 막혔습니다. 이�
       → 블래키 | 가격 X | V
     미개봉 코리 뮤츠팝니다
       → 뮤츠 | 가격 X | -
-    각종 카드들 판매합니다. (SR, RR, AR, 덱소스 등)
-      → 카드 X | 가격 X | SR
 
   ── 띠부띠부실 거래소 (153건, 가격 3 / 카드 22) ─────────
     포켓몬 30주년 아트워크 띠부씰 전종 판매합니다!
@@ -139,16 +142,17 @@ INFO 새 카페 (공유 링크): 본문이 10번 연달아 막혔습니다. 이�
     포켓몬카드 썬문 애용하던 덱 판매합니다
       → 카드 X | 가격 X | -
 
-  ── 싱글 트레이드(안심거래) (2건, 가격 0 / 카드 1) ─────────
+  ── 싱글 트레이드(안심거래) (2건, 가격 2 / 카드 1) ─────────
     포켓몬스터 프레젠트 박스
-      → 카드 X | 가격 X | BOX
+      → 카드 X | 3만원 | BOX
     페퍼 sar sr u 일본판 일괄
-      → 페퍼 | 가격 X | SAR
+      → 페퍼 | 4.3만원 | SAR
 
 
   카드                                   중앙값        최저        최고    매물  추이
   ──────────────────────────────────────────────────────────────────────────────────
   리자몽                               2.4만원       2.4만원       2.4만원     2  ─   -
   거북왕 스페셜 아트 레어              4.5만원       4.5만원       4.5만원     1  ─   -
+  페퍼 스페셜 아트 레어 (일판)         4.3만원       4.3만원       4.3만원     1  ─   -
   이상해꽃                             3.8만원       3.8만원       3.8만원     1  ─   -
 
