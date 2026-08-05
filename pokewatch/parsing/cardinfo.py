@@ -15,8 +15,11 @@ from .price import PriceInfo, parse_price
 
 # ── 거래 유형 ────────────────────────────────────────────────────────────────
 TRADE_TYPES: list[tuple[str, tuple[str, ...]]] = [
-    ("buy", ("삽니다", "구합니다", "구매합니다", "구매", "구함", "삽니당", "wtb")),
-    ("sell", ("판매", "팝니다", "분양", "양도", "판매합니다", "팔아요", "wts")),
+    # 실제 카페 제목에서 확인한 표현들을 넣었다 ('급처합니다', '구해봅니다' 등)
+    ("buy", ("삽니다", "구합니다", "구매합니다", "구매", "구함", "삽니당", "wtb",
+             "구해요", "구해봅", "구입", "사요", "삽")),
+    ("sell", ("판매", "팝니다", "분양", "양도", "판매합니다", "팔아요", "wts",
+              "급처", "처분", "정리합", "내놓", "팜", "팝니당", "넘겨")),
     ("trade", ("교환", "트레이드", "바꿔요")),
     ("free", ("나눔", "무료나눔")),
     ("info", ("시세", "문의", "질문", "감정")),
@@ -140,6 +143,7 @@ class CardInfo:
     price: int | None = None
     price_max: int | None = None
     price_text: str = ""
+    price_source: str | None = None   # 'title' | 'body' | None
     is_bundle: bool = False
     is_per_unit: bool = False
     shipping_included: bool = False

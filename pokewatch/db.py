@@ -52,6 +52,7 @@ CREATE TABLE IF NOT EXISTS listings (
     negotiable        INTEGER DEFAULT 0,
     confidence        REAL DEFAULT 0,
     written_at        INTEGER NOT NULL DEFAULT 0,
+    price_source      TEXT,
     PRIMARY KEY (club_id, article_id)
 );
 
@@ -70,6 +71,7 @@ LISTING_COLUMNS = [
     "dex", "kind", "rarity", "language", "condition", "grade_company", "grade_score",
     "set_code", "card_no", "trade_type", "price", "price_max", "price_text", "quantity",
     "is_bundle", "is_per_unit", "shipping_included", "negotiable", "confidence", "written_at",
+    "price_source",
 ]
 
 
@@ -80,7 +82,17 @@ def connect(path: str | Path) -> sqlite3.Connection:
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA journal_mode=WAL")
     conn.executescript(SCHEMA)
+    _migrate(conn)
     return conn
+
+
+def _migrate(conn: sqlite3.Connection) -> None:
+    """예전 파일에도 새 컬럼을 붙인다 (시세 기록을 버리지 않기 위해)."""
+    have = {r["name"] for r in conn.execute("PRAGMA table_info(listings)")}
+    for column, ddl in (("price_source", "TEXT"),):
+        if column not in have:
+            conn.execute(f"ALTER TABLE listings ADD COLUMN {column} {ddl}")
+    conn.commit()
 
 
 def upsert_article(conn: sqlite3.Connection, article, cafe_name: str = "") -> None:
@@ -133,6 +145,7 @@ def upsert_listing(conn: sqlite3.Connection, club_id: int, article_id: int, info
         "negotiable": int(info.negotiable),
         "confidence": info.confidence,
         "written_at": written_at,
+        "price_source": getattr(info, "price_source", None),
     }
     placeholders = ",".join("?" for _ in LISTING_COLUMNS)
     updates = ",".join(f"{c}=excluded.{c}" for c in LISTING_COLUMNS if c not in ("club_id", "article_id"))
