@@ -1,32 +1,31 @@
 {
   "_설명": "수집할 네이버 카페 목록. 여기엔 비밀이 없으므로 저장소에 그대로 둔다.",
   "_주의": "로그인 쿠키는 여기 적지 말 것. 깃허브 시크릿 POKEWATCH_COOKIE 를 쓴다.",
-  "_알아낸것": "글 공유 링크가 m.cafe.naver.com/cardmvk/744833 으로 풀렸다. 즉 주소는 'cardmvk' 이고 '.cafe' 는 주소의 일부가 아니다.",
-
+  "_알아낸것": "m.cafe.naver.com/{주소} 는 열리지만 자바스크립트 껍데기라 카페 번호가 없다. cafe.naver.com/{주소} 는 카페 홈으로 튕긴다. 글 주소로 다시 시도 중.",
   "delay": 1.0,
   "cafes": [
     {
-      "name": "포켓몬카드 카페",
-      "cafe_url": "pokemontcg",
-      "menu_name_filter": ["장터", "거래", "판매", "분양", "삽니다"],
-      "pages": 2
-    },
-    {
-      "name": "카드마켓 카페",
-      "cafe_url": "cardmvk",
-      "menu_name_filter": ["장터", "거래", "판매", "분양", "삽니다"],
-      "pages": 2
-    },
-    {
       "name": "포켓몬카드 (글 링크)",
       "cafe_url": "https://naver.me/FhutDtot",
-      "menu_name_filter": ["장터", "거래", "판매", "분양", "삽니다"],
+      "menu_name_filter": [
+        "장터",
+        "거래",
+        "판매",
+        "분양",
+        "삽니다"
+      ],
       "pages": 2
     },
     {
       "name": "카드마켓 (글 주소)",
       "cafe_url": "https://m.cafe.naver.com/cardmvk/744833",
-      "menu_name_filter": ["장터", "거래", "판매", "분양", "삽니다"],
+      "menu_name_filter": [
+        "장터",
+        "거래",
+        "판매",
+        "분양",
+        "삽니다"
+      ],
       "pages": 2
     }
   ]
