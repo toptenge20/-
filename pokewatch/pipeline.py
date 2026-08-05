@@ -57,29 +57,45 @@ def _collect_cafe(conn, client: NaverCafeClient, target: CafeTarget, progress=No
         club_id = client.resolve_club_id(target.cafe_url)
         log.info("%s → clubId %s", target.cafe_url, club_id)
 
+    result = {"name": target.name, "club_id": club_id, "new": 0, "updated": 0, "seen": 0,
+              "bodies": 0, "body_prices": 0, "denied": 0, "market_prices": 0}
+
     menu_ids = list(target.menu_ids)
     if not menu_ids and target.menu_name_filter:
         menus = client.list_menus(club_id)
         log.info("%s: 게시판 %s개 — %s", target.name, len(menus),
                  ", ".join(m["name"] for m in menus if m["name"]) or "(이름 없음)")
 
+        # 장터(안심거래) 게시판은 네이버가 가격을 구조화된 값으로 갖고 있다.
+        # 실제로 '싱글 트레이드(안심거래)' 는 2건 중 2건 모두 가격이 붙어 있었고,
+        # 일반 게시판은 300건 중 0건이었다. 그래서 이름과 상관없이 챙긴다.
+        kinds = sorted({f"{m.get('type', '')}/{m.get('board_type', '')}" for m in menus})
+        log.info("%s: 게시판 종류 코드 — %s", target.name, ", ".join(kinds))
+
         chosen = []
         for m in menus:
             name = m["name"]
-            if not any(word in name for word in target.menu_name_filter):
+            market = _is_market_board(m)
+            if not market and not any(word in name for word in target.menu_name_filter):
                 continue
             skip = next((w for w in target.menu_name_exclude if w in name), None)
             if skip:
                 log.info("  제외: %s ('%s' 때문)", name, skip)
                 continue
+            if market:
+                log.info("  장터 게시판: %s (%s/%s)", name,
+                         m.get("type", ""), m.get("board_type", ""))
             chosen.append(m)
 
         menu_ids = [m["menu_id"] for m in chosen]
         log.info("%s: 수집할 게시판 %s개 — %s", target.name, len(menu_ids),
                  ", ".join(m["name"] for m in chosen) or "(없음)")
+        if not menu_ids:
+            # 게시판을 지정했는데 하나도 안 걸렸으면 카페 전체를 훑지 않는다.
+            # 그러면 자유게시판·공지까지 딸려 와 시세가 엉망이 된다.
+            log.warning("%s: 조건에 맞는 게시판이 없습니다. 이 카페는 건너뜁니다.", target.name)
+            return result
 
-    result = {"name": target.name, "club_id": club_id, "new": 0, "updated": 0, "seen": 0,
-              "bodies": 0, "body_prices": 0, "denied": 0, "market_prices": 0}
     samples = [0]        # 이 카페에서 남긴 표본 수 (리스트로 둬서 안에서 고칠 수 있게)
     deny_streak = 0      # 연달아 막힌 횟수 (하나라도 열리면 0으로 되돌린다)
     body_budget = target.body_limit if target.fetch_bodies else 0
@@ -151,6 +167,18 @@ def _collect_cafe(conn, client: NaverCafeClient, target: CafeTarget, progress=No
         log.info("%s: 본문 %s건을 읽어 가격 %s건을 찾았습니다 (회원 전용이라 못 읽은 글 %s건)",
                  target.name, result["bodies"], result["body_prices"], result["denied"])
     return result
+
+
+def _is_market_board(menu: dict) -> bool:
+    """네이버 장터(안심거래) 게시판인지. 여기만 가격이 값으로 들어 있다.
+
+    코드가 무엇인지 확실치 않아 이름도 함께 본다. 실제 코드는 로그의
+    '게시판 종류 코드' 줄로 확인한 뒤 좁힌다.
+    """
+    codes = {str(menu.get("type") or "").upper(), str(menu.get("board_type") or "").upper()}
+    if codes & {"M", "MARKET", "S"}:
+        return True
+    return any(word in menu.get("name", "") for word in ("안심거래", "장터", "경매"))
 
 
 def _worth_reading(info) -> bool:
