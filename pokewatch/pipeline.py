@@ -158,24 +158,27 @@ def _price_from_body(client: NaverCafeClient, club_id: int, article_id: int, inf
         return "none"
 
     text = (body.get("text") or "").strip()
+    price = parse_price(text[:2000]) if text else None   # 앞부분에 가격을 적는 글이 대부분이다
 
-    # 본문을 읽었는데 가격이 하나도 안 나오면, 실제로 무엇이 왔는지 봐야 한다.
-    # (회원 전용이라 빈 본문이 오는 경우와 구분이 안 되기 때문)
-    if not text:
-        return "none"
-
-    price = parse_price(text[:2000])   # 앞부분에 가격을 적는 글이 대부분이다
-
-    # 본문은 열리는데 가격이 안 나오는 경우를 봐야 한다. 값을 못 찾은 것 중
-    # 앞의 몇 건만 실제 내용을 남긴다. (빈 본문은 볼 것이 없으므로 제외)
+    # 본문은 열리는데 가격이 안 나오는 경우를 봐야 한다. 앞의 몇 건만 단서를 남긴다.
+    # 지난 실행에서 표본이 하나도 안 남았는데, 그건 열린 본문의 글자 수가 전부
+    # 0이었다는 뜻이다 (사진만 올린 글로 보인다). 그래서 빈 본문도 남긴다.
     global _body_samples_logged
-    if price.price is None and _body_samples_logged < 3:
+    if (price is None or price.price is None) and _body_samples_logged < 3:
         _body_samples_logged += 1
-        log.info("가격 못 찾은 본문 %s (글 %s, %d자): %s",
+        log.info("가격 못 찾은 본문 %s (글 %s): 글자 %d, HTML %d, 사진 %d장",
                  _body_samples_logged, article_id, len(text),
-                 re.sub(r"\s+", " ", text[:400]))
+                 len(body.get("content_html") or ""), len(body.get("images") or []))
+        log.info("    응답 모양: %s", body.get("shape"))
+        if body.get("price_fields"):
+            log.info("    가격 비슷한 값: %s", body["price_fields"])
+        if text:
+            log.info("    본문: %s", re.sub(r"\s+", " ", text[:400]))
+        elif body.get("content_html"):
+            log.info("    HTML 앞부분: %s",
+                     re.sub(r"\s+", " ", body["content_html"][:300]))
 
-    if price.price is None:
+    if price is None or price.price is None:
         return "none"
 
     info.price = price.price
