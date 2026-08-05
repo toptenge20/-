@@ -375,5 +375,110 @@ class TestMarketBoardSelection(unittest.TestCase):
         self.assertEqual(seen, [])
 
 
+class TestImplausibleCost(unittest.TestCase):
+    """가격 칸에 가격이 아닌 숫자가 들어오는 경우를 걸러야 한다.
+
+    실제 수집에서 '부스터 1억원', '가이오가 ex 1,111.1만원' 이 들어와
+    시세 상위가 통째로 엉망이 됐다.
+    """
+
+    def test_placeholder_numbers_are_rejected(self):
+        from pokewatch.naver import _plausible_cost
+
+        for value in (11_111_111, 99_999_999, 11_111_000, 22_222, 1_111):
+            self.assertFalse(_plausible_cost(value), value)
+
+    def test_out_of_range_is_rejected(self):
+        from pokewatch.naver import _plausible_cost
+
+        for value in (0, 100, 100_000_000, 999_999_999):
+            self.assertFalse(_plausible_cost(value), value)
+
+    def test_real_prices_survive(self):
+        from pokewatch.naver import _plausible_cost
+
+        # 11,000 처럼 짧게 같은 숫자가 겹치는 값은 진짜 가격이다
+        for value in (500, 5_000, 11_000, 45_000, 735_000, 3_000_000, 22_000):
+            self.assertTrue(_plausible_cost(value), value)
+
+    def test_row_with_placeholder_cost_has_no_price(self):
+        from pokewatch.naver import _to_article
+
+        row = {"articleId": 1, "subject": "리자몽", "cost": 11111111}
+        self.assertIsNone(_to_article(1, 1, row).cost)
+
+
+class TestSeparatorBoards(unittest.TestCase):
+    """이름이 빈 항목은 구분선이다. 게시판이 아니므로 수집하면 안 된다."""
+
+    def test_blank_name_is_not_a_market_board(self):
+        from pokewatch.pipeline import _is_market_board
+
+        for menu in ({"name": "", "type": "S", "board_type": ""},
+                     {"name": "   ", "type": "S", "board_type": "L"}):
+            self.assertFalse(_is_market_board(menu))
+
+    def test_safe_trade_code_is_recognised(self):
+        from pokewatch.pipeline import _is_market_board
+
+        self.assertTrue(_is_market_board(
+            {"name": "싱글 트레이드(안심거래)", "type": "B", "board_type": "T"}))
+
+    def test_separators_are_not_collected(self):
+        from pokewatch import db, pipeline
+        from pokewatch.config import CafeTarget
+
+        conn = db.connect(":memory:")
+        seen = []
+
+        class Client:
+            def list_menus(self, club_id):
+                return [
+                    {"menu_id": 1, "name": "", "type": "S", "board_type": ""},
+                    {"menu_id": 2, "name": "싱글 트레이드(안심거래)", "type": "B",
+                     "board_type": "T"},
+                ]
+
+            def iter_articles(self, club_id, menu_id, pages, per_page):
+                seen.append(menu_id)
+                return iter([])
+
+        target = CafeTarget(name="테스트", club_id=1, menu_name_filter=["거래"],
+                            menu_name_exclude=[])
+        pipeline._collect_cafe(conn, Client(), target)
+        self.assertEqual(seen, [2])
+
+    def test_stored_junk_costs_are_cleaned_up(self):
+        """이미 저장된 엉뚱한 값도 다음 실행에서 지워져야 한다.
+
+        upsert 의 COALESCE 가 옛 값을 계속 살려 두기 때문에, 규칙만 고쳐서는
+        1억원짜리 매물이 시세 상위에 그대로 남는다.
+        """
+        from pokewatch import db, pipeline
+        from pokewatch.config import Config, CafeTarget
+        from pokewatch.naver import Article
+
+        conn = db.connect(":memory:")
+        junk = Article(club_id=1, article_id=1, menu_id=1, menu_name="장터",
+                       subject="부스터", writer="누구", written_at=1_700_000_000,
+                       cost=100_000_000)
+        good = Article(club_id=1, article_id=2, menu_id=1, menu_name="장터",
+                       subject="리자몽", writer="누구", written_at=1_700_000_000,
+                       cost=45_000)
+        for article in (junk, good):
+            db.upsert_article(conn, article, cafe_name="테스트")
+            info = pipeline.parse_title(article.subject)
+            info.price, info.price_source = article.cost, "market"
+            db.upsert_listing(conn, 1, article.article_id, info, article.written_at)
+
+        self.assertEqual(pipeline._drop_implausible_costs(conn), 1)
+
+        rows = dict(conn.execute("SELECT article_id, price FROM listings").fetchall())
+        self.assertIsNone(rows[1])
+        self.assertEqual(rows[2], 45_000)
+        self.assertIsNone(
+            conn.execute("SELECT cost FROM articles WHERE article_id=1").fetchone()["cost"])
+
+
 if __name__ == "__main__":
     unittest.main()
