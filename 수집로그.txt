@@ -1,5 +1,7 @@
 INFO 포켓몬카드 카페: 게시판 135개 — Cafe, 커뮤니티 공지사항, 필독 공지사항, 등업 게시판, 카페 건의 게시판, 카페 보유 이벤트 상품, Information, 새소식 &amp; 포케카신문, 매장 소식 &amp; 정보, Tournament, 대전상대 구하기, 실드전 게시판, 대회/모임 공지 게시판, 대회/이벤트 후기, User Tornaments, ★ 랭킹전 게시판, ECG 리그 게시판, 시아쨩주니어리그, Closed Tornaments, Mini League, 초보자 강습 및 공지, 우승 덱 리스트, 미니리그 관련 질문, Community, 새 소식 게시판, 발매 정보 게시판(회원 전용), 자유 게시판, PTCGL 게시판, 포케카 포켓 게시판, 질문 게시판, 가짜 카드 질문 게시판, 카드 자랑 게시판, 영상 게시판, 사진 게시판, 성사모, Deck, 일반 덱 게시판, 추천 덱 게시판, 덱 평가 게시판, Column &amp; Tips, 컬럼 게시판, 팁 게시판, 카드 리스트, 인터뷰, 환경/카드 분석, Event, 카페 이벤트 게시판, 나눔 &amp; 이벤트, Trade, 싱글 카드 트레이드, 덱 트레이드, 등급 카드 트레이드, 미개봉 제품/카드용품 트레이드, 블랙리스트, 사기 정보, 사기 관련 정보, 트레이드 만남의 광장, 트레이드 후기 게시판, WebLink, 덱 제작기(포코 공홈), 포켓몬코리아(포켓몬카드), 이벤트 정보, 한글판 카드 검색, 영문판 카드 검색, Pokellector(카드정보), 공식 홈페이지(일어), Card List[XY], [XY1]컬렉션Y, [XY1]컬렉션X, [XY2]와일드블레이즈, [XY3]라이징피스트, [XY4]팬텀게이트, [XY5]가이아볼케이노, [XY5]타이달스톰, [XY6]에메랄드브레..., [XY7]밴디트링, [XY8]붉은섬광, [XY8]푸른충격, [XY9]천공의분노, [XY10]초능력의 제왕, [XY11]냉혹한 반역자, [XY11]타오르는 투사, [CP1]더블크라이시스, [CP2]레전드컬렉션, [CP3]심쿵 콜렉션, [CP4]EX&times;M&times;BREAK, [CP5]환상.전설.드림, [CP6]20th 기념, [XY-P]한글판프로모, Card List[BW], [BW1]블랙컬렉션, [BW1]화이트컬렉션, [BW2]레드컬렉션, [BW3]사이코드라이브, [BW3]헤일블리자드, [EBB]EX배틀부스트, [BW4]다크러시, [DSDC]드래곤컬렉션, [BW5]드래곤블레이드, [BW5]드래곤블라스트, [BW6]콜드플레어, [BW6]프리즈볼트, [BW7]플라스마게일, [BW8]볼트너클, [BW8]스파이럴포스, [SC]샤이니컬렉션, [BW9]메갈로캐논, [BW-P]일본판프로모, Card List[SM], [SM1S] 컬렉션 썬, [SM1M] 컬렉션 문, 사용하지 않는 게시판, KCG PTCL 리그 게시판, for Foreigner, [brg] 후기 이벤트 게시판, [brg] 오늘의 brg 카드 인증, [brg] 주문 인증 이벤트 게시판, [brg] 1주년 이벤트 게시판, 상념 게시판, 서울 지역, 기타 지역, 경기 지역, 대문 게시판, 공동 구매 게시판, 넷플 게시판, 임시 보관처, 유머 게시판, 트레이드 게시판(사용 안함), Trash, 가짜 카드 사례, 신고 게시판, PTCG 2022 프리시즌 팀리그, [brg] 이벤트 게시판, 싱글 트레이드(안심거래)
 INFO 포켓몬카드 카페: 수집할 게시판 2개 — 싱글 카드 트레이드, 싱글 트레이드(안심거래)
+INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, lastCommentedTimestamp, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
+INFO   가격 비슷한 값: {'cost': '0'}
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
 INFO   본문 주소 실패 — https://apis.naver.com/cafe-web/cafe-articleapi/v3/cafes/{club_id}/articles/{article_id}: 접근이 거부되었습니다 (HTTP 401). 회원 전용 게시판이라면 로그인 쿠키(NID_AUT, NID_SES)를 설정하세요.
 INFO   본문 주소 실패 — https://apis.naver.com/cafe-web/cafe-articleapi/v2.1/cafes/{club_id}/articles/{article_id}: 접근이 거부되었습니다 (HTTP 401). 회원 전용 게시판이라면 로그인 쿠키(NID_AUT, NID_SES)를 설정하세요.
@@ -86,8 +88,8 @@ DEBUG 본문이 회원 전용입니다 (691790): 본문이 회원 전용입니�
 INFO 새 카페 (공유 링크): 본문이 10번 연달아 막혔습니다. 이번 실행에서는 본문 읽기를 멈춥니다 (로그인 쿠키가 있어야 가격을 볼 수 있습니다)
   … 500건 처리  … 525건 처리  … 550건 처리  … 575건 처리  … 600건 처리INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
   … 625건 처리  … 650건 처리  … 675건 처리  … 700건 처리  … 725건 처리  … 750건 처리INFO 새 카페 (공유 링크): 본문 0건을 읽어 가격 0건을 찾았습니다 (회원 전용이라 못 읽은 글 10건)
-                                          포켓몬카드 카페: 새 글 11 / 갱신 141
-  카드마켓 카페: 새 글 3 / 갱신 297
+                                          포켓몬카드 카페: 새 글 0 / 갱신 152
+  카드마켓 카페: 새 글 0 / 갱신 300
   새 카페 (공유 링크): 새 글 0 / 갱신 300
 
   누적: 매물 507건, 카드 415종, 가격 있는 글 7건
