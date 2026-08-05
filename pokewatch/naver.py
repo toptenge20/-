@@ -604,8 +604,14 @@ def _to_article(club_id: int, menu_id: int | None, row: dict) -> Article | None:
     )
 
 
+# 장터 가격의 상식 범위. 위쪽을 열어 두면 '가격 대신 아무 숫자'가 시세를
+# 통째로 망친다 (실제로 1억원짜리 부스터, 1,111.1만원짜리 카드가 들어왔다).
+MARKET_COST_MIN = 500
+MARKET_COST_MAX = 30_000_000
+
+
 def _market_cost(row: dict) -> int | None:
-    """장터 글의 가격. 공지처럼 값이 없거나 0이면 None.
+    """장터 글의 가격. 공지처럼 값이 없거나, 가격이 아닌 값이면 None.
 
     'cost' 는 원 단위 정수로 온다. 'formattedCost' 는 '45,000' 같은 표기라
     숫자만 남겨 예비로 쓴다.
@@ -618,9 +624,26 @@ def _market_cost(row: dict) -> int | None:
         if not digits:
             continue
         value = int(digits)
-        if value > 0:
+        if _plausible_cost(value):
             return value
     return None
+
+
+def _plausible_cost(value: int) -> bool:
+    """가격 칸에 들어온 숫자가 실제 가격인지.
+
+    '가격은 쪽지로' 라는 뜻으로 11111111 이나 99999999 를 적는 사람이 있다.
+    그런 값이 하나만 섞여도 평균·최고가가 통째로 망가진다.
+    """
+    if not (MARKET_COST_MIN <= value <= MARKET_COST_MAX):
+        return False
+
+    # 뒤의 0을 떼고 같은 숫자만 남으면 자리를 채운 값이다.
+    # (11,111,000 → '11111', 99,999 → '99999'). 11,000 → '11' 은 짧아서 통과.
+    stem = str(value).rstrip("0") or "0"
+    if len(stem) >= 4 and len(set(stem)) == 1:
+        return False
+    return True
 
 
 _TAG_RE = re.compile(r"<[^>]+>")

@@ -34,6 +34,12 @@ def collect(conn: sqlite3.Connection, cfg: Config, progress=None) -> dict:
         report["errors"].append("설정에 카페가 없습니다. config.json 의 cafes 를 채우세요.")
         return report
 
+    # 예전 실행에서 들어온 엉뚱한 값을 먼저 치운다. 그냥 두면 upsert 의
+    # COALESCE 가 계속 살려 두고, 시세 상위가 1억원짜리로 채워진 채 남는다.
+    dropped = _drop_implausible_costs(conn)
+    if dropped:
+        log.info("가격 같지 않은 값 %s건을 지웠습니다", dropped)
+
     for target in cfg.cafes:
         try:
             result = _collect_cafe(conn, client, target, progress)
@@ -74,7 +80,9 @@ def _collect_cafe(conn, client: NaverCafeClient, target: CafeTarget, progress=No
 
         chosen = []
         for m in menus:
-            name = m["name"]
+            name = (m["name"] or "").strip()
+            if not name:              # 구분선. 이름이 없고 글도 없다.
+                continue
             market = _is_market_board(m)
             if not market and not any(word in name for word in target.menu_name_filter):
                 continue
@@ -169,16 +177,38 @@ def _collect_cafe(conn, client: NaverCafeClient, target: CafeTarget, progress=No
     return result
 
 
+def _drop_implausible_costs(conn: sqlite3.Connection) -> int:
+    """이미 저장된 값 중 가격이 아닌 것을 지운다. 지운 건수를 돌려준다."""
+    from .naver import _plausible_cost
+
+    rows = conn.execute(
+        "SELECT club_id, article_id, cost FROM articles WHERE cost IS NOT NULL").fetchall()
+    bad = [(r["club_id"], r["article_id"]) for r in rows if not _plausible_cost(r["cost"])]
+    for club_id, article_id in bad:
+        conn.execute("UPDATE articles SET cost=NULL WHERE club_id=? AND article_id=?",
+                     (club_id, article_id))
+        conn.execute(
+            "UPDATE listings SET price=NULL, price_max=NULL, price_text='', price_source=NULL "
+            "WHERE club_id=? AND article_id=? AND price_source='market'",
+            (club_id, article_id))
+    if bad:
+        conn.commit()
+    return len(bad)
+
+
 def _is_market_board(menu: dict) -> bool:
     """네이버 장터(안심거래) 게시판인지. 여기만 가격이 값으로 들어 있다.
 
-    코드가 무엇인지 확실치 않아 이름도 함께 본다. 실제 코드는 로그의
-    '게시판 종류 코드' 줄로 확인한 뒤 좁힌다.
+    코드는 로그로 확인했다. '싱글 트레이드(안심거래)' 가 B/T 였고, 이 게시판
+    하나에서 가격 152건이 나왔다. 앞서 S 도 장터로 봤는데 그건 구분선이었다
+    (이름이 빈 항목들이 딸려 왔다).
     """
-    codes = {str(menu.get("type") or "").upper(), str(menu.get("board_type") or "").upper()}
-    if codes & {"M", "MARKET", "S"}:
+    name = (menu.get("name") or "").strip()
+    if not name:                      # 구분선. 글이 없다.
+        return False
+    if str(menu.get("board_type") or "").upper() == "T":
         return True
-    return any(word in menu.get("name", "") for word in ("안심거래", "장터", "경매"))
+    return any(word in name for word in ("안심거래", "장터", "경매"))
 
 
 def _worth_reading(info) -> bool:
