@@ -102,9 +102,14 @@ class NaverCafeClient:
         candidates: list[str] = []
         slug: str | None
 
+        article_no = None
         if cafe.startswith(("http://", "https://")):
             candidates.append(cafe)
             slug = cafe_slug_from_url(cafe)
+            # 'm.cafe.naver.com/cardmvk/744833' 처럼 글 번호가 붙어 있으면 따로 챙긴다.
+            m = re.search(r"cafe\.naver\.com/[A-Za-z0-9_.-]+/(\d{3,})", cafe)
+            if m:
+                article_no = m.group(1)
         else:
             slug = cafe.rstrip("/").split("/")[-1]
 
@@ -119,11 +124,16 @@ class NaverCafeClient:
 
             for stem in stems:
                 s = urllib.parse.quote(stem)
+                # 글 번호가 있으면 데스크톱 글 주소를 먼저 본다. 예전 주소(ArticleRead.nhn)로
+                # 넘어가면서 주소에 clubid 가 붙는 경우가 있다.
+                if article_no:
+                    candidates.append(f"https://cafe.naver.com/{s}/{article_no}")
                 candidates += [
+                    f"{API_BASE}/cafe-search-api/v1.0/cafes?query={s}",
+                    f"{API_BASE}/cafe2/CafeProfileView.json?cluburl={s}",
+                    f"{API_BASE}/cafe-mobile/CafeIntroView.json?cluburl={s}",
                     f"https://m.cafe.naver.com/{s}",
                     f"{API_BASE}/cafe2/CafeGate.json?cluburl={s}",
-                    f"{API_BASE}/cafe-mobile/CafeGateInfo.json?cluburl={s}",
-                    f"{API_BASE}/cafe2/CafeInfo.json?cluburl={s}",
                     f"https://cafe.naver.com/{s}",
                 ]
 
@@ -161,8 +171,15 @@ class NaverCafeClient:
                 return int(m.group(1))
 
         log.info("  %s → 카페 ID 없음 (최종 주소: %s, 본문 %d자)", url, final_url, len(body))
-        for hint in _id_hints(body):
-            log.info("      단서: %s", hint)
+        # 왜 못 찾았는지 다음 실행 때 알 수 있도록 본문 단서를 남긴다.
+        hints = _id_hints(body)
+        if hints:
+            for hint in hints:
+                log.info("      단서: %s", hint)
+        elif len(body) <= 500:
+            log.info("      본문 전체: %s", re.sub(r"\s+", " ", body).strip())
+        else:
+            log.info("      본문 앞부분: %s", re.sub(r"\s+", " ", body[:300]).strip())
         return None
 
     def _follow(self, url: str) -> tuple[str, str]:

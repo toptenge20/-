@@ -13,7 +13,7 @@ on:
       - ".github/workflows/collect.yml"
 
 permissions:
-  contents: read
+  contents: write   # 수집 로그를 저장소에 남기기 위해
 
 # 앞 실행이 끝나지 않았으면 기다린다 (DB 커밋이 겹치지 않게)
 concurrency:
@@ -68,12 +68,25 @@ jobs:
         run: |
           if [ -f config.json ]; then
             # 수집이 실패해도(네이버 차단·형식 변경 등) 지난 스냅샷으로 사이트는 유지한다.
-            python3 -m pokewatch -v collect || echo "::warning::수집에 실패했습니다. 이전 데이터로 사이트를 만듭니다."
+            python3 -m pokewatch -v collect 2>&1 | tee 수집로그.txt \
+              || echo "::warning::수집에 실패했습니다. 이전 데이터로 사이트를 만듭니다."
           fi
           if [ ! -f data/pokewatch.db ]; then
             echo "::notice::데이터가 없어 예제 데이터를 넣습니다."
             python3 -m pokewatch demo --no-serve --count 400
           fi
+
+      # 액션 로그는 잡음이 많아 확인이 번거롭다. 수집기 출력만 저장소에 남겨 둔다.
+      # (경로 트리거에 수집로그.txt 가 없으므로 이 커밋이 다시 실행을 부르지는 않는다)
+      - name: 수집 로그를 저장소에 남기기
+        if: always()
+        run: |
+          [ -f 수집로그.txt ] || exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add 수집로그.txt
+          git diff --cached --quiet || git commit -m "수집 로그 갱신 [skip ci]"
+          git push || echo "::warning::수집 로그를 올리지 못했습니다."
 
       - name: 정적 사이트 만들기
         env:
