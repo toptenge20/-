@@ -53,6 +53,12 @@ class PriceTest(unittest.TestCase):
     def test_too_small_is_not_a_price(self):
         self.assertIsNone(parse_price("리자몽 3장 있어요").price)
 
+    def test_nickname_digits_are_not_a_price(self):
+        """'2517509님 거래후기' 가 251.8만원으로 읽히던 실제 사례."""
+        self.assertIsNone(parse_price("2517509님 거래후기").price)
+        self.assertIsNone(parse_price("홍길동12345님과 거래").price)
+        self.assertIsNone(parse_price("회원123456씨 후기").price)
+
 
 class TitleTest(unittest.TestCase):
     def test_full_sell_post(self):
