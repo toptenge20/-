@@ -6,139 +6,41 @@ INFO   본문 주소 실패 — https://apis.naver.com/cafe-web/cafe-articleapi/
 INFO   본문 주소 실패 — https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/{club_id}/articles/{article_id}: 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/19480246/articles/560051?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
 INFO   본문 주소 실패 — https://apis.naver.com/cafe-web/cafe-mobile/CafeArticleRead.json: 본문이 비어 있음
 INFO   본문 주소 실패 — https://cafe.naver.com/ArticleRead.nhn: 본문이 비어 있음
-INFO 가격 못 찾은 본문 1 (글 560051): 글자 0, HTML 0, 사진 0장
-INFO     응답 모양: None
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-INFO 가격 못 찾은 본문 2 (글 560050): 글자 0, HTML 0, 사진 0장
-INFO     응답 모양: None
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-INFO 가격 못 찾은 본문 3 (글 560045): 글자 0, HTML 0, 사진 0장
-INFO     응답 모양: None
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-  … 25건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-  … 50건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-  … 75건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-  … 100건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-  … 125건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-  … 150건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-INFO club=19480246 menu=200 page=2: 더 이상 글이 없습니다
-INFO 포켓몬카드 카페: 본문 78건을 읽어 가격 0건을 찾았습니다
+DEBUG 본문이 회원 전용입니다 (560051): 본문이 회원 전용입니다 (글 560051). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+INFO 포켓몬카드 카페: 본문이 회원 전용입니다. 이번 실행에서는 본문 읽기를 멈춥니다 (로그인 쿠키가 있어야 가격을 볼 수 있습니다)
+  … 25건 처리  … 50건 처리  … 75건 처리  … 100건 처리  … 125건 처리  … 150건 처리INFO club=19480246 menu=200 page=2: 더 이상 글이 없습니다
 INFO 카드마켓 카페: 게시판 71개 — 등업게시판, MVC&rsquo;s Pick, !기본 게시판, 가입 인사 게시판, 카페 규칙, 이벤트 게시판, 회원 이벤트 게시판, 자유 게시판, 포켓몬카드 정보 게시판, 자랑 게시판(카드 개봉,수집한 카드), 거래 후기 게시판, 매장 소식 게시판, 닉네임 변경 게시판, 출석 체크 게시판, 사기 의심 알림 게시판, 등업 불가 리스트, 포켓몬카드 POCKET, 건의 게시판, !질문 게시판, 시세질문 게시판, Q AND A 질문 게시판(시세질문X), 정가품 확인 질문, !포켓몬카드 거래 게시판, 트레이드 게시판, 덱 판매/구매, 진행중인 카드 경매, 종료된 카드 경매, 무료나눔 게시판, 실시간 경매 소식 게시판, !포켓몬 띠부띠부씰 거래게시판, 띠부띠부실 거래소, 새로운 구분선, !MVC PLAY, (온라인) 카드 게임 배틀 상대 찾기, 덱  레시피 공유 게시판, 덱 피드백  요청 게시판, 카드/덱 분석 및 소개 게시판, 카드 게임/대회 후기 게시판, MVC X 협력업체, [brg 6월] WELCOME TO brg!, brg 슬랩 자랑하기 (쿠지 응모), 믿을수있는 카드 콜렉팅 KADO, 금빛박물관 게시판, 협력업체 게시판, MVC 카페들 , 유희왕 MVC, 스포츠카드 MVC, 쿠키런 브레이버스 카드 MVC , 포켓몬 가오레 MVC, 사용하지 않는 게시판, 시세 게시판, 사용하지 않는 게시판, 사용하지 않는 게시판, 가림막, [HITUP.app] 오늘의 경매, [HITUP.app] 이벤트 인증, [brg] 경매 거래 이벤트 인증 게시판, [brg] 등급 카드 인증 게시판, [멜칼] 일본 메루카리 직구, [WYYYES] 이벤트 / 라이브 / 공지 게시판, [아드] 이벤트중 - 일본 카드 국내배송
 INFO   제외: 거래 후기 게시판 ('후기' 때문)
 INFO   제외: [brg] 경매 거래 이벤트 인증 게시판 ('인증' 때문)
 INFO 카드마켓 카페: 수집할 게시판 4개 — !포켓몬카드 거래 게시판, 덱 판매/구매, !포켓몬 띠부띠부씰 거래게시판, 띠부띠부실 거래소
 INFO club=30418914 menu=33 page=1: 더 이상 글이 없습니다
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-  … 175건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-  … 200건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-  … 225건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-INFO 본문 주소를 찾았습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v3/cafes/{club_id}/articles/{article_id}
-  … 250건 처리  … 275건 처리  … 300건 처리INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
-  … 325건 처리  … 350건 처리  … 375건 처리  … 400건 처리  … 425건 처리  … 450건 처리INFO 카드마켓 카페: 본문 68건을 읽어 가격 1건을 찾았습니다
-INFO 카페 ID를 찾았습니다: https://naver.me/Fx2wJYIp → 30418914
+DEBUG 본문이 회원 전용입니다 (744378): 본문이 회원 전용입니다 (글 744378). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+INFO 카드마켓 카페: 본문이 회원 전용입니다. 이번 실행에서는 본문 읽기를 멈춥니다 (로그인 쿠키가 있어야 가격을 볼 수 있습니다)
+  … 175건 처리  … 200건 처리  … 225건 처리  … 250건 처리  … 275건 처리  … 300건 처리INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
+  … 325건 처리  … 350건 처리  … 375건 처리  … 400건 처리  … 425건 처리  … 450건 처리INFO 카페 ID를 찾았습니다: https://naver.me/Fx2wJYIp → 30418914
 INFO https://naver.me/Fx2wJYIp → clubId 30418914
 INFO 새 카페 (공유 링크): 게시판 71개 — 등업게시판, MVC&rsquo;s Pick, !기본 게시판, 가입 인사 게시판, 카페 규칙, 이벤트 게시판, 회원 이벤트 게시판, 자유 게시판, 포켓몬카드 정보 게시판, 자랑 게시판(카드 개봉,수집한 카드), 거래 후기 게시판, 매장 소식 게시판, 닉네임 변경 게시판, 출석 체크 게시판, 사기 의심 알림 게시판, 등업 불가 리스트, 포켓몬카드 POCKET, 건의 게시판, !질문 게시판, 시세질문 게시판, Q AND A 질문 게시판(시세질문X), 정가품 확인 질문, !포켓몬카드 거래 게시판, 트레이드 게시판, 덱 판매/구매, 진행중인 카드 경매, 종료된 카드 경매, 무료나눔 게시판, 실시간 경매 소식 게시판, !포켓몬 띠부띠부씰 거래게시판, 띠부띠부실 거래소, 새로운 구분선, !MVC PLAY, (온라인) 카드 게임 배틀 상대 찾기, 덱  레시피 공유 게시판, 덱 피드백  요청 게시판, 카드/덱 분석 및 소개 게시판, 카드 게임/대회 후기 게시판, MVC X 협력업체, [brg 6월] WELCOME TO brg!, brg 슬랩 자랑하기 (쿠지 응모), 믿을수있는 카드 콜렉팅 KADO, 금빛박물관 게시판, 협력업체 게시판, MVC 카페들 , 유희왕 MVC, 스포츠카드 MVC, 쿠키런 브레이버스 카드 MVC , 포켓몬 가오레 MVC, 사용하지 않는 게시판, 시세 게시판, 사용하지 않는 게시판, 사용하지 않는 게시판, 가림막, [HITUP.app] 오늘의 경매, [HITUP.app] 이벤트 인증, [brg] 경매 거래 이벤트 인증 게시판, [brg] 등급 카드 인증 게시판, [멜칼] 일본 메루카리 직구, [WYYYES] 이벤트 / 라이브 / 공지 게시판, [아드] 이벤트중 - 일본 카드 국내배송
 INFO   제외: 거래 후기 게시판 ('후기' 때문)
 INFO   제외: [brg] 경매 거래 이벤트 인증 게시판 ('인증' 때문)
 INFO 새 카페 (공유 링크): 수집할 게시판 4개 — !포켓몬카드 거래 게시판, 덱 판매/구매, !포켓몬 띠부띠부씰 거래게시판, 띠부띠부실 거래소
 INFO club=30418914 menu=33 page=1: 더 이상 글이 없습니다
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문이 회원 전용입니다 (744378): 본문이 회원 전용입니다 (글 744378). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+INFO 새 카페 (공유 링크): 본문이 회원 전용입니다. 이번 실행에서는 본문 읽기를 멈춥니다 (로그인 쿠키가 있어야 가격을 볼 수 있습니다)
   … 475건 처리  … 500건 처리  … 525건 처리  … 550건 처리  … 575건 처리  … 600건 처리INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
-  … 625건 처리  … 650건 처리  … 675건 처리  … 700건 처리  … 725건 처리  … 750건 처리INFO 새 카페 (공유 링크): 본문 67건을 읽어 가격 0건을 찾았습니다
-                                          포켓몬카드 카페: 새 글 2 / 갱신 150
+  … 625건 처리  … 650건 처리  … 675건 처리  … 700건 처리  … 725건 처리  … 750건 처리                                          포켓몬카드 카페: 새 글 1 / 갱신 151
   카드마켓 카페: 새 글 0 / 갱신 300
   새 카페 (공유 링크): 새 글 0 / 갱신 300
 
-  누적: 매물 492건, 카드 405종, 가격 있는 글 7건
-  예제·후기 글 0건을 지웠습니다. (남은 매물 492건)
+  누적: 매물 493건, 카드 406종, 가격 있는 글 7건
+  예제·후기 글 0건을 지웠습니다. (남은 매물 493건)
 
-  전체 492건 · 게시판 4개
+  전체 493건 · 게시판 4개
 
-  ── 싱글 카드 트레이드 (189건, 가격 3 / 카드 55) ─────────
+  ── 싱글 카드 트레이드 (190건, 가격 3 / 카드 55) ─────────
+    151 마볼 구매해요.
+      → 카드 X | 가격 X | -
     sr카드, 민화의 초대brg9 급처합니다
       → 카드 X | 가격 X | -
     일판,한판 각종 레어카드 팝니다.(일판 에브이SAR,명희의 격려SAR 등등)
@@ -149,8 +51,6 @@ INFO club=30418914 menu=33 page=1: 더 이상 글이 없습니다
       → 카드 X | 가격 X | -
     (앨범용)고레어 잡카드 조금 판매합니다(편택,반택 안합니다)
       → 카드 X | 가격 X | -
-    SR 카드 싸게 대량 정리
-      → 카드 X | 가격 X | SR
 
   ── 띠부띠부실 거래소 (151건, 가격 3 / 카드 22) ─────────
     30주년 마크 띠부씰 교환이나 구매원합니다!
