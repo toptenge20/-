@@ -111,17 +111,20 @@ class NaverCafeClient:
         if slug:
             q = urllib.parse.quote(slug)
             # 모바일 페이지를 먼저 본다. 앱에서 복사한 주소가 이 형태라 잘 맞는다.
-            candidates += [
-                f"https://m.cafe.naver.com/{q}",
-                f"https://cafe.naver.com/{q}",
-                f"{API_BASE}/cafe-mobile/CafeGateInfo.json?cluburl={q}",
-            ]
-            # 'pokemontcg.cafe' 처럼 점이 붙어 있으면 앞부분만으로도 시도해 본다
+            # '○○○.cafe' 처럼 점이 붙어 오는 경우가 있는데 실제 주소는 앞부분이다.
+            # (앱에서 복사한 주소가 그렇다. 로그로 확인한 실제 사례: cardmvk.cafe → cardmvk)
+            stems = [slug]
             if "." in slug:
-                stem = urllib.parse.quote(slug.split(".")[0])
+                stems.insert(0, slug.split(".")[0])
+
+            for stem in stems:
+                s = urllib.parse.quote(stem)
                 candidates += [
-                    f"https://m.cafe.naver.com/{stem}",
-                    f"https://cafe.naver.com/{stem}",
+                    f"https://m.cafe.naver.com/{s}",
+                    f"{API_BASE}/cafe2/CafeGate.json?cluburl={s}",
+                    f"{API_BASE}/cafe-mobile/CafeGateInfo.json?cluburl={s}",
+                    f"{API_BASE}/cafe2/CafeInfo.json?cluburl={s}",
+                    f"https://cafe.naver.com/{s}",
                 ]
 
         seen, ordered = set(), []
@@ -152,13 +155,14 @@ class NaverCafeClient:
         if club_id:
             return club_id
 
-        for pattern in (r'"cafeId"\s*:\s*"?(\d+)', r"clubid[\"']?\s*[:=]\s*[\"']?(\d+)",
-                        r"g_sClubId\s*=\s*[\"'](\d+)", r'"cafeIdIntoUrl"\s*:\s*"?(\d+)'):
-            m = re.search(pattern, body, re.IGNORECASE)
+        for pattern in ID_PATTERNS:
+            m = pattern.search(body)
             if m:
                 return int(m.group(1))
 
-        log.info("  %s → 카페 ID 없음 (최종 주소: %s)", url, final_url)
+        log.info("  %s → 카페 ID 없음 (최종 주소: %s, 본문 %d자)", url, final_url, len(body))
+        for hint in _id_hints(body):
+            log.info("      단서: %s", hint)
         return None
 
     def _follow(self, url: str) -> tuple[str, str]:
@@ -331,6 +335,39 @@ class NaverCafeClient:
 
 
 # ── 파싱 도우미 ─────────────────────────────────────────────────────────────
+# 페이지 본문에서 숫자 카페 ID 를 찾는 패턴들
+ID_PATTERNS = [
+    re.compile(p, re.IGNORECASE) for p in (
+        r'"cafeId"\s*:\s*"?(\d+)',
+        r'"clubId"\s*:\s*"?(\d+)',
+        r"clubid[\"']?\s*[:=]\s*[\"']?(\d+)",
+        r"g_sClubId\s*=\s*[\"'](\d+)",
+        r'"cafeIdIntoUrl"\s*:\s*"?(\d+)',
+        r'cafe[_-]?id["\']?\s*[:=]\s*["\']?(\d{5,12})',
+        r'/cafes/(\d{5,12})',
+    )
+]
+
+
+def _id_hints(body: str, limit: int = 4) -> list[str]:
+    """카페 ID 를 못 찾았을 때, 본문에서 ID 처럼 보이는 부분을 로그에 남긴다.
+
+    네이버가 페이지 구조를 바꾸면 어떤 형태로 들어 있는지 알 길이 없다.
+    다음 실행 로그만 보고 패턴을 고칠 수 있도록 단서를 뽑아 둔다.
+    """
+    hints, seen = [], set()
+    for m in re.finditer(r"(?:cafe|club)[_-]?(?:id|Id|ID)", body):
+        start, end = max(0, m.start() - 30), min(len(body), m.end() + 50)
+        snippet = re.sub(r"\s+", " ", body[start:end]).strip()
+        if snippet in seen:
+            continue
+        seen.add(snippet)
+        hints.append(snippet)
+        if len(hints) >= limit:
+            break
+    return hints
+
+
 # 주소 안에 숫자 카페 ID 가 들어 있는 형태들
 _CLUB_ID_PATTERNS = [
     re.compile(r"/cafes/(\d+)"),          # m.cafe.naver.com/ca-fe/web/cafes/12345678/...
