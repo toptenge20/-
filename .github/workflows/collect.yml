@@ -139,20 +139,26 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      # enablement: true 면 저장소의 페이지 기능을 알아서 켜 준다 (설정 화면에 갈 필요 없음)
+      # 페이지 기능을 자동으로 켜 보지만, GITHUB_TOKEN 에 권한이 없으면 실패한다.
+      # 그때는 사용자가 Settings → Pages 에서 한 번 켜 줘야 한다.
       - uses: actions/configure-pages@v5
         continue-on-error: true
         with:
           enablement: true
+
+      # 여기엔 continue-on-error 를 두지 않는다. 두면 실패가 초록색으로 보여서
+      # 배포가 안 됐는데도 성공한 줄 알게 된다 (실제로 그런 일이 있었다).
       - id: deployment
         uses: actions/deploy-pages@v4
-        continue-on-error: true
+
       - name: 결과 안내
+        if: always()
         run: |
           if [ -n "${{ steps.deployment.outputs.page_url }}" ]; then
             echo "::notice::앱 주소 → ${{ steps.deployment.outputs.page_url }}"
           else
-            echo "::warning::깃허브 페이지 배포가 안 됐습니다."
-            echo "무료 요금제에서는 저장소가 '공개'여야 페이지를 쓸 수 있습니다."
-            echo "저장소를 공개로 바꾸거나, Cloudflare 시크릿을 등록하세요."
+            echo "::error::깃허브 페이지가 아직 켜져 있지 않습니다."
+            echo "Settings → Pages → Build and deployment → Source 를"
+            echo "'GitHub Actions' 로 바꾼 뒤 이 워크플로를 다시 실행하세요."
+            echo "→ https://github.com/${{ github.repository }}/settings/pages"
           fi
