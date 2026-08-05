@@ -1,0 +1,39 @@
+{
+  "_설명": "수집할 네이버 카페 목록. 여기엔 비밀이 없으므로 저장소에 그대로 둔다.",
+  "_주의": "로그인 쿠키는 여기 적지 말 것. 깃허브 시크릿 POKEWATCH_COOKIE 를 쓴다.",
+  "_형태": "cafe_url 에는 카페 주소, 전체 주소, 모바일 주소, 공유 짧은 링크 중 아무거나 넣을 수 있다.",
+
+  "delay": 1.0,
+  "cafes": [
+    {
+      "name": "카페A (글 링크)",
+      "cafe_url": "https://naver.me/xhPchLMh",
+      "menu_name_filter": ["장터", "거래", "판매", "분양", "삽니다"],
+      "pages": 2
+    },
+    {
+      "name": "카페B (공유 링크)",
+      "cafe_url": "https://naver.me/5A87IaTV",
+      "menu_name_filter": ["장터", "거래", "판매", "분양", "삽니다"],
+      "pages": 2
+    },
+    {
+      "name": "카페C (공유 링크)",
+      "cafe_url": "https://naver.me/FOvSlYQK",
+      "menu_name_filter": ["장터", "거래", "판매", "분양", "삽니다"],
+      "pages": 2
+    },
+    {
+      "name": "pokemontcg.cafe",
+      "cafe_url": "pokemontcg.cafe",
+      "menu_name_filter": ["장터", "거래", "판매", "분양", "삽니다"],
+      "pages": 2
+    },
+    {
+      "name": "cardmvk.cafe",
+      "cafe_url": "cardmvk.cafe",
+      "menu_name_filter": ["장터", "거래", "판매", "분양", "삽니다"],
+      "pages": 2
+    }
+  ]
+}

@@ -41,18 +41,24 @@ jobs:
           restore-keys: |
             pokewatch-db-
 
+      # 카페 목록에는 비밀이 없다(공개 카페 주소일 뿐). 그래서 저장소의 cafes.json 을
+      # 우선 쓴다. 그래야 카페를 바꿀 때 시크릿을 건드리지 않고 파일만 고치면 된다.
+      # 로그인 쿠키는 별도 시크릿(POKEWATCH_COOKIE)이라 여기 섞이지 않는다.
       - name: 설정 파일 준비
         env:
           POKEWATCH_CONFIG_JSON: ${{ secrets.POKEWATCH_CONFIG_JSON }}
         run: |
-          if [ -n "$POKEWATCH_CONFIG_JSON" ]; then
+          if [ -f cafes.json ]; then
+            cp cafes.json config.json
+            echo "저장소의 cafes.json 을 사용합니다."
+          elif [ -n "$POKEWATCH_CONFIG_JSON" ]; then
             printf '%s' "$POKEWATCH_CONFIG_JSON" > config.json
             echo "저장소 시크릿의 설정을 사용합니다."
-          elif [ -f config.json ]; then
-            echo "저장소의 config.json 을 사용합니다."
           else
             echo "::warning::설정이 없어 예제 데이터로 사이트를 만듭니다."
           fi
+          echo "수집할 카페:"
+          python3 -c "import json;[print(' -',c.get('name'),'|',c.get('cafe_url') or c.get('club_id')) for c in json.load(open('config.json'))['cafes']]" || true
 
       - name: 카페 글 수집
         id: collect
