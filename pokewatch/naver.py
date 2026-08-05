@@ -85,6 +85,7 @@ class NaverCafeClient:
     _last_request: float = field(default=0.0, repr=False)
     _article_url_template: str | None = field(default=None, repr=False)
     _article_errors_logged: bool = field(default=False, repr=False)
+    _list_shape_logged: bool = field(default=False, repr=False)
 
     # ── 공개 API ────────────────────────────────────────────────────────────
     def resolve_club_id(self, cafe: str) -> int:
@@ -267,6 +268,16 @@ class NaverCafeClient:
             if not rows:
                 log.info("club=%s menu=%s page=%s: 더 이상 글이 없습니다", club_id, menu_id, page)
                 return
+
+            # 본문은 회원 전용이라 못 읽는다(로그로 확인). 그렇다면 목록에 이미
+            # 가격이 들어 있는지 봐야 한다 — 네이버 장터 게시판은 값을 따로
+            # 갖고 있는 경우가 있고, 그러면 본문도 쿠키도 필요 없어진다.
+            if not self._list_shape_logged:
+                self._list_shape_logged = True
+                log.info("글 목록 항목이 가진 값: %s", ", ".join(sorted(rows[0])))
+                fields = _price_like_fields(rows[0])
+                log.info("  가격 비슷한 값: %s", fields or "(없음)")
+
             for row in rows:
                 article = _to_article(club_id, menu_id, row)
                 if article:
