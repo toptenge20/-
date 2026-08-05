@@ -23,6 +23,8 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
+    outputs:
+      cf_deployed: ${{ steps.cf.outputs.deployed }}
     steps:
       - uses: actions/checkout@v4
 
@@ -84,27 +86,36 @@ jobs:
       # Cloudflare Pages 로 배포한다. 비공개 저장소도 무료로 서비스되므로
       # 저장소를 공개로 바꾸지 않아도 된다.
       - name: Cloudflare Pages 배포
+        id: cf
         if: env.CLOUDFLARE_API_TOKEN != ''
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          PROJECT: ${{ vars.CF_PAGES_PROJECT || 'pokewatch' }}
+          # pages.dev 주소는 전 세계에서 하나뿐이라 'pokewatch' 는 이미 누가 쓰고 있을 수
+          # 있다. 그래서 깃허브 아이디를 붙여 겹치지 않게 한다.
+          PROJECT: ${{ vars.CF_PAGES_PROJECT || format('pokewatch-{0}', github.repository_owner) }}
         run: |
+          # Cloudflare 프로젝트 이름 규칙: 소문자·숫자·하이픈만
+          PROJECT=$(echo "$PROJECT" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9-' '-' | sed 's/^-*//;s/-*$//')
+          echo "프로젝트 이름: $PROJECT"
+
           # 프로젝트가 없으면 만들고, 이미 있으면 그냥 넘어간다.
           npx --yes wrangler@3 pages project create "$PROJECT" \
             --production-branch main 2>/dev/null || true
           npx --yes wrangler@3 pages deploy site \
             --project-name "$PROJECT" --branch main
 
-      - name: 배포 설정이 없을 때 안내
-        if: env.CLOUDFLARE_API_TOKEN == ''
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        run: |
-          echo "::warning::CLOUDFLARE_API_TOKEN 시크릿이 없어 배포를 건너뜁니다."
-          echo "아래 '사이트 파일' 아티팩트를 내려받아 직접 올려도 됩니다."
+          echo "deployed=true" >> "$GITHUB_OUTPUT"
+          echo "::notice::앱 주소 → https://$PROJECT.pages.dev"
 
-      # 배포를 안 하더라도 결과물은 항상 받아볼 수 있게 남긴다.
+      # Cloudflare 를 안 쓰면 깃허브 페이지로 올린다. 저장소가 공개면 설정 없이 바로 된다.
+      - name: 깃허브 페이지용 파일 준비
+        if: steps.cf.outputs.deployed != 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      # 어느 쪽으로도 배포가 안 되더라도 결과물은 항상 받아볼 수 있게 남긴다.
       - name: 사이트 파일 보관
         uses: actions/upload-artifact@v4
         if: always()
@@ -112,3 +123,36 @@ jobs:
           name: site
           path: site
           retention-days: 14
+
+  # Cloudflare 시크릿이 없을 때만 돈다. 저장소가 비공개면 깃허브 페이지가 막혀 있어
+  # 실패하는데, 그건 정상이므로 전체를 빨간 X 로 만들지 않는다.
+  pages:
+    needs: collect
+    if: needs.collect.outputs.cf_deployed != 'true'
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      # enablement: true 면 저장소의 페이지 기능을 알아서 켜 준다 (설정 화면에 갈 필요 없음)
+      - uses: actions/configure-pages@v5
+        continue-on-error: true
+        with:
+          enablement: true
+      - id: deployment
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+      - name: 결과 안내
+        run: |
+          if [ -n "${{ steps.deployment.outputs.page_url }}" ]; then
+            echo "::notice::앱 주소 → ${{ steps.deployment.outputs.page_url }}"
+          else
+            echo "::warning::깃허브 페이지 배포가 안 됐습니다."
+            echo "무료 요금제에서는 저장소가 '공개'여야 페이지를 쓸 수 있습니다."
+            echo "저장소를 공개로 바꾸거나, Cloudflare 시크릿을 등록하세요."
+          fi
