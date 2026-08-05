@@ -91,7 +91,18 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add 수집로그.txt
           git diff --cached --quiet || git commit -m "수집 로그 갱신 [skip ci]"
-          git push || echo "::warning::수집 로그를 올리지 못했습니다."
+          # 수집이 도는 동안 main 이 움직였을 수 있다. 그대로 push 하면 거부되므로
+          # 최신 main 위로 올린 뒤 올린다. (조용히 실패하면 로그가 낡은 채로 남는다)
+          for attempt in 1 2 3; do
+            git fetch origin main --quiet
+            git rebase origin/main --quiet || { git rebase --abort || true; break; }
+            if git push origin HEAD:main --quiet; then
+              echo "수집 로그를 올렸습니다."
+              exit 0
+            fi
+            sleep 5
+          done
+          echo "::warning::수집 로그를 올리지 못했습니다."
 
       - name: 정적 사이트 만들기
         env:
