@@ -220,7 +220,14 @@ class CafeUrlTest(unittest.TestCase):
             "https://cafe.naver.com/pokecardkorea": "pokecardkorea",
             "https://cafe.naver.com/pokecardkorea/12345": "pokecardkorea",
             "https://m.cafe.naver.com/pokecardkorea": "pokecardkorea",
+            # 카페 주소에 점이 들어가는 경우 (실제 사례)
+            "https://m.cafe.naver.com/pokemontcg.cafe": "pokemontcg.cafe",
+            "https://m.cafe.naver.com/pokemontcg.cafe?": "pokemontcg.cafe",
+            "https://cafe.naver.com/pokemontcg.cafe/98765": "pokemontcg.cafe",
+            # 카페가 아닌 내부 페이지
             "https://m.cafe.naver.com/ca-fe/web/cafes/123/articles/1": None,
+            "https://cafe.naver.com/ArticleRead.nhn?clubid=1": None,
+            "https://cafe.naver.com/ArticleList.nhn?search.clubid=1": None,
             "https://naver.me/abcd1234": None,
         }
         for url, expected in cases.items():
