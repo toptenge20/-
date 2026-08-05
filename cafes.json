@@ -18,7 +18,13 @@
       "pages": 2
     },
     {
-      "name": "카드마켓 (글 주소로도 시도)",
+      "name": "포켓몬카드 (글 링크)",
+      "cafe_url": "https://naver.me/FhutDtot",
+      "menu_name_filter": ["장터", "거래", "판매", "분양", "삽니다"],
+      "pages": 2
+    },
+    {
+      "name": "카드마켓 (글 주소)",
       "cafe_url": "https://m.cafe.naver.com/cardmvk/744833",
       "menu_name_filter": ["장터", "거래", "판매", "분양", "삽니다"],
       "pages": 2
