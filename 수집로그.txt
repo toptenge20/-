@@ -1,0 +1,33 @@
+INFO   https://naver.me/FhutDtot → 카페 ID 없음 (최종 주소: https://m.cafe.naver.com/pokemontcg/559991?art=aW50ZXJuYWwtY2FmZS1hcnRpY2xlLXJlYWQtc2hhcmUtbGluaw.eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjYWZlVHlwZSI6IkNBRkVfSUQiLCJhcnRpY2xlSWQiOjU1OTk5MSwiaXNzdWVkQXQiOjE3ODU4OTEyODY5OTQsImNhZmVJZCI6MTk0ODAyNDZ9.ZwpBUMM8CrN9xt8nbOVi6-8ujrUA2kvcsL_kDuLGbQs, 본문 9543자)
+INFO       본문 앞부분: <!doctype html><html lang="ko"><head><title>네이버 카페</title><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,target-densitydpi=medium-dpi,viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta na
+ERROR 포켓몬카드 (글 링크) 수집 실패: 카페 ID를 찾지 못했습니다: https://naver.me/FhutDtot
+  카페 글 하나를 열어 '공유 → 링크 복사' 한 주소를 넣어 보세요.
+  글 주소에는 숫자 카페 ID가 들어 있어 확실합니다.
+  회원 전용 카페라면 POKEWATCH_COOKIE 로 로그인 쿠키가 필요합니다.
+INFO   https://m.cafe.naver.com/cardmvk/744833 → 카페 ID 없음 (최종 주소: https://m.cafe.naver.com/cardmvk/744833, 본문 9543자)
+INFO       본문 앞부분: <!doctype html><html lang="ko"><head><title>네이버 카페</title><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,target-densitydpi=medium-dpi,viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta na
+INFO   https://cafe.naver.com/cardmvk/744833 → 카페 홈으로 튕김 (주소를 못 알아봤거나 로그인이 필요함)
+INFO   https://apis.naver.com/cafe-web/cafe-search-api/v1.0/cafes?query=cardmvk → 실패 (요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-search-api/v1.0/cafes?query=cardmvk (HTTP Error 404: Not Found))
+INFO   https://apis.naver.com/cafe-web/cafe2/CafeProfileView.json?cluburl=cardmvk → 카페 ID 없음 (최종 주소: https://apis.naver.com/cafe-web/cafe2/CafeProfileView.json?cluburl=cardmvk, 본문 94자)
+INFO       본문 전체: {"error_code":"051","message":"cafe2/CafeProfileView : API does not exist. (존재하지 않는 API입니다.)"}
+INFO   https://apis.naver.com/cafe-web/cafe-mobile/CafeIntroView.json?cluburl=cardmvk → 카페 ID 없음 (최종 주소: https://apis.naver.com/cafe-web/cafe-mobile/CafeIntroView.json?cluburl=cardmvk, 본문 98자)
+INFO       본문 전체: {"error_code":"051","message":"cafe-mobile/CafeIntroView : API does not exist. (존재하지 않는 API입니다.)"}
+INFO   https://m.cafe.naver.com/cardmvk → 카페 ID 없음 (최종 주소: https://m.cafe.naver.com/cardmvk, 본문 9543자)
+INFO       본문 앞부분: <!doctype html><html lang="ko"><head><title>네이버 카페</title><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,target-densitydpi=medium-dpi,viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta na
+INFO   https://apis.naver.com/cafe-web/cafe2/CafeGate.json?cluburl=cardmvk → 카페 ID 없음 (최종 주소: https://apis.naver.com/cafe-web/cafe2/CafeGate.json?cluburl=cardmvk, 본문 87자)
+INFO       본문 전체: {"error_code":"051","message":"cafe2/CafeGate : API does not exist. (존재하지 않는 API입니다.)"}
+INFO   https://cafe.naver.com/cardmvk → 카페 홈으로 튕김 (주소를 못 알아봤거나 로그인이 필요함)
+ERROR 카드마켓 (글 주소) 수집 실패: 카페 ID를 찾지 못했습니다: https://m.cafe.naver.com/cardmvk/744833
+  카페 글 하나를 열어 '공유 → 링크 복사' 한 주소를 넣어 보세요.
+  글 주소에는 숫자 카페 ID가 들어 있어 확실합니다.
+  회원 전용 카페라면 POKEWATCH_COOKIE 로 로그인 쿠키가 필요합니다.
+  ! 포켓몬카드 (글 링크): 카페 ID를 찾지 못했습니다: https://naver.me/FhutDtot
+  카페 글 하나를 열어 '공유 → 링크 복사' 한 주소를 넣어 보세요.
+  글 주소에는 숫자 카페 ID가 들어 있어 확실합니다.
+  회원 전용 카페라면 POKEWATCH_COOKIE 로 로그인 쿠키가 필요합니다.
+  ! 카드마켓 (글 주소): 카페 ID를 찾지 못했습니다: https://m.cafe.naver.com/cardmvk/744833
+  카페 글 하나를 열어 '공유 → 링크 복사' 한 주소를 넣어 보세요.
+  글 주소에는 숫자 카페 ID가 들어 있어 확실합니다.
+  회원 전용 카페라면 POKEWATCH_COOKIE 로 로그인 쿠키가 필요합니다.
+                                        
+  누적: 매물 400건, 카드 56종, 가격 있는 글 363건
