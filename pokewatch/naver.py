@@ -49,6 +49,14 @@ class NaverCafeError(RuntimeError):
     pass
 
 
+class NaverAccessDenied(NaverCafeError):
+    """회원 전용이라 막힌 경우 (HTTP 401/403).
+
+    '읽었는데 가격이 없었다' 와 구분해야 한다. 막힌 글을 '확인 완료' 로
+    표시해 버리면, 나중에 로그인 쿠키를 넣어도 그 글을 다시 읽지 않는다.
+    """
+
+
 @dataclass
 class Article:
     club_id: int
@@ -323,6 +331,11 @@ class NaverCafeClient:
             "content_html": html,
             "text": _html_to_text(html),
             "images": _extract_images(html),
+            # 왜 가격을 못 찾는지 판별하기 위한 단서. 응답이 어떤 모양인지,
+            # 값 이름에 price/cost 같은 게 있는지 본다. (장터 글이면 네이버가
+            # 가격을 구조화된 값으로 갖고 있을 수 있다)
+            "shape": _shape_hint(data),
+            "price_fields": _price_like_fields(data),
         }
 
     # ── 내부 ────────────────────────────────────────────────────────────────
@@ -362,7 +375,7 @@ class NaverCafeClient:
                     return payload
             except urllib.error.HTTPError as e:
                 if e.code in (401, 403):
-                    raise NaverCafeError(
+                    raise NaverAccessDenied(
                         f"접근이 거부되었습니다 (HTTP {e.code}). 회원 전용 게시판이라면 "
                         "로그인 쿠키(NID_AUT, NID_SES)를 설정하세요."
                     ) from e
@@ -390,7 +403,7 @@ class NaverCafeClient:
                     return resp.geturl(), payload
             except urllib.error.HTTPError as e:
                 if e.code in (401, 403):
-                    raise NaverCafeError(
+                    raise NaverAccessDenied(
                         f"접근이 거부되었습니다 (HTTP {e.code}). 회원 전용 게시판이라면 "
                         "로그인 쿠키(NID_AUT, NID_SES)를 설정하세요."
                     ) from e
@@ -573,6 +586,47 @@ def _extract_images(html: str) -> list[str]:
         if src not in seen:
             seen.add(src)
             out.append(src)
+    return out
+
+
+_PRICE_KEY_RE = re.compile(r"price|cost|sale|money|amount|won|가격", re.IGNORECASE)
+
+
+def _shape_hint(data, depth: int = 3) -> str:
+    """응답 JSON의 뼈대만 짧게 적는다 (본문 내용은 넣지 않는다)."""
+    if isinstance(data, dict):
+        if depth <= 0:
+            return "{…}"
+        keys = list(data)[:12]
+        inner = ", ".join(f"{k}:{_shape_hint(data[k], depth - 1)}" for k in keys)
+        if len(data) > 12:
+            inner += ", …"
+        return "{" + inner + "}"
+    if isinstance(data, list):
+        return f"[{len(data)}]" + (_shape_hint(data[0], depth - 1) if data and depth > 0 else "")
+    if isinstance(data, str):
+        return f"str({len(data)})"
+    return type(data).__name__
+
+
+def _price_like_fields(data, path: str = "", out: dict | None = None) -> dict:
+    """이름에 price/cost 같은 게 들어간 값을 모은다. 장터 글이면 여기에 가격이 있다."""
+    if out is None:
+        out = {}
+    if len(out) >= 12:
+        return out
+    if isinstance(data, dict):
+        for k, v in data.items():
+            here = f"{path}.{k}" if path else k
+            if isinstance(v, (str, int, float)) and _PRICE_KEY_RE.search(k):
+                text = str(v)
+                if text and text.lower() not in ("none", "null", "false"):
+                    out[here] = text[:80]
+            elif isinstance(v, (dict, list)):
+                _price_like_fields(v, here, out)
+    elif isinstance(data, list):
+        for i, v in enumerate(data[:5]):
+            _price_like_fields(v, f"{path}[{i}]", out)
     return out
 
 

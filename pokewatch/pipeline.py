@@ -9,7 +9,7 @@ import time
 
 from . import db
 from .config import CafeTarget, Config
-from .naver import NaverCafeClient, NaverCafeError
+from .naver import NaverAccessDenied, NaverCafeClient, NaverCafeError
 from .parsing import parse_title
 
 log = logging.getLogger(__name__)
@@ -72,7 +72,7 @@ def _collect_cafe(conn, client: NaverCafeClient, target: CafeTarget, progress=No
                  ", ".join(m["name"] for m in chosen) or "(없음)")
 
     result = {"name": target.name, "club_id": club_id, "new": 0, "updated": 0, "seen": 0,
-              "bodies": 0, "body_prices": 0}
+              "bodies": 0, "body_prices": 0, "denied": False}
     body_budget = target.body_limit if target.fetch_bodies else 0
 
     for menu_id in menu_ids or [None]:
@@ -93,8 +93,19 @@ def _collect_cafe(conn, client: NaverCafeClient, target: CafeTarget, progress=No
                     and _worth_reading(info)):
                 body_budget -= 1
                 result["bodies"] += 1
-                if _price_from_body(client, club_id, article.article_id, info):
+                outcome = _price_from_body(client, club_id, article.article_id, info)
+                if outcome == "found":
                     result["body_prices"] += 1
+                elif outcome == "denied":
+                    # 회원 전용이라 막힌 것이다. 이 카페의 다른 글도 마찬가지이므로
+                    # 남은 예산을 여기에 더 쓰지 않는다. '확인 완료' 로도 표시하지
+                    # 않는다 — 나중에 로그인 쿠키를 넣으면 다시 읽어야 한다.
+                    if not result["denied"]:
+                        result["denied"] = True
+                        log.info("%s: 본문이 회원 전용입니다. 이번 실행에서는 본문 읽기를 멈춥니다 "
+                                 "(로그인 쿠키가 있어야 가격을 볼 수 있습니다)", target.name)
+                    body_budget = 0
+                    result["bodies"] -= 1
                 else:
                     # 다음 실행 때 같은 글을 또 읽지 않도록 표시해 둔다
                     info.price_source = "body-none"
@@ -128,36 +139,47 @@ def _worth_reading(info) -> bool:
     return bool(info.card_name or info.rarity)
 
 
-def _price_from_body(client: NaverCafeClient, club_id: int, article_id: int, info) -> bool:
-    """본문에서 가격을 찾아 info 에 채운다. 찾았으면 True."""
+def _price_from_body(client: NaverCafeClient, club_id: int, article_id: int, info) -> str:
+    """본문에서 가격을 찾아 info 에 채운다.
+
+    'found'(찾음) / 'none'(읽었지만 가격 없음) / 'denied'(회원 전용이라 못 읽음)
+    를 돌려준다. 'denied' 를 'none' 과 섞으면 안 된다 — 막힌 글을 확인 완료로
+    기록해 버리면 나중에 쿠키를 넣어도 그 글을 다시 안 읽는다.
+    """
     from .parsing import parse_price
 
     try:
         body = client.get_article_body(club_id, article_id)
+    except NaverAccessDenied as e:
+        log.debug("본문이 회원 전용입니다 (%s): %s", article_id, e)
+        return "denied"
     except NaverCafeError as e:
         log.debug("본문을 읽지 못했습니다 (%s): %s", article_id, e)
-        return False
+        return "none"
 
     text = (body.get("text") or "").strip()
+    price = parse_price(text[:2000]) if text else None   # 앞부분에 가격을 적는 글이 대부분이다
 
-    # 본문을 읽었는데 가격이 하나도 안 나오면, 실제로 무엇이 왔는지 봐야 한다.
-    # (회원 전용이라 빈 본문이 오는 경우와 구분이 안 되기 때문)
-    if not text:
-        return False
-
-    price = parse_price(text[:2000])   # 앞부분에 가격을 적는 글이 대부분이다
-
-    # 본문은 열리는데 가격이 안 나오는 경우를 봐야 한다. 값을 못 찾은 것 중
-    # 앞의 몇 건만 실제 내용을 남긴다. (빈 본문은 볼 것이 없으므로 제외)
+    # 본문은 열리는데 가격이 안 나오는 경우를 봐야 한다. 앞의 몇 건만 단서를 남긴다.
+    # 지난 실행에서 표본이 하나도 안 남았는데, 그건 열린 본문의 글자 수가 전부
+    # 0이었다는 뜻이다 (사진만 올린 글로 보인다). 그래서 빈 본문도 남긴다.
     global _body_samples_logged
-    if price.price is None and _body_samples_logged < 3:
+    if (price is None or price.price is None) and _body_samples_logged < 3:
         _body_samples_logged += 1
-        log.info("가격 못 찾은 본문 %s (글 %s, %d자): %s",
+        log.info("가격 못 찾은 본문 %s (글 %s): 글자 %d, HTML %d, 사진 %d장",
                  _body_samples_logged, article_id, len(text),
-                 re.sub(r"\s+", " ", text[:400]))
+                 len(body.get("content_html") or ""), len(body.get("images") or []))
+        log.info("    응답 모양: %s", body.get("shape"))
+        if body.get("price_fields"):
+            log.info("    가격 비슷한 값: %s", body["price_fields"])
+        if text:
+            log.info("    본문: %s", re.sub(r"\s+", " ", text[:400]))
+        elif body.get("content_html"):
+            log.info("    HTML 앞부분: %s",
+                     re.sub(r"\s+", " ", body["content_html"][:300]))
 
-    if price.price is None:
-        return False
+    if price is None or price.price is None:
+        return "none"
 
     info.price = price.price
     info.price_max = price.price_max
@@ -168,7 +190,7 @@ def _price_from_body(client: NaverCafeClient, club_id: int, article_id: int, inf
     info.price_source = "body"
     # 본문에서 온 가격은 제목보다 덜 확실하다 (여러 카드가 섞여 있을 수 있다)
     info.confidence = round(min(1.0, info.confidence + 0.2), 2)
-    return True
+    return "found"
 
 
 def reparse(conn: sqlite3.Connection) -> int:
