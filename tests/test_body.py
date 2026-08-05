@@ -115,5 +115,72 @@ class TestSampleBudgetIsPerCafe(unittest.TestCase):
         self.assertEqual(other[0], 1)
 
 
+
+class TestDenyStreak(unittest.TestCase):
+    """막힌 글이 섞여 있어도, 열리는 글은 계속 읽어야 한다.
+
+    첫 401 에서 카페 전체를 포기하게 만들었다가 실제 수집이 통째로 멈췄다.
+    같은 카페 안에서도 공지는 막히고 거래글은 열리는 경우가 있다.
+    """
+
+    def _run(self, outcomes):
+        """outcomes 순서대로 본문 결과를 내주는 가짜 수집을 돌린다."""
+        from pokewatch import db, pipeline
+        from pokewatch.config import CafeTarget
+        from pokewatch.naver import Article
+
+        conn = db.connect(":memory:")
+        articles = [
+            Article(club_id=1, article_id=i, menu_id=1, menu_name="거래",
+                    subject="리자몽 SAR 판매", writer="누군가", written_at=1_700_000_000)
+            for i in range(len(outcomes))
+        ]
+
+        class Client:
+            def list_menus(self, club_id):
+                return [{"menu_id": 1, "name": "거래 게시판"}]
+
+            def iter_articles(self, club_id, menu_id, pages, per_page):
+                return iter(articles)
+
+        calls = []
+
+        def fake_body(client, club_id, article_id, info, samples, cafe_name=""):
+            calls.append(article_id)
+            return outcomes[article_id]
+
+        target = CafeTarget(name="테스트", club_id=1, menu_name_filter=["거래"],
+                            menu_name_exclude=[], body_limit=len(outcomes))
+
+        original = pipeline._price_from_body
+        pipeline._price_from_body = fake_body
+        try:
+            result = pipeline._collect_cafe(conn, Client(), target)
+        finally:
+            pipeline._price_from_body = original
+        return result, calls
+
+    def test_scattered_denials_do_not_stop_collection(self):
+        """막힌 글 사이에 열리는 글이 있으면 끝까지 읽는다."""
+        outcomes = ["denied", "none", "denied", "found", "denied", "none"]
+        result, calls = self._run(outcomes)
+        self.assertEqual(len(calls), 6, "중간에 멈추면 안 된다")
+        self.assertEqual(result["denied"], 3)
+        self.assertEqual(result["body_prices"], 1)
+        self.assertEqual(result["bodies"], 3)   # 막힌 3건은 '읽은 것'이 아니다
+
+    def test_all_denied_stops_after_streak(self):
+        """전부 막힌 카페는 상한에서 멈춰 요청을 아낀다."""
+        outcomes = ["denied"] * 60
+        result, calls = self._run(outcomes)
+        self.assertEqual(len(calls), pipeline_deny_limit())
+        self.assertEqual(result["bodies"], 0)
+
+
+def pipeline_deny_limit():
+    from pokewatch.pipeline import DENY_STREAK_LIMIT
+    return DENY_STREAK_LIMIT
+
+
 if __name__ == "__main__":
     unittest.main()
