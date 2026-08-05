@@ -87,6 +87,15 @@ jobs:
         if: always()
         run: |
           [ -f 수집로그.txt ] || exit 0
+
+          # 만에 하나 로그에 쿠키가 섞였다면 지운다. 이 저장소는 공개라서
+          # 한 번 커밋되면 되돌릴 수 없다. (실제로 그런 일이 있었다)
+          sed -i -E 's/(NID_AUT|NID_SES|NID_JKL)=[^;[:space:]"]*/\1=***/g' 수집로그.txt
+          if grep -qE '(NID_AUT|NID_SES)=[A-Za-z0-9+/]{20,}' 수집로그.txt; then
+            echo "::error::로그에 쿠키가 남아 있어 올리지 않습니다."
+            printf '민감한 값이 섞여 로그를 비웠습니다.\n' > 수집로그.txt
+          fi
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add 수집로그.txt
