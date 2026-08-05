@@ -19,6 +19,11 @@ log = logging.getLogger(__name__)
 # 정작 본문이 열리는 카페의 내용을 못 본다 (실제로 두 번 그랬다).
 BODY_SAMPLES_PER_CAFE = 3
 
+# 401 이 연달아 이만큼 나오면 그 카페 본문 읽기를 포기한다.
+# 첫 401 에서 바로 멈추면 안 된다 — 같은 카페 안에서도 공지·회원 전용 글은
+# 막히고 일반 거래글은 열리는 경우가 있다 (카드마켓에서 실제로 그랬다).
+DENY_STREAK_LIMIT = 10
+
 
 def collect(conn: sqlite3.Connection, cfg: Config, progress=None) -> dict:
     """설정된 모든 카페/게시판을 수집한다. 결과 요약 dict 반환."""
@@ -74,8 +79,9 @@ def _collect_cafe(conn, client: NaverCafeClient, target: CafeTarget, progress=No
                  ", ".join(m["name"] for m in chosen) or "(없음)")
 
     result = {"name": target.name, "club_id": club_id, "new": 0, "updated": 0, "seen": 0,
-              "bodies": 0, "body_prices": 0, "denied": False}
+              "bodies": 0, "body_prices": 0, "denied": 0}
     samples = [0]        # 이 카페에서 남긴 표본 수 (리스트로 둬서 안에서 고칠 수 있게)
+    deny_streak = 0      # 연달아 막힌 횟수 (하나라도 열리면 0으로 되돌린다)
     body_budget = target.body_limit if target.fetch_bodies else 0
 
     for menu_id in menu_ids or [None]:
@@ -98,21 +104,24 @@ def _collect_cafe(conn, client: NaverCafeClient, target: CafeTarget, progress=No
                 result["bodies"] += 1
                 outcome = _price_from_body(client, club_id, article.article_id, info,
                                            samples, target.name)
-                if outcome == "found":
-                    result["body_prices"] += 1
-                elif outcome == "denied":
-                    # 회원 전용이라 막힌 것이다. 이 카페의 다른 글도 마찬가지이므로
-                    # 남은 예산을 여기에 더 쓰지 않는다. '확인 완료' 로도 표시하지
-                    # 않는다 — 나중에 로그인 쿠키를 넣으면 다시 읽어야 한다.
-                    if not result["denied"]:
-                        result["denied"] = True
-                        log.info("%s: 본문이 회원 전용입니다. 이번 실행에서는 본문 읽기를 멈춥니다 "
-                                 "(로그인 쿠키가 있어야 가격을 볼 수 있습니다)", target.name)
-                    body_budget = 0
+                if outcome == "denied":
+                    # 회원 전용이라 막힌 글이다. '확인 완료' 로 표시하지 않는다 —
+                    # 나중에 로그인 쿠키를 넣으면 다시 읽어야 한다.
+                    result["denied"] += 1
                     result["bodies"] -= 1
+                    deny_streak += 1
+                    if deny_streak >= DENY_STREAK_LIMIT:
+                        log.info("%s: 본문이 %s번 연달아 막혔습니다. 이번 실행에서는 본문 읽기를 "
+                                 "멈춥니다 (로그인 쿠키가 있어야 가격을 볼 수 있습니다)",
+                                 target.name, deny_streak)
+                        body_budget = 0
                 else:
-                    # 다음 실행 때 같은 글을 또 읽지 않도록 표시해 둔다
-                    info.price_source = "body-none"
+                    deny_streak = 0
+                    if outcome == "found":
+                        result["body_prices"] += 1
+                    else:
+                        # 다음 실행 때 같은 글을 또 읽지 않도록 표시해 둔다
+                        info.price_source = "body-none"
 
             db.upsert_listing(conn, club_id, article.article_id, info, article.written_at)
 
@@ -126,9 +135,9 @@ def _collect_cafe(conn, client: NaverCafeClient, target: CafeTarget, progress=No
 
         conn.commit()
 
-    if result["bodies"]:
-        log.info("%s: 본문 %s건을 읽어 가격 %s건을 찾았습니다",
-                 target.name, result["bodies"], result["body_prices"])
+    if result["bodies"] or result["denied"]:
+        log.info("%s: 본문 %s건을 읽어 가격 %s건을 찾았습니다 (회원 전용이라 못 읽은 글 %s건)",
+                 target.name, result["bodies"], result["body_prices"], result["denied"])
     return result
 
 
