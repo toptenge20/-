@@ -313,5 +313,67 @@ class TestMarketCost(unittest.TestCase):
             self.assertIn("cost", have)
 
 
+class TestMarketBoardSelection(unittest.TestCase):
+    """장터 게시판은 이름 조건에 안 걸려도 수집해야 한다 (가격이 거기 있다)."""
+
+    def test_market_board_is_picked_by_name(self):
+        from pokewatch.pipeline import _is_market_board
+
+        for name in ("싱글 트레이드(안심거래)", "진행중인 카드 경매", "중고장터"):
+            self.assertTrue(_is_market_board({"name": name, "type": "", "board_type": ""}), name)
+
+    def test_plain_board_is_not_a_market_board(self):
+        from pokewatch.pipeline import _is_market_board
+
+        for name in ("자유 게시판", "덱 트레이드", "질문 게시판"):
+            self.assertFalse(_is_market_board({"name": name, "type": "L", "board_type": "L"}), name)
+
+    def test_market_board_bypasses_the_name_filter(self):
+        from pokewatch import db, pipeline
+        from pokewatch.config import CafeTarget
+
+        conn = db.connect(":memory:")
+        seen = []
+
+        class Client:
+            def list_menus(self, club_id):
+                return [
+                    {"menu_id": 1, "name": "자유 게시판", "type": "L", "board_type": "L"},
+                    {"menu_id": 2, "name": "싱글 트레이드(안심거래)", "type": "L",
+                     "board_type": "L"},
+                ]
+
+            def iter_articles(self, club_id, menu_id, pages, per_page):
+                seen.append(menu_id)
+                return iter([])
+
+        target = CafeTarget(name="테스트", club_id=1, menu_name_filter=["없는단어"],
+                            menu_name_exclude=[])
+        pipeline._collect_cafe(conn, Client(), target)
+        self.assertEqual(seen, [2])
+
+    def test_exclude_words_still_win(self):
+        """'거래 후기 게시판'처럼 시세가 없는 곳은 여전히 빼야 한다."""
+        from pokewatch import db, pipeline
+        from pokewatch.config import CafeTarget
+
+        conn = db.connect(":memory:")
+        seen = []
+
+        class Client:
+            def list_menus(self, club_id):
+                return [{"menu_id": 9, "name": "장터 거래 후기 게시판", "type": "L",
+                         "board_type": "L"}]
+
+            def iter_articles(self, club_id, menu_id, pages, per_page):
+                seen.append(menu_id)
+                return iter([])
+
+        target = CafeTarget(name="테스트", club_id=1, menu_name_filter=["장터"],
+                            menu_name_exclude=["후기"])
+        pipeline._collect_cafe(conn, Client(), target)
+        self.assertEqual(seen, [])
+
+
 if __name__ == "__main__":
     unittest.main()
