@@ -10,6 +10,7 @@
 
 from __future__ import annotations
 
+import base64
 import gzip
 import json
 import logging
@@ -400,7 +401,38 @@ def _club_id_from_url(url: str) -> int | None:
         m = pattern.search(url)
         if m:
             return int(m.group(1))
+    return _club_id_from_share_token(url)
+
+
+def _club_id_from_share_token(url: str) -> int | None:
+    """공유 링크에 붙는 art 토큰에서 카페 번호를 꺼낸다.
+
+    카페 앱에서 '공유 → 링크 복사' 하면 이런 주소가 나온다.
+
+        https://m.cafe.naver.com/pokemontcg/559991?art=<베이스64>.<베이스64>.<서명>
+
+    가운데 조각을 풀면 {"cafeId":19480246, "articleId":559991, ...} 이 들어 있다.
+    모바일 페이지 본문에는 카페 번호가 없어서, 이게 가장 확실한 통로다.
+    """
+    try:
+        query = urllib.parse.parse_qs(urllib.parse.urlparse(url).query)
+    except ValueError:
+        return None
+
+    for token in query.get("art", []):
+        for part in token.split("."):
+            data = _decode_b64_json(part)
+            if isinstance(data, dict) and str(data.get("cafeId", "")).isdigit():
+                return int(data["cafeId"])
     return None
+
+
+def _decode_b64_json(part: str):
+    try:
+        padded = part + "=" * (-len(part) % 4)
+        return json.loads(base64.urlsafe_b64decode(padded))
+    except Exception:
+        return None
 
 
 # 카페가 아니라 네이버 내부 페이지를 가리키는 경로 조각
