@@ -69,6 +69,11 @@ class Article:
     read_count: int = 0
     comment_count: int = 0
     thumbnail: str | None = None
+    # 장터 글이면 네이버가 목록에 가격을 실어 보낸다. 본문은 회원 전용이라
+    # 못 읽지만 이 값은 로그인 없이 온다. 시세의 실제 출처는 여기다.
+    cost: int | None = None
+    is_market: bool = False
+    on_sale: bool = True        # False 면 거래 완료
 
     @property
     def url(self) -> str:
@@ -591,7 +596,31 @@ def _to_article(club_id: int, menu_id: int | None, row: dict) -> Article | None:
         read_count=int(row.get("readCount") or 0),
         comment_count=int(row.get("commentCount") or 0),
         thumbnail=row.get("representImage") or row.get("thumbnail") or None,
+        cost=_market_cost(row),
+        is_market=bool(row.get("marketArticle") or row.get("productSale")
+                       or row.get("nfleaMarketSale")),
+        # 값이 없으면 '판매 중'으로 본다. 장터 글이 아니면 애초에 의미가 없다.
+        on_sale=bool(row.get("onSale", True)),
     )
+
+
+def _market_cost(row: dict) -> int | None:
+    """장터 글의 가격. 공지처럼 값이 없거나 0이면 None.
+
+    'cost' 는 원 단위 정수로 온다. 'formattedCost' 는 '45,000' 같은 표기라
+    숫자만 남겨 예비로 쓴다.
+    """
+    for key in ("cost", "formattedCost"):
+        raw = row.get(key)
+        if raw in (None, ""):
+            continue
+        digits = re.sub(r"[^\d]", "", str(raw))
+        if not digits:
+            continue
+        value = int(digits)
+        if value > 0:
+            return value
+    return None
 
 
 _TAG_RE = re.compile(r"<[^>]+>")

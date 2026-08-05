@@ -182,5 +182,136 @@ def pipeline_deny_limit():
     return DENY_STREAK_LIMIT
 
 
+class TestMarketCost(unittest.TestCase):
+    """장터 글은 목록 응답에 가격이 들어 있다. 본문도 쿠키도 필요 없다."""
+
+    def _row(self, **extra):
+        row = {"articleId": 1, "subject": "리자몽 SAR", "writeDateTimestamp": 1_700_000_000_000}
+        row.update(extra)
+        return row
+
+    def test_cost_is_read_from_list(self):
+        from pokewatch.naver import _to_article
+
+        a = _to_article(1, 1, self._row(cost=45000, marketArticle=True))
+        self.assertEqual(a.cost, 45000)
+        self.assertTrue(a.is_market)
+
+    def test_zero_cost_is_not_a_price(self):
+        """공지 등은 cost 가 0으로 온다. 0원짜리 매물로 잡으면 시세가 망가진다."""
+        from pokewatch.naver import _to_article
+
+        self.assertIsNone(_to_article(1, 1, self._row(cost=0)).cost)
+        self.assertIsNone(_to_article(1, 1, self._row(cost="")).cost)
+        self.assertIsNone(_to_article(1, 1, self._row()).cost)
+
+    def test_formatted_cost_is_a_fallback(self):
+        from pokewatch.naver import _to_article
+
+        a = _to_article(1, 1, self._row(cost=0, formattedCost="45,000"))
+        self.assertEqual(a.cost, 45000)
+
+    def test_market_price_wins_over_title(self):
+        """제목의 숫자는 카드 번호일 수 있다. 카페가 매긴 값이 우선이다."""
+        from pokewatch import db, pipeline
+        from pokewatch.config import CafeTarget
+        from pokewatch.naver import Article
+
+        conn = db.connect(":memory:")
+        article = Article(club_id=1, article_id=1, menu_id=1, menu_name="거래",
+                          subject="리자몽 SAR 165/165 3만원", writer="누구",
+                          written_at=1_700_000_000, cost=45000, is_market=True)
+
+        class Client:
+            def list_menus(self, club_id):
+                return [{"menu_id": 1, "name": "거래 게시판"}]
+
+            def iter_articles(self, club_id, menu_id, pages, per_page):
+                return iter([article])
+
+        target = CafeTarget(name="테스트", club_id=1, menu_name_filter=["거래"],
+                            menu_name_exclude=[], fetch_bodies=False)
+        result = pipeline._collect_cafe(conn, Client(), target)
+
+        self.assertEqual(result["market_prices"], 1)
+        row = conn.execute("SELECT price, price_source FROM listings").fetchone()
+        self.assertEqual(row["price"], 45000)
+        self.assertEqual(row["price_source"], "market")
+
+    def test_market_price_skips_the_body_request(self):
+        """가격을 이미 알면 본문을 읽을 이유가 없다 (요청 절약)."""
+        from pokewatch import db, pipeline
+        from pokewatch.config import CafeTarget
+        from pokewatch.naver import Article
+
+        conn = db.connect(":memory:")
+        article = Article(club_id=1, article_id=1, menu_id=1, menu_name="거래",
+                          subject="리자몽 SAR", writer="누구",
+                          written_at=1_700_000_000, cost=45000, is_market=True)
+
+        class Client:
+            def list_menus(self, club_id):
+                return [{"menu_id": 1, "name": "거래 게시판"}]
+
+            def iter_articles(self, club_id, menu_id, pages, per_page):
+                return iter([article])
+
+        target = CafeTarget(name="테스트", club_id=1, menu_name_filter=["거래"],
+                            menu_name_exclude=[], fetch_bodies=True, body_limit=10)
+
+        called = []
+        original = pipeline._price_from_body
+        pipeline._price_from_body = lambda *a, **k: called.append(1) or "none"
+        try:
+            pipeline._collect_cafe(conn, Client(), target)
+        finally:
+            pipeline._price_from_body = original
+        self.assertEqual(called, [], "가격을 아는데도 본문을 읽었다")
+
+    def test_reparse_keeps_the_market_price(self):
+        """파서를 고쳐 다시 해석해도 장터 가격은 남아야 한다."""
+        from pokewatch import db, pipeline
+        from pokewatch.naver import Article
+
+        conn = db.connect(":memory:")
+        article = Article(club_id=1, article_id=1, menu_id=1, menu_name="거래",
+                          subject="리자몽 SAR 165/165", writer="누구",
+                          written_at=1_700_000_000, cost=45000, is_market=True)
+        db.upsert_article(conn, article, cafe_name="테스트")
+        info = pipeline.parse_title(article.subject)
+        info.price, info.price_source = 45000, "market"
+        db.upsert_listing(conn, 1, 1, info, article.written_at)
+
+        pipeline.reparse(conn)
+
+        row = conn.execute("SELECT price, price_source FROM listings").fetchone()
+        self.assertEqual(row["price"], 45000)
+        self.assertEqual(row["price_source"], "market")
+
+    def test_migration_adds_cost_to_an_old_file(self):
+        """예전 DB 파일에도 cost 칸이 붙어야 한다 (기록을 버리지 않기 위해)."""
+        import sqlite3
+        import tempfile
+        from pathlib import Path
+
+        from pokewatch import db
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "old.db"
+            old = sqlite3.connect(path)
+            old.execute("""CREATE TABLE articles (
+                club_id INTEGER NOT NULL, article_id INTEGER NOT NULL, cafe_name TEXT,
+                menu_id INTEGER, menu_name TEXT, subject TEXT NOT NULL, writer TEXT,
+                written_at INTEGER NOT NULL DEFAULT 0, read_count INTEGER DEFAULT 0,
+                comment_count INTEGER DEFAULT 0, thumbnail TEXT, url TEXT,
+                collected_at INTEGER NOT NULL, PRIMARY KEY (club_id, article_id))""")
+            old.commit()
+            old.close()
+
+            conn = db.connect(path)
+            have = {r["name"] for r in conn.execute("PRAGMA table_info(articles)")}
+            self.assertIn("cost", have)
+
+
 if __name__ == "__main__":
     unittest.main()
