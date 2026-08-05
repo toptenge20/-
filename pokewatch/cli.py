@@ -239,13 +239,23 @@ def cmd_clean_demo(conn) -> int:
     from .demo import DEMO_CLUB_ID
 
     before = db.totals(conn)["articles"]
+    from .config import DEFAULT_MENU_EXCLUDE
+
     conn.execute("DELETE FROM listings WHERE club_id = ?", (DEMO_CLUB_ID,))
     conn.execute("DELETE FROM articles WHERE club_id = ?", (DEMO_CLUB_ID,))
     conn.execute("DELETE FROM meta WHERE key = 'demo'")
+
+    # 제외 규칙을 넣기 전에 이미 수집해 둔 후기·인증 게시판 글도 함께 지운다.
+    for word in DEFAULT_MENU_EXCLUDE:
+        like = f"%{word}%"
+        conn.execute(
+            "DELETE FROM listings WHERE (club_id, article_id) IN "
+            "(SELECT club_id, article_id FROM articles WHERE menu_name LIKE ?)", (like,))
+        conn.execute("DELETE FROM articles WHERE menu_name LIKE ?", (like,))
     conn.commit()
 
     after = db.totals(conn)["articles"]
-    print(f"  예제 데이터 {before - after:,}건을 지웠습니다. (남은 매물 {after:,}건)")
+    print(f"  예제·후기 글 {before - after:,}건을 지웠습니다. (남은 매물 {after:,}건)")
     return 0
 
 
@@ -255,21 +265,27 @@ def cmd_sample(conn, n: int) -> int:
     실제 카페 글은 예제와 형식이 달라서, 가격이나 카드 이름이 안 잡히면
     무엇이 안 맞는지 실제 제목을 봐야 알 수 있다.
     """
-    rows = db.fetch_listings(conn, limit=n)
+    rows = db.fetch_listings(conn)
     if not rows:
         print("  수집된 글이 없습니다.")
         return 1
 
-    priced = sum(1 for r in rows if r.get("price"))
-    named = sum(1 for r in rows if r.get("card_name"))
-    print(f"\n  최근 {len(rows)}건 중 가격 인식 {priced}건 / 카드 인식 {named}건\n")
-
+    # 게시판별로 나눠서 본다. 어느 게시판이 시세가 있는지 알아야 하기 때문이다.
+    by_menu: dict[str, list[dict]] = {}
     for r in rows:
-        price = format_won(r["price"]) if r.get("price") else "가격 X"
-        card = r.get("card_name") or "카드 X"
-        print(f"  [{r.get('menu_name', ''):<10}] {r['subject'][:60]}")
-        print(f"      → {card} | {price} | {r.get('rarity') or '-'} | {r.get('trade_type')}")
-    print()
+        by_menu.setdefault(r.get("menu_name") or "(게시판 없음)", []).append(r)
+
+    print(f"\n  전체 {len(rows):,}건 · 게시판 {len(by_menu)}개\n")
+    for menu, items in sorted(by_menu.items(), key=lambda kv: -len(kv[1])):
+        priced = sum(1 for r in items if r.get("price"))
+        named = sum(1 for r in items if r.get("card_name"))
+        print(f"  ── {menu} ({len(items)}건, 가격 {priced} / 카드 {named}) ─────────")
+        for r in items[: max(1, n // max(1, len(by_menu)))]:
+            price = format_won(r["price"]) if r.get("price") else "가격 X"
+            card = r.get("card_name") or "카드 X"
+            print(f"    {r['subject'][:70]}")
+            print(f"      → {card} | {price} | {r.get('rarity') or '-'}")
+        print()
     return 0
 
 
