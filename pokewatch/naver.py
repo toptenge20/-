@@ -28,7 +28,16 @@ log = logging.getLogger(__name__)
 API_BASE = "https://apis.naver.com/cafe-web"
 ARTICLE_LIST_URL = f"{API_BASE}/cafe2/ArticleListV2dot1.json"
 SIDE_MENU_URL = f"{API_BASE}/cafe2/SideMenuList"
-ARTICLE_URL = f"{API_BASE}/cafe-articleapi/v2/cafes/{{club_id}}/articles/{{article_id}}"
+# 본문 주소는 네이버가 바꿔 왔다. v2 는 지금 HTTP 500 을 낸다(로그로 확인).
+# 어느 것이 살아 있는지 알 수 없어 순서대로 시도하고, 되는 것을 기억해 둔다.
+ARTICLE_URL_CANDIDATES = (
+    f"{API_BASE}/cafe-articleapi/v3/cafes/{{club_id}}/articles/{{article_id}}",
+    f"{API_BASE}/cafe-articleapi/v2.1/cafes/{{club_id}}/articles/{{article_id}}",
+    f"{API_BASE}/cafe-articleapi/v2/cafes/{{club_id}}/articles/{{article_id}}",
+    "https://apis.naver.com/cafe-web/cafe-mobile/CafeArticleRead.json"
+    "?cafeId={club_id}&articleId={article_id}",
+    "https://cafe.naver.com/ArticleRead.nhn?clubid={club_id}&articleid={article_id}",
+)
 
 DEFAULT_UA = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -66,6 +75,8 @@ class NaverCafeClient:
     delay: float = 0.8          # 요청 사이 최소 대기 (초)
     max_retries: int = 3
     _last_request: float = field(default=0.0, repr=False)
+    _article_url_template: str | None = field(default=None, repr=False)
+    _article_errors_logged: bool = field(default=False, repr=False)
 
     # ── 공개 API ────────────────────────────────────────────────────────────
     def resolve_club_id(self, cafe: str) -> int:
@@ -254,13 +265,61 @@ class NaverCafeClient:
                     yield article
 
     def get_article_body(self, club_id: int, article_id: int) -> dict:
-        """본문 HTML과 이미지 목록. 제목만으로 부족할 때 보조로 쓴다."""
-        url = ARTICLE_URL.format(club_id=club_id, article_id=article_id)
-        data = self._get_json(url, {"query": "", "useCafeId": "true", "requestFrom": "A"})
-        article = _dig(data, "result", "article") or {}
-        html = article.get("contentHtml") or ""
+        """본문 HTML과 이미지 목록. 제목에 가격이 없을 때 여기서 찾는다."""
+        urls = ARTICLE_URL_CANDIDATES
+        if self._article_url_template:            # 한 번 성공한 주소를 계속 쓴다
+            urls = (self._article_url_template,)
+
+        errors = []
+        for template in urls:
+            url = template.format(club_id=club_id, article_id=article_id)
+            sep = "&" if "?" in url else "?"
+            try:
+                # 안 되는 주소에 세 번씩 매달리면 수집이 너무 느려진다
+                raw = self._get_bytes(f"{url}{sep}query=&useCafeId=true&requestFrom=A",
+                                      retries=1)
+            except NaverCafeError as e:
+                errors.append(f"{template.split('?')[0]}: {e}")
+                continue
+
+            body = self._parse_article(raw.decode("utf-8", errors="replace"))
+            if body["text"] or body["content_html"]:
+                if self._article_url_template != template:
+                    self._article_url_template = template
+                    log.info("본문 주소를 찾았습니다: %s", template.split("?")[0])
+                return body
+            errors.append(f"{template.split('?')[0]}: 본문이 비어 있음")
+
+        if not self._article_errors_logged:
+            self._article_errors_logged = True
+            for e in errors:
+                log.info("  본문 주소 실패 — %s", e)
+        return {"subject": "", "content_html": "", "text": "", "images": []}
+
+    @staticmethod
+    def _parse_article(text: str) -> dict:
+        """JSON 응답이면 JSON 에서, HTML 페이지면 본문 영역에서 내용을 꺼낸다."""
+        html = ""
+        subject = ""
+        try:
+            data = json.loads(text)
+        except json.JSONDecodeError:
+            data = None
+
+        if isinstance(data, dict):
+            article = (_dig(data, "result", "article") or _dig(data, "article")
+                       or _dig(data, "message", "result", "article") or {})
+            html = article.get("contentHtml") or article.get("content") or ""
+            subject = article.get("subject") or ""
+        else:
+            m = re.search(r'<div[^>]+class="[^"]*(?:ContentRenderer|article_viewer|NHN_Writeform_Main)[^"]*"[^>]*>(.*?)</div>\s*(?:<div|</body)',
+                          text, re.DOTALL | re.IGNORECASE)
+            html = m.group(1) if m else ""
+            sm = re.search(r"<title>(.*?)</title>", text, re.IGNORECASE | re.DOTALL)
+            subject = _unescape(sm.group(1).strip()) if sm else ""
+
         return {
-            "subject": article.get("subject") or "",
+            "subject": subject,
             "content_html": html,
             "text": _html_to_text(html),
             "images": _extract_images(html),
@@ -286,12 +345,13 @@ class NaverCafeClient:
             time.sleep(wait + random.uniform(0, 0.25))
         self._last_request = time.monotonic()
 
-    def _get_bytes(self, url: str, params: dict | None = None) -> bytes:
+    def _get_bytes(self, url: str, params: dict | None = None,
+                   retries: int | None = None) -> bytes:
         if params:
             url = f"{url}?{urllib.parse.urlencode(params)}"
 
         last_error: Exception | None = None
-        for attempt in range(self.max_retries):
+        for attempt in range(retries or self.max_retries):
             self._throttle()
             req = urllib.request.Request(url, headers=self._headers())
             try:
