@@ -14,8 +14,10 @@ from .parsing import parse_title
 
 log = logging.getLogger(__name__)
 
-# 본문이 실제로 어떻게 오는지 몇 건만 로그로 남기기 위한 카운터
-_body_samples_logged = 0
+# 본문이 실제로 어떻게 오는지 카페마다 몇 건만 로그로 남기기 위한 카운터.
+# 카페별로 세는 것이 중요하다 — 막힌 카페 하나가 표본을 다 써 버리면
+# 정작 본문이 열리는 카페의 내용을 못 본다 (실제로 두 번 그랬다).
+BODY_SAMPLES_PER_CAFE = 3
 
 
 def collect(conn: sqlite3.Connection, cfg: Config, progress=None) -> dict:
@@ -73,6 +75,7 @@ def _collect_cafe(conn, client: NaverCafeClient, target: CafeTarget, progress=No
 
     result = {"name": target.name, "club_id": club_id, "new": 0, "updated": 0, "seen": 0,
               "bodies": 0, "body_prices": 0, "denied": False}
+    samples = [0]        # 이 카페에서 남긴 표본 수 (리스트로 둬서 안에서 고칠 수 있게)
     body_budget = target.body_limit if target.fetch_bodies else 0
 
     for menu_id in menu_ids or [None]:
@@ -93,7 +96,8 @@ def _collect_cafe(conn, client: NaverCafeClient, target: CafeTarget, progress=No
                     and _worth_reading(info)):
                 body_budget -= 1
                 result["bodies"] += 1
-                outcome = _price_from_body(client, club_id, article.article_id, info)
+                outcome = _price_from_body(client, club_id, article.article_id, info,
+                                           samples, target.name)
                 if outcome == "found":
                     result["body_prices"] += 1
                 elif outcome == "denied":
@@ -139,7 +143,8 @@ def _worth_reading(info) -> bool:
     return bool(info.card_name or info.rarity)
 
 
-def _price_from_body(client: NaverCafeClient, club_id: int, article_id: int, info) -> str:
+def _price_from_body(client: NaverCafeClient, club_id: int, article_id: int, info,
+                     samples: list, cafe_name: str = "") -> str:
     """본문에서 가격을 찾아 info 에 채운다.
 
     'found'(찾음) / 'none'(읽었지만 가격 없음) / 'denied'(회원 전용이라 못 읽음)
@@ -163,11 +168,10 @@ def _price_from_body(client: NaverCafeClient, club_id: int, article_id: int, inf
     # 본문은 열리는데 가격이 안 나오는 경우를 봐야 한다. 앞의 몇 건만 단서를 남긴다.
     # 지난 실행에서 표본이 하나도 안 남았는데, 그건 열린 본문의 글자 수가 전부
     # 0이었다는 뜻이다 (사진만 올린 글로 보인다). 그래서 빈 본문도 남긴다.
-    global _body_samples_logged
-    if (price is None or price.price is None) and _body_samples_logged < 3:
-        _body_samples_logged += 1
-        log.info("가격 못 찾은 본문 %s (글 %s): 글자 %d, HTML %d, 사진 %d장",
-                 _body_samples_logged, article_id, len(text),
+    if (price is None or price.price is None) and samples[0] < BODY_SAMPLES_PER_CAFE:
+        samples[0] += 1
+        log.info("[%s] 가격 못 찾은 본문 %s (글 %s): 글자 %d, HTML %d, 사진 %d장",
+                 cafe_name, samples[0], article_id, len(text),
                  len(body.get("content_html") or ""), len(body.get("images") or []))
         log.info("    응답 모양: %s", body.get("shape"))
         if body.get("price_fields"):

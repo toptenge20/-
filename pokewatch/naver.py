@@ -279,6 +279,7 @@ class NaverCafeClient:
             urls = (self._article_url_template,)
 
         errors = []
+        denied = False
         for template in urls:
             url = template.format(club_id=club_id, article_id=article_id)
             sep = "&" if "?" in url else "?"
@@ -286,6 +287,10 @@ class NaverCafeClient:
                 # 안 되는 주소에 세 번씩 매달리면 수집이 너무 느려진다
                 raw = self._get_bytes(f"{url}{sep}query=&useCafeId=true&requestFrom=A",
                                       retries=1)
+            except NaverAccessDenied as e:
+                denied = True
+                errors.append(f"{template.split('?')[0]}: {e}")
+                continue
             except NaverCafeError as e:
                 errors.append(f"{template.split('?')[0]}: {e}")
                 continue
@@ -302,7 +307,17 @@ class NaverCafeClient:
             self._article_errors_logged = True
             for e in errors:
                 log.info("  본문 주소 실패 — %s", e)
-        return {"subject": "", "content_html": "", "text": "", "images": []}
+
+        # 한 군데라도 '회원 전용'이라고 답했으면, 이건 '본문이 없는 글'이 아니라
+        # '못 보는 글'이다. 그대로 빈 본문을 돌려주면 부르는 쪽이 둘을 구분하지
+        # 못해, 막힌 글 전체를 '가격 없음'으로 기록하고 계속 요청하게 된다.
+        if denied:
+            raise NaverAccessDenied(
+                f"본문이 회원 전용입니다 (글 {article_id}). 로그인 쿠키(NID_AUT, NID_SES)가 "
+                "있어야 읽을 수 있습니다."
+            )
+        return {"subject": "", "content_html": "", "text": "", "images": [],
+                "shape": None, "price_fields": {}}
 
     @staticmethod
     def _parse_article(text: str) -> dict:
