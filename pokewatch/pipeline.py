@@ -79,7 +79,7 @@ def _collect_cafe(conn, client: NaverCafeClient, target: CafeTarget, progress=No
                  ", ".join(m["name"] for m in chosen) or "(없음)")
 
     result = {"name": target.name, "club_id": club_id, "new": 0, "updated": 0, "seen": 0,
-              "bodies": 0, "body_prices": 0, "denied": 0}
+              "bodies": 0, "body_prices": 0, "denied": 0, "market_prices": 0}
     samples = [0]        # 이 카페에서 남긴 표본 수 (리스트로 둬서 안에서 고칠 수 있게)
     deny_streak = 0      # 연달아 막힌 횟수 (하나라도 열리면 0으로 되돌린다)
     body_budget = target.body_limit if target.fetch_bodies else 0
@@ -94,6 +94,16 @@ def _collect_cafe(conn, client: NaverCafeClient, target: CafeTarget, progress=No
             db.upsert_article(conn, article, cafe_name=target.name)
             info = parse_title(article.subject)
             info.price_source = "title" if info.price is not None else None
+
+            # 장터 글이면 카페가 매긴 가격이 목록에 들어 있다. 제목에서 읽어낸
+            # 값보다 이쪽이 정확하다 (제목의 숫자는 카드 번호일 수도 있다).
+            if article.cost:
+                info.price = article.cost
+                info.price_max = None
+                info.price_text = f"{article.cost:,}원"
+                info.price_source = "market"
+                info.confidence = 1.0
+                result["market_prices"] += 1
 
             # 이 카페들은 제목에 가격을 안 쓰고 본문에 적는다. 제목에서 못 찾았고
             # 아직 본문을 본 적 없는 글이면 본문을 읽어 본다.
@@ -135,6 +145,8 @@ def _collect_cafe(conn, client: NaverCafeClient, target: CafeTarget, progress=No
 
         conn.commit()
 
+    log.info("%s: 글 %s건 중 장터 가격이 붙은 글 %s건",
+             target.name, result["seen"], result["market_prices"])
     if result["bodies"] or result["denied"]:
         log.info("%s: 본문 %s건을 읽어 가격 %s건을 찾았습니다 (회원 전용이라 못 읽은 글 %s건)",
                  target.name, result["bodies"], result["body_prices"], result["denied"])
@@ -208,9 +220,17 @@ def _price_from_body(client: NaverCafeClient, club_id: int, article_id: int, inf
 
 def reparse(conn: sqlite3.Connection) -> int:
     """파서를 고친 뒤, 이미 저장된 글 제목을 다시 해석한다 (네트워크 불필요)."""
-    rows = conn.execute("SELECT club_id, article_id, subject, written_at FROM articles").fetchall()
+    rows = conn.execute(
+        "SELECT club_id, article_id, subject, written_at, cost FROM articles").fetchall()
     for row in rows:
         info = parse_title(row["subject"])
+        # 장터 가격은 제목보다 정확하다. 다시 해석할 때 잃어버리면 안 된다.
+        if row["cost"]:
+            info.price = row["cost"]
+            info.price_max = None
+            info.price_text = f"{row['cost']:,}원"
+            info.price_source = "market"
+            info.confidence = 1.0
         db.upsert_listing(conn, row["club_id"], row["article_id"], info, row["written_at"] or 0)
     conn.commit()
     return len(rows)

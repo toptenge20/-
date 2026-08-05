@@ -21,6 +21,9 @@ CREATE TABLE IF NOT EXISTS articles (
     comment_count INTEGER DEFAULT 0,
     thumbnail     TEXT,
     url           TEXT,
+    -- 장터 글이면 카페가 매긴 가격이 목록에 들어 있다. 여기 보관해 두면
+    -- 파서를 고쳐 다시 해석할 때(reparse) 이 값을 잃지 않는다.
+    cost          INTEGER,
     collected_at  INTEGER NOT NULL,
     PRIMARY KEY (club_id, article_id)
 );
@@ -92,6 +95,11 @@ def _migrate(conn: sqlite3.Connection) -> None:
     for column, ddl in (("price_source", "TEXT"),):
         if column not in have:
             conn.execute(f"ALTER TABLE listings ADD COLUMN {column} {ddl}")
+
+    have = {r["name"] for r in conn.execute("PRAGMA table_info(articles)")}
+    for column, ddl in (("cost", "INTEGER"),):
+        if column not in have:
+            conn.execute(f"ALTER TABLE articles ADD COLUMN {column} {ddl}")
     conn.commit()
 
 
@@ -100,19 +108,21 @@ def upsert_article(conn: sqlite3.Connection, article, cafe_name: str = "") -> No
         """
         INSERT INTO articles (club_id, article_id, cafe_name, menu_id, menu_name, subject,
                               writer, written_at, read_count, comment_count, thumbnail, url,
-                              collected_at)
-        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)
+                              cost, collected_at)
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)
         ON CONFLICT(club_id, article_id) DO UPDATE SET
             subject=excluded.subject,
             read_count=excluded.read_count,
             comment_count=excluded.comment_count,
             thumbnail=COALESCE(excluded.thumbnail, articles.thumbnail),
+            cost=COALESCE(excluded.cost, articles.cost),
             collected_at=excluded.collected_at
         """,
         (
             article.club_id, article.article_id, cafe_name, article.menu_id, article.menu_name,
             article.subject, article.writer, article.written_at, article.read_count,
-            article.comment_count, article.thumbnail, article.url, int(time.time()),
+            article.comment_count, article.thumbnail, article.url,
+            getattr(article, "cost", None), int(time.time()),
         ),
     )
 
