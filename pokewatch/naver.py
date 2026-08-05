@@ -49,6 +49,14 @@ class NaverCafeError(RuntimeError):
     pass
 
 
+class NaverAccessDenied(NaverCafeError):
+    """회원 전용이라 막힌 경우 (HTTP 401/403).
+
+    '읽었는데 가격이 없었다' 와 구분해야 한다. 막힌 글을 '확인 완료' 로
+    표시해 버리면, 나중에 로그인 쿠키를 넣어도 그 글을 다시 읽지 않는다.
+    """
+
+
 @dataclass
 class Article:
     club_id: int
@@ -362,7 +370,7 @@ class NaverCafeClient:
                     return payload
             except urllib.error.HTTPError as e:
                 if e.code in (401, 403):
-                    raise NaverCafeError(
+                    raise NaverAccessDenied(
                         f"접근이 거부되었습니다 (HTTP {e.code}). 회원 전용 게시판이라면 "
                         "로그인 쿠키(NID_AUT, NID_SES)를 설정하세요."
                     ) from e
@@ -390,7 +398,7 @@ class NaverCafeClient:
                     return resp.geturl(), payload
             except urllib.error.HTTPError as e:
                 if e.code in (401, 403):
-                    raise NaverCafeError(
+                    raise NaverAccessDenied(
                         f"접근이 거부되었습니다 (HTTP {e.code}). 회원 전용 게시판이라면 "
                         "로그인 쿠키(NID_AUT, NID_SES)를 설정하세요."
                     ) from e
