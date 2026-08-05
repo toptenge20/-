@@ -3,6 +3,10 @@ INFO 포켓몬카드 카페: 수집할 게시판 2개 — 싱글 카드 트레�
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (559997): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/19480246/articles/559997?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
 DEBUG 본문을 읽지 못했습니다 (559993): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/19480246/articles/559993?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
@@ -56,7 +60,7 @@ WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server
 WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
 DEBUG 본문을 읽지 못했습니다 (559951): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/19480246/articles/559951?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+  … 25건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
 DEBUG 본문을 읽지 못했습니다 (559950): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/19480246/articles/559950?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
@@ -64,7 +68,7 @@ WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server
 WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
 DEBUG 본문을 읽지 못했습니다 (559949): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/19480246/articles/559949?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
-  … 25건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
 DEBUG 본문을 읽지 못했습니다 (559942): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/19480246/articles/559942?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
@@ -112,7 +116,7 @@ WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server
 WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
 DEBUG 본문을 읽지 못했습니다 (559903): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/19480246/articles/559903?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+  … 50건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
 DEBUG 본문을 읽지 못했습니다 (559902): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/19480246/articles/559902?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
@@ -120,7 +124,7 @@ WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server
 WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
 DEBUG 본문을 읽지 못했습니다 (559899): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/19480246/articles/559899?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
-  … 50건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
 DEBUG 본문을 읽지 못했습니다 (559889): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/19480246/articles/559889?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
@@ -160,7 +164,7 @@ WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server
 WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
 DEBUG 본문을 읽지 못했습니다 (559860): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/19480246/articles/559860?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+  … 75건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
 DEBUG 본문을 읽지 못했습니다 (559857): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/19480246/articles/559857?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
@@ -168,7 +172,7 @@ WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server
 WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
 DEBUG 본문을 읽지 못했습니다 (559856): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/19480246/articles/559856?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
-  … 75건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
 DEBUG 본문을 읽지 못했습니다 (559854): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/19480246/articles/559854?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
@@ -252,11 +256,11 @@ WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server
 WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
 DEBUG 본문을 읽지 못했습니다 (559764): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/19480246/articles/559764?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+  … 125건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
 DEBUG 본문을 읽지 못했습니다 (559747): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/19480246/articles/559747?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
-  … 125건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
 DEBUG 본문을 읽지 못했습니다 (559745): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/19480246/articles/559745?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
@@ -304,10 +308,6 @@ WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server
 WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
 DEBUG 본문을 읽지 못했습니다 (559700): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/19480246/articles/559700?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
-WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
-DEBUG 본문을 읽지 못했습니다 (559694): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/19480246/articles/559694?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
   … 150건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
 WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
@@ -597,15 +597,301 @@ WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server
 WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
 DEBUG 본문을 읽지 못했습니다 (668921): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/668921?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
   … 450건 처리INFO 카드마켓 카페: 본문 68건을 읽어 가격 0건을 찾았습니다
-                                          포켓몬카드 카페: 새 글 0 / 갱신 152
+INFO 카페 ID를 찾았습니다: https://naver.me/Fx2wJYIp → 30418914
+INFO https://naver.me/Fx2wJYIp → clubId 30418914
+INFO 새 카페 (공유 링크): 게시판 71개 — 등업게시판, MVC&rsquo;s Pick, !기본 게시판, 가입 인사 게시판, 카페 규칙, 이벤트 게시판, 회원 이벤트 게시판, 자유 게시판, 포켓몬카드 정보 게시판, 자랑 게시판(카드 개봉,수집한 카드), 거래 후기 게시판, 매장 소식 게시판, 닉네임 변경 게시판, 출석 체크 게시판, 사기 의심 알림 게시판, 등업 불가 리스트, 포켓몬카드 POCKET, 건의 게시판, !질문 게시판, 시세질문 게시판, Q AND A 질문 게시판(시세질문X), 정가품 확인 질문, !포켓몬카드 거래 게시판, 트레이드 게시판, 덱 판매/구매, 진행중인 카드 경매, 종료된 카드 경매, 무료나눔 게시판, 실시간 경매 소식 게시판, !포켓몬 띠부띠부씰 거래게시판, 띠부띠부실 거래소, 새로운 구분선, !MVC PLAY, (온라인) 카드 게임 배틀 상대 찾기, 덱  레시피 공유 게시판, 덱 피드백  요청 게시판, 카드/덱 분석 및 소개 게시판, 카드 게임/대회 후기 게시판, MVC X 협력업체, [brg 6월] WELCOME TO brg!, brg 슬랩 자랑하기 (쿠지 응모), 믿을수있는 카드 콜렉팅 KADO, 금빛박물관 게시판, 협력업체 게시판, MVC 카페들 , 유희왕 MVC, 스포츠카드 MVC, 쿠키런 브레이버스 카드 MVC , 포켓몬 가오레 MVC, 사용하지 않는 게시판, 시세 게시판, 사용하지 않는 게시판, 사용하지 않는 게시판, 가림막, [HITUP.app] 오늘의 경매, [HITUP.app] 이벤트 인증, [brg] 경매 거래 이벤트 인증 게시판, [brg] 등급 카드 인증 게시판, [멜칼] 일본 메루카리 직구, [WYYYES] 이벤트 / 라이브 / 공지 게시판, [아드] 이벤트중 - 일본 카드 국내배송
+INFO   제외: 거래 후기 게시판 ('후기' 때문)
+INFO   제외: [brg] 경매 거래 이벤트 인증 게시판 ('인증' 때문)
+INFO 새 카페 (공유 링크): 수집할 게시판 4개 — !포켓몬카드 거래 게시판, 덱 판매/구매, !포켓몬 띠부띠부씰 거래게시판, 띠부띠부실 거래소
+INFO club=30418914 menu=33 page=1: 더 이상 글이 없습니다
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (744378): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/744378?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (740432): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/740432?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (739615): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/739615?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (730206): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/730206?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+  … 475건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (713787): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/713787?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (706139): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/706139?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (702482): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/702482?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (701679): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/701679?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (691790): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/691790?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+  … 500건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (675564): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/675564?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (658705): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/658705?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (658681): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/658681?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (636953): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/636953?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (635509): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/635509?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (634587): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/634587?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (628871): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/628871?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+  … 525건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (600133): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/600133?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (585176): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/585176?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (569806): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/569806?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (567432): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/567432?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (565269): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/565269?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (563844): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/563844?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+  … 550건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (554622): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/554622?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (552010): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/552010?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (545259): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/545259?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (542352): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/542352?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (540895): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/540895?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (536802): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/536802?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (536801): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/536801?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (535551): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/535551?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (535271): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/535271?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (534502): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/534502?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (532872): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/532872?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (531976): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/531976?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+  … 575건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (528816): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/528816?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (527555): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/527555?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (527274): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/527274?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (525580): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/525580?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (511422): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/511422?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (508909): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/508909?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (508568): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/508568?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (502951): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/502951?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (502367): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/502367?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (502347): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/502347?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (502292): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/502292?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (499375): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/499375?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+  … 600건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (499313): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/499313?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (498950): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/498950?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (743933): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/743933?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (742729): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/742729?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (737347): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/737347?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (735279): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/735279?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+  … 625건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (732181): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/732181?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (724102): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/724102?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (723252): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/723252?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (721785): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/721785?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (721542): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/721542?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (716355): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/716355?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+  … 650건 처리  … 675건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (706796): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/706796?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (706450): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/706450?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (696088): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/696088?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (694040): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/694040?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+  … 700건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (690245): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/690245?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (688447): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/688447?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (684546): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/684546?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+  … 725건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (679504): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/679504?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (676253): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/676253?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (2/3), 2초 후 재시도: HTTP Error 500: Internal Server Error
+WARNING 요청 실패 (3/3), 4초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문을 읽지 못했습니다 (668921): 요청에 실패했습니다: https://apis.naver.com/cafe-web/cafe-articleapi/v2/cafes/30418914/articles/668921?query=&useCafeId=true&requestFrom=A (HTTP Error 500: Internal Server Error)
+  … 750건 처리INFO 새 카페 (공유 링크): 본문 68건을 읽어 가격 0건을 찾았습니다
+                                          포켓몬카드 카페: 새 글 2 / 갱신 150
   카드마켓 카페: 새 글 0 / 갱신 300
+  새 카페 (공유 링크): 새 글 0 / 갱신 300
 
-  누적: 매물 452건, 카드 374종, 가격 있는 글 5건
-  예제·후기 글 0건을 지웠습니다. (남은 매물 452건)
+  누적: 매물 454건, 카드 376종, 가격 있는 글 5건
+  예제·후기 글 0건을 지웠습니다. (남은 매물 454건)
 
-  전체 452건 · 게시판 4개
+  전체 454건 · 게시판 4개
 
-  ── 싱글 카드 트레이드 (150건, 가격 1 / 카드 43) ─────────
+  ── 싱글 카드 트레이드 (152건, 가격 1 / 카드 43) ─────────
+    v csr,v max csr,sr,일괄판매합니다.
+      → 카드 X | 가격 X | VMAX
+    맘복치 구매합니다
+      → 카드 X | 가격 X | -
     메가다크라이 sar 싸게 급처합니다
       → 다크라이 | 가격 X | SAR
     여러가지 덱소스 팝니다!(하솔,시이노 등)
@@ -613,10 +899,6 @@ DEBUG 본문을 읽지 못했습니다 (668921): 요청에 실패했습니다: h
     덱소스판매 일괄판매
       → 카드 X | 가격 X | -
     포켓몬카드 ar..sr.일판sar 한판25장
-      → 카드 X | 가격 X | SR
-    팬텀 또가스 포켓몬 포켓몬스터 로켓단 가짜 오박사의 역습 카드
-      → 팬텀 | 가격 X | -
-    우리 sr 4.0에 삽니다.
       → 카드 X | 가격 X | SR
 
   ── 덱 판매/구매 (150건, 가격 1 / 카드 43) ─────────
