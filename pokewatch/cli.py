@@ -71,6 +71,11 @@ def main(argv: list[str] | None = None) -> int:
     p_export.add_argument("--days", type=int, help="최근 N일치만 내보내기")
     p_export.add_argument("--limit", type=int, help="최대 매물 수")
 
+    sub.add_parser("clean-demo", help="예제 데이터를 지웁니다 (실제 수집이 되면 필요합니다)")
+
+    p_sample = sub.add_parser("sample", help="최근 수집된 글과 해석 결과를 봅니다")
+    p_sample.add_argument("-n", type=int, default=20)
+
     sub.add_parser("reparse", help="저장된 제목을 파서로 다시 해석합니다")
 
     p_parse = sub.add_parser("parse", help="제목 하나를 파싱해 결과를 봅니다")
@@ -114,6 +119,10 @@ def main(argv: list[str] | None = None) -> int:
             if args.lan:
                 cfg.host = "0.0.0.0"
             return cmd_demo(conn, cfg, args.count, args.no_serve, args.open)
+        if args.command == "clean-demo":
+            return cmd_clean_demo(conn)
+        if args.command == "sample":
+            return cmd_sample(conn, args.n)
         if args.command == "export":
             return cmd_export(conn, cfg, args.out, args.days, args.limit)
         if args.command == "reparse":
@@ -222,6 +231,45 @@ def cmd_export(conn, cfg: Config, out: str, days: int | None, limit: int | None)
     print(f"    매물 {result['listings']:,}건 · 스냅샷 {size_kb:,.0f}KB")
     print("\n  이 폴더를 정적 호스팅(깃허브 페이지 등)에 올리면 핸드폰에서 앱처럼 쓸 수 있습니다.")
     print(f"  먼저 확인해 보려면:  python3 -m http.server -d {result['dir']} 8080")
+    return 0
+
+
+def cmd_clean_demo(conn) -> int:
+    """예제 데이터를 지운다. 실제 수집이 되기 시작하면 섞여 있으면 안 된다."""
+    from .demo import DEMO_CLUB_ID
+
+    before = db.totals(conn)["articles"]
+    conn.execute("DELETE FROM listings WHERE club_id = ?", (DEMO_CLUB_ID,))
+    conn.execute("DELETE FROM articles WHERE club_id = ?", (DEMO_CLUB_ID,))
+    conn.execute("DELETE FROM meta WHERE key = 'demo'")
+    conn.commit()
+
+    after = db.totals(conn)["articles"]
+    print(f"  예제 데이터 {before - after:,}건을 지웠습니다. (남은 매물 {after:,}건)")
+    return 0
+
+
+def cmd_sample(conn, n: int) -> int:
+    """최근 글이 어떻게 해석됐는지 눈으로 확인한다.
+
+    실제 카페 글은 예제와 형식이 달라서, 가격이나 카드 이름이 안 잡히면
+    무엇이 안 맞는지 실제 제목을 봐야 알 수 있다.
+    """
+    rows = db.fetch_listings(conn, limit=n)
+    if not rows:
+        print("  수집된 글이 없습니다.")
+        return 1
+
+    priced = sum(1 for r in rows if r.get("price"))
+    named = sum(1 for r in rows if r.get("card_name"))
+    print(f"\n  최근 {len(rows)}건 중 가격 인식 {priced}건 / 카드 인식 {named}건\n")
+
+    for r in rows:
+        price = format_won(r["price"]) if r.get("price") else "가격 X"
+        card = r.get("card_name") or "카드 X"
+        print(f"  [{r.get('menu_name', ''):<10}] {r['subject'][:60]}")
+        print(f"      → {card} | {price} | {r.get('rarity') or '-'} | {r.get('trade_type')}")
+    print()
     return 0
 
 
