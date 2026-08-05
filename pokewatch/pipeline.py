@@ -49,11 +49,23 @@ def _collect_cafe(conn, client: NaverCafeClient, target: CafeTarget, progress=No
     menu_ids = list(target.menu_ids)
     if not menu_ids and target.menu_name_filter:
         menus = client.list_menus(club_id)
-        menu_ids = [
-            m["menu_id"] for m in menus
-            if any(word in m["name"] for word in target.menu_name_filter)
-        ]
-        log.info("%s: 이름으로 고른 게시판 %s개", target.name, len(menu_ids))
+        log.info("%s: 게시판 %s개 — %s", target.name, len(menus),
+                 ", ".join(m["name"] for m in menus if m["name"]) or "(이름 없음)")
+
+        chosen = []
+        for m in menus:
+            name = m["name"]
+            if not any(word in name for word in target.menu_name_filter):
+                continue
+            skip = next((w for w in target.menu_name_exclude if w in name), None)
+            if skip:
+                log.info("  제외: %s ('%s' 때문)", name, skip)
+                continue
+            chosen.append(m)
+
+        menu_ids = [m["menu_id"] for m in chosen]
+        log.info("%s: 수집할 게시판 %s개 — %s", target.name, len(menu_ids),
+                 ", ".join(m["name"] for m in chosen) or "(없음)")
 
     result = {"name": target.name, "club_id": club_id, "new": 0, "updated": 0, "seen": 0}
 

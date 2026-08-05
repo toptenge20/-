@@ -9,6 +9,12 @@ from pathlib import Path
 
 DEFAULT_CONFIG_PATH = Path("config.json")
 
+# 시세가 없는 게시판 (후기·인증·질문 등). 포함 단어에 걸려도 여기 해당하면 뺀다.
+DEFAULT_MENU_EXCLUDE = (
+    "후기", "인증", "공지", "질문", "잡담", "자유", "가입", "출석",
+    "등업", "신고", "정보", "이벤트", "회원",
+)
+
 
 @dataclass
 class CafeTarget:
@@ -17,6 +23,9 @@ class CafeTarget:
     club_id: int | None = None       # 숫자 ID를 이미 알면 바로 지정
     menu_ids: list[int] = field(default_factory=list)   # 비우면 카페 전체 최신글
     menu_name_filter: list[str] = field(default_factory=list)  # 예: ["장터", "거래"]
+    # 이름에 이 단어가 들어간 게시판은 뺀다. '거래 후기 게시판'처럼 포함 단어에
+    # 걸리지만 시세가 없는 곳이 많아서, 빼는 쪽이 더 중요하다.
+    menu_name_exclude: list[str] = field(default_factory=lambda: list(DEFAULT_MENU_EXCLUDE))
     pages: int = 3
     per_page: int = 50
 
@@ -28,6 +37,7 @@ class CafeTarget:
             club_id=d.get("club_id"),
             menu_ids=[int(m) for m in d.get("menu_ids", [])],
             menu_name_filter=list(d.get("menu_name_filter", [])),
+            menu_name_exclude=list(d.get("menu_name_exclude", DEFAULT_MENU_EXCLUDE)),
             pages=int(d.get("pages", 3)),
             per_page=int(d.get("per_page", 50)),
         )
