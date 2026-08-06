@@ -251,7 +251,8 @@ async function reload() {
 function setOffline(isOffline) {
   state.offline = isOffline;
   $('#offline-bar').hidden = !isOffline;
-  if (!IS_STATIC) $('#collect-btn').disabled = isOffline;
+  // 오프라인이면 수집도, 깃허브 열기('지금 갱신')도 안 된다.
+  $('#collect-btn').disabled = isOffline;
 }
 
 function renderStats(o, snap) {
@@ -560,7 +561,21 @@ function init() {
 
   // 정적 호스팅에는 수집기가 없다 (클라우드가 대신 수집한다).
   if (IS_STATIC) {
-    $('#collect-btn').hidden = true;
+    // 예약 수집은 깃허브 사정으로 늦거나 건너뛴다. 그래서 직접 돌릴 수 있는
+    // 길을 남긴다. 버튼을 눌러 실행시킬 수는 없고(그러려면 토큰을 웹페이지에
+    // 심어야 하는데 공개 저장소라 절대 안 된다), 깃허브 실행 화면을 열어 준다.
+    const actionsUrl = window.POKEWATCH_ACTIONS_URL;
+    const btn = $('#collect-btn');
+    if (actionsUrl) {
+      btn.textContent = '지금 갱신';
+      btn.title = '깃허브에서 Run workflow 를 누르면 1~2분 뒤 최신이 됩니다';
+      btn.addEventListener('click', () => {
+        if (IS_STANDALONE) window.location.href = actionsUrl;   // 홈화면 앱은 새 창이 막힌다
+        else window.open(actionsUrl, '_blank', 'noopener');
+      });
+    } else {
+      btn.hidden = true;
+    }
   } else {
     $('#collect-btn').addEventListener('click', async () => {
       $('#collect-btn').disabled = true;

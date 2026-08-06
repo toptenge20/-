@@ -11,6 +11,8 @@
 from __future__ import annotations
 
 import json
+import os
+import re
 import shutil
 import time
 from pathlib import Path
@@ -103,9 +105,23 @@ def _write_index(out: Path) -> None:
         .replace('src="/static/app.js"', 'src="app.js"')
         .replace('href="/manifest.webmanifest"', 'href="manifest.webmanifest"')
         .replace('href="/icons/', 'href="icons/')
-        .replace("<!--MODE-->", '<script>window.POKEWATCH_MODE="static";</script>')
+        .replace("<!--MODE-->", f'<script>{_mode_script()}</script>')
     )
     (out / "index.html").write_text(html, encoding="utf-8")
+
+
+def _mode_script() -> str:
+    """정적 모드 표시 + '지금 갱신' 링크 주소.
+
+    예약 실행은 깃허브 사정으로 늦거나 건너뛴다. 그래서 손으로 돌릴 수 있는
+    길을 앱 안에 둔다. 저장소 이름은 깃허브 액션이 환경변수로 알려 준다.
+    """
+    parts = ['window.POKEWATCH_MODE="static";']
+    repo = os.environ.get("GITHUB_REPOSITORY", "").strip()
+    if re.fullmatch(r"[\w.-]+/[\w.-]+", repo):
+        url = f"https://github.com/{repo}/actions/workflows/collect.yml"
+        parts.append(f'window.POKEWATCH_ACTIONS_URL={json.dumps(url)};')
+    return " ".join(parts)
 
 
 def _write_manifest(out: Path) -> None:
