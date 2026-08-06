@@ -6,6 +6,23 @@ const state = { view: 'grid', cards: [], loading: false, snapshot: null, offline
 // 정적 호스팅(핸드폰만으로 쓰기)에서는 파이썬 서버가 없다. 그때는 수집 버튼을 감춘다.
 const IS_STATIC = window.POKEWATCH_MODE === 'static';
 
+// 홈 화면에 추가해 앱처럼 띄운 상태(standalone)에서는 아이폰이 target="_blank"
+// 링크를 조용히 무시한다. 눌러도 아무 일이 안 일어난다. 그래서 그때는 같은
+// 창에서 연다 (아이폰이 알아서 사파리로 넘겨 준다).
+const IS_STANDALONE = window.navigator.standalone === true
+  || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+const LINK_ATTRS = IS_STANDALONE ? '' : ' target="_blank" rel="noopener"';
+
+// 글 주소가 없으면 카페 번호와 글 번호로 직접 만든다. 눌렀는데 아무 일도
+// 안 일어나는 것보다 낫다.
+function listingUrl(l) {
+  if (l.url) return l.url;
+  if (l.club_id && l.article_id) {
+    return `https://cafe.naver.com/ca-fe/cafes/${l.club_id}/articles/${l.article_id}`;
+  }
+  return '';
+}
+
 // ── 표기 도우미 ──────────────────────────────────────────────────────────────
 function won(value) {
   if (value === null || value === undefined) return '가격 미기재';
@@ -321,7 +338,7 @@ function detailHtml(c, listings) {
   const grades = (c.grades || []).map((g) => `<span class="badge grade">${esc(g)}</span>`).join(' ');
 
   const rows = listings.slice(0, 60).map((l) => `
-    <a class="listing" href="${esc(l.url || '#')}" target="_blank" rel="noopener">
+    <a class="listing" href="${esc(listingUrl(l) || '#')}"${LINK_ATTRS}>
       <span class="p">${won(l.price)}</span>
       <div class="t">${esc(l.subject)}</div>
       <div class="m">
