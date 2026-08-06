@@ -190,12 +190,33 @@ async function loadData() {
   setOffline(!!state.snapshot.offline);
 }
 
+/* 추이 화살표와 그래프는 기간 필터를 풀고 전체 기록으로 계산한다.
+   기본이 '최근 3일'이라 그대로 두면 비교할 과거가 없어 화살표가 전부 '─' 가
+   되고 그래프도 점 두세 개로 납작해진다. 매물 목록과 가격 숫자는 고른 기간을
+   그대로 따르고, '추이' 만 길게 본다. */
+let _fullTrendCache = null;
+
+function applyFullTrend(cards, snap) {
+  if (!_fullTrendCache || _fullTrendCache.snap !== snap) {
+    const all = Pokewatch.aggregate(snap.listings, snap.labels);
+    _fullTrendCache = { snap, byKey: new Map(all.map((c) => [c.card_key, c])) };
+  }
+  for (const c of cards) {
+    const full = _fullTrendCache.byKey.get(c.card_key);
+    if (full) {
+      c.trend = full.trend;
+      c.history = full.history;
+    }
+  }
+}
+
 /** 걸러내고 묶는 일은 전부 브라우저에서 한다. 그래서 필터가 즉시 반응한다. */
 function refresh() {
   if (!state.snapshot) return;
   const snap = state.snapshot;
   const rows = Pokewatch.filterListings(snap.listings, filters());
   const cards = Pokewatch.aggregate(rows, snap.labels);
+  applyFullTrend(cards, snap);
 
   const sort = $('#sort').value;
   cards.sort(sortComparator(sort));
@@ -330,10 +351,12 @@ function openDetail(key) {
   const drawer = $('#detail');
   drawer.hidden = false;
 
-  // 상세는 기간 필터만 적용하고 나머지는 푼다. 그래야 시세 추이가 온전히 보인다.
+  // 상세는 기간 필터만 적용하고 나머지는 푼다.
   const snap = state.snapshot;
   const rows = Pokewatch.filterListings(snap.listings, { days: filters().days });
   const [card, listings] = Pokewatch.selectCard(rows, key, snap.labels);
+
+  if (card) applyFullTrend([card], snap);   // 그래프는 전체 기록으로 (위 설명 참고)
 
   $('#detail-body').innerHTML = card
     ? detailHtml(card, listings)
