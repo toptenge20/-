@@ -441,11 +441,25 @@ function setupApp() {
   // 서비스 워커는 보안 컨텍스트에서만 등록된다. localhost 는 되지만 http://192.168.x.x
   // 처럼 LAN IP 로 접속하면 브라우저가 막는다. 그때는 그냥 일반 웹페이지로 동작한다.
   if ('serviceWorker' in navigator && window.isSecureContext) {
+    // 새 버전이 올라와도 첫 열기에는 옛 파일이 나온다. 옛 서비스 워커가 페이지를
+    // 이미 잡고 있어서, 새 것은 뒤에서 설치만 되기 때문이다. 그래서 두 번 열어야
+    // 고친 내용이 보였다 (실제로 그 때문에 수정이 안 먹는 줄 알았다).
+    // 새 워커가 넘겨받는 순간 한 번만 새로고침해서, 첫 열기에 바로 반영시킨다.
+    const hadController = !!navigator.serviceWorker.controller;
+    let reloading = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (!hadController || reloading) return;   // 첫 설치 때는 새로고침할 필요가 없다
+      reloading = true;
+      window.location.reload();
+    });
+
     window.addEventListener('load', () => {
       // 상대 경로여야 한다. 하위 경로(예: .../저장소이름/)에 올려도 그 범위로 등록된다.
-      navigator.serviceWorker.register('sw.js').catch((e) => {
-        console.info('서비스 워커 등록 안 됨:', e.message);
-      });
+      navigator.serviceWorker.register('sw.js')
+        .then((reg) => reg.update().catch(() => {}))   // 새 버전이 있는지 바로 확인
+        .catch((e) => {
+          console.info('서비스 워커 등록 안 됨:', e.message);
+        });
     });
   }
 
