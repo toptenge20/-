@@ -4,7 +4,7 @@ INFO   제외: 트레이드 후기 게시판 ('후기' 때문)
 INFO   장터 게시판: 트레이드 게시판(사용 안함) (B/T)
 INFO   장터 게시판: 싱글 트레이드(안심거래) (B/T)
 INFO 포켓몬카드 카페: 수집할 게시판 7개 — 싱글 카드 트레이드, 덱 트레이드, 등급 카드 트레이드, 미개봉 제품/카드용품 트레이드, 트레이드 만남의 광장, 트레이드 게시판(사용 안함), 싱글 트레이드(안심거래)
-INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
+INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useSafetyPayment, writeDateTimestamp, writerNickname
 INFO   가격 비슷한 값: {'cost': '0'}
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
 INFO   본문 주소 실패 — https://apis.naver.com/cafe-web/cafe-articleapi/v3/cafes/{club_id}/articles/{article_id}: 접근이 거부되었습니다 (HTTP 401). 회원 전용 게시판이라면 로그인 쿠키(NID_AUT, NID_SES)를 설정하세요.
@@ -47,25 +47,25 @@ INFO   제외: [brg] 경매 거래 이벤트 인증 게시판 ('인증' 때문)
 INFO 카드마켓 카페: 수집할 게시판 9개 — !포켓몬카드 거래 게시판, 트레이드 게시판, 덱 판매/구매, 진행중인 카드 경매, 종료된 카드 경매, 실시간 경매 소식 게시판, !포켓몬 띠부띠부씰 거래게시판, 띠부띠부실 거래소, [HITUP.app] 오늘의 경매
 INFO club=30418914 menu=33 page=1: 더 이상 글이 없습니다
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-DEBUG 본문이 회원 전용입니다 (747094): 본문이 회원 전용입니다 (글 747094). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+DEBUG 본문이 회원 전용입니다 (747231): 본문이 회원 전용입니다 (글 747231). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-DEBUG 본문이 회원 전용입니다 (747085): 본문이 회원 전용입니다 (글 747085). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+DEBUG 본문이 회원 전용입니다 (747229): 본문이 회원 전용입니다 (글 747229). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-DEBUG 본문이 회원 전용입니다 (747080): 본문이 회원 전용입니다 (글 747080). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+DEBUG 본문이 회원 전용입니다 (747225): 본문이 회원 전용입니다 (글 747225). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-DEBUG 본문이 회원 전용입니다 (747079): 본문이 회원 전용입니다 (글 747079). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+DEBUG 본문이 회원 전용입니다 (747224): 본문이 회원 전용입니다 (글 747224). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-DEBUG 본문이 회원 전용입니다 (747075): 본문이 회원 전용입니다 (글 747075). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+DEBUG 본문이 회원 전용입니다 (747222): 본문이 회원 전용입니다 (글 747222). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
   … 800건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-DEBUG 본문이 회원 전용입니다 (747068): 본문이 회원 전용입니다 (글 747068). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+DEBUG 본문이 회원 전용입니다 (747201): 본문이 회원 전용입니다 (글 747201). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-DEBUG 본문이 회원 전용입니다 (747063): 본문이 회원 전용입니다 (글 747063). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+DEBUG 본문이 회원 전용입니다 (747200): 본문이 회원 전용입니다 (글 747200). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-DEBUG 본문이 회원 전용입니다 (747062): 본문이 회원 전용입니다 (글 747062). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+DEBUG 본문이 회원 전용입니다 (747196): 본문이 회원 전용입니다 (글 747196). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-DEBUG 본문이 회원 전용입니다 (747061): 본문이 회원 전용입니다 (글 747061). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+DEBUG 본문이 회원 전용입니다 (747194): 본문이 회원 전용입니다 (글 747194). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-DEBUG 본문이 회원 전용입니다 (747058): 본문이 회원 전용입니다 (글 747058). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+DEBUG 본문이 회원 전용입니다 (747192): 본문이 회원 전용입니다 (글 747192). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
 INFO 카드마켓 카페: 본문이 10번 연달아 막혔습니다. 이번 실행에서는 본문 읽기를 멈춥니다 (로그인 쿠키가 있어야 가격을 볼 수 있습니다)
   … 825건 처리  … 850건 처리  … 875건 처리  … 900건 처리  … 925건 처리  … 950건 처리  … 975건 처리  … 1000건 처리  … 1025건 처리  … 1050건 처리  … 1075건 처리  … 1100건 처리  … 1125건 처리  … 1150건 처리  … 1175건 처리  … 1200건 처리  … 1225건 처리  … 1250건 처리  … 1275건 처리  … 1300건 처리  … 1325건 처리  … 1350건 처리  … 1375건 처리  … 1400건 처리  … 1425건 처리INFO club=30418914 menu=46 page=2: 더 이상 글이 없습니다
 INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
@@ -85,59 +85,59 @@ INFO   제외: [brg] 경매 거래 이벤트 인증 게시판 ('인증' 때문)
 INFO 새 카페 (공유 링크): 수집할 게시판 9개 — !포켓몬카드 거래 게시판, 트레이드 게시판, 덱 판매/구매, 진행중인 카드 경매, 종료된 카드 경매, 실시간 경매 소식 게시판, !포켓몬 띠부띠부씰 거래게시판, 띠부띠부실 거래소, [HITUP.app] 오늘의 경매
 INFO club=30418914 menu=33 page=1: 더 이상 글이 없습니다
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-DEBUG 본문이 회원 전용입니다 (747098): 본문이 회원 전용입니다 (글 747098). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+DEBUG 본문이 회원 전용입니다 (747233): 본문이 회원 전용입니다 (글 747233). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-DEBUG 본문이 회원 전용입니다 (747094): 본문이 회원 전용입니다 (글 747094). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+DEBUG 본문이 회원 전용입니다 (747231): 본문이 회원 전용입니다 (글 747231). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-DEBUG 본문이 회원 전용입니다 (747085): 본문이 회원 전용입니다 (글 747085). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+DEBUG 본문이 회원 전용입니다 (747229): 본문이 회원 전용입니다 (글 747229). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-DEBUG 본문이 회원 전용입니다 (747080): 본문이 회원 전용입니다 (글 747080). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+DEBUG 본문이 회원 전용입니다 (747225): 본문이 회원 전용입니다 (글 747225). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-DEBUG 본문이 회원 전용입니다 (747079): 본문이 회원 전용입니다 (글 747079). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+DEBUG 본문이 회원 전용입니다 (747224): 본문이 회원 전용입니다 (글 747224). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-DEBUG 본문이 회원 전용입니다 (747075): 본문이 회원 전용입니다 (글 747075). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
-WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-DEBUG 본문이 회원 전용입니다 (747068): 본문이 회원 전용입니다 (글 747068). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+DEBUG 본문이 회원 전용입니다 (747222): 본문이 회원 전용입니다 (글 747222). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
   … 1600건 처리WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-DEBUG 본문이 회원 전용입니다 (747063): 본문이 회원 전용입니다 (글 747063). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+DEBUG 본문이 회원 전용입니다 (747201): 본문이 회원 전용입니다 (글 747201). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-DEBUG 본문이 회원 전용입니다 (747062): 본문이 회원 전용입니다 (글 747062). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+DEBUG 본문이 회원 전용입니다 (747200): 본문이 회원 전용입니다 (글 747200). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
 WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
-DEBUG 본문이 회원 전용입니다 (747061): 본문이 회원 전용입니다 (글 747061). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+DEBUG 본문이 회원 전용입니다 (747196): 본문이 회원 전용입니다 (글 747196). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
+WARNING 요청 실패 (1/3), 1초 후 재시도: HTTP Error 500: Internal Server Error
+DEBUG 본문이 회원 전용입니다 (747194): 본문이 회원 전용입니다 (글 747194). 로그인 쿠키(NID_AUT, NID_SES)가 있어야 읽을 수 있습니다.
 INFO 새 카페 (공유 링크): 본문이 10번 연달아 막혔습니다. 이번 실행에서는 본문 읽기를 멈춥니다 (로그인 쿠키가 있어야 가격을 볼 수 있습니다)
   … 1625건 처리  … 1650건 처리  … 1675건 처리  … 1700건 처리  … 1725건 처리  … 1750건 처리  … 1775건 처리  … 1800건 처리  … 1825건 처리  … 1850건 처리  … 1875건 처리  … 1900건 처리  … 1925건 처리  … 1950건 처리  … 1975건 처리  … 2000건 처리  … 2025건 처리  … 2050건 처리  … 2075건 처리  … 2100건 처리  … 2125건 처리  … 2150건 처리  … 2175건 처리  … 2200건 처리  … 2225건 처리INFO club=30418914 menu=46 page=2: 더 이상 글이 없습니다
 INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
   … 2250건 처리  … 2275건 처리  … 2300건 처리  … 2325건 처리  … 2350건 처리  … 2375건 처리INFO club=30418914 menu=49 page=2: 더 이상 글이 없습니다
 INFO 새 카페 (공유 링크): 글 798건 중 장터 가격이 붙은 글 0건
 INFO 새 카페 (공유 링크): 본문 0건을 읽어 가격 0건을 찾았습니다 (회원 전용이라 못 읽은 글 10건)
-                                          포켓몬카드 카페: 새 글 39 / 갱신 753
-  카드마켓 카페: 새 글 221 / 갱신 577
-  새 카페 (공유 링크): 새 글 1 / 갱신 797
+                                          포켓몬카드 카페: 새 글 7 / 갱신 785
+  카드마켓 카페: 새 글 57 / 갱신 741
+  새 카페 (공유 링크): 새 글 2 / 갱신 796
 
-  누적: 매물 2,092건, 카드 1,557종, 가격 있는 글 174건
-  예제·후기 글 0건을 지웠습니다. (남은 매물 2,092건)
+  누적: 매물 2,158건, 카드 1,608종, 가격 있는 글 175건
+  예제·후기 글 0건을 지웠습니다. (남은 매물 2,158건)
 
-  전체 2,092건 · 게시판 14개
+  전체 2,158건 · 게시판 14개
 
-  ── 트레이드 게시판 (358건, 가격 6 / 카드 164) ─────────
-    레쿠쟈 sr 스톰 에메랄드 싱글 판매
-      → 레쿠쟈 | 가격 X | SR
+  ── 트레이드 게시판 (414건, 가격 7 / 카드 183) ─────────
+    2023 클래식 수록 카드들 판매합니다
+      → 카드 X | 가격 X | -
 
-  ── 진행중인 카드 경매 (335건, 가격 19 / 카드 177) ─────────
-    (8/6마감)2010 DP 팬텀 LV.X 싱글 앨범용
-      → 팬텀 | 가격 X | -
+  ── 진행중인 카드 경매 (338건, 가격 19 / 카드 177) ─────────
+    (8월 6일 마감) (JP) 닌자스피너 미개봉 박스
+      → 카드 X | 가격 X | BOX
 
-  ── 싱글 카드 트레이드 (237건, 가격 3 / 카드 67) ─────────
-    플레이용 고레어 덱 소스 구매합니다! (드래펄트 세트 일괄, 트레이너스 sr 등)
-      → 카드 X | 가격 X | SR
+  ── 싱글 카드 트레이드 (242건, 가격 3 / 카드 67) ─────────
+    고레어 판매하고 ma 구합니다
+      → 카드 X | 가격 X | -
+
+  ── 등급 카드 트레이드 (156건, 가격 2 / 카드 93) ─────────
+    brg 일괄 정리중
+      → 카드 X | 가격 X | -
 
   ── 종료된 카드 경매 (156건, 가격 9 / 카드 65) ─────────
     (8월5일마감) 일판 메가드림 고레어 모음
       → 카드 X | 가격 X | -
-
-  ── 등급 카드 트레이드 (154건, 가격 2 / 카드 92) ─────────
-    파도타기 피카츄 PSA 9 판매합니다.
-      → 피카츄 | 가격 X | -
 
   ── 띠부띠부실 거래소 (154건, 가격 3 / 카드 22) ─────────
     아트워크, 30주년 띠부실 판매합니다
