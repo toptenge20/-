@@ -190,13 +190,22 @@ jobs:
           path: site
           retention-days: 14
 
-  # Cloudflare 시크릿이 없을 때만 돈다. 저장소가 비공개면 깃허브 페이지가 막혀 있어
-  # 실패하는데, 그건 정상이므로 전체를 빨간 X 로 만들지 않는다.
+  # Cloudflare 시크릿이 없을 때만 돈다.
+  #
+  # 예전엔 continue-on-error: true 였다. 저장소가 비공개일 때 페이지가 막혀
+  # 실패하는 걸 정상으로 봤기 때문인데, 지금은 공개 저장소이고 페이지도 켜져
+  # 있다. 그 설정을 두면 배포가 실패해도 실행이 초록색으로 보인다. 실제로
+  # 12:28 예약 실행이 그랬다 — 수집은 됐는데 배포가 시간 초과로 죽었고,
+  # 전체는 '성공'으로 표시됐다. 그래서 뺀다.
   pages:
     needs: collect
     if: needs.collect.outputs.cf_deployed != 'true'
     runs-on: ubuntu-latest
-    continue-on-error: true
+    # 페이지 배포는 저장소당 한 번에 하나만 돈다. 겹치면 큐에 걸려 시간 초과가
+    # 난다. 깃허브가 권장하는 대로 배포 전용 그룹을 따로 둔다.
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     permissions:
       contents: read
       pages: write
