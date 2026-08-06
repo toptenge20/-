@@ -223,14 +223,12 @@ jobs:
 
       # 여기엔 continue-on-error 를 두지 않는다. 두면 실패가 초록색으로 보여서
       # 배포가 안 됐는데도 성공한 줄 알게 된다 (실제로 그런 일이 있었다).
+      # 대기 시간을 20분으로 올려 봤지만 소용없었다. 액션이 잘라낸다:
+      #   Warning: timeout value is greater than the allowed maximum
+      #            - timeout set to the maximum of 600000 milliseconds.
+      # 10분이 상한이라 손댈 수 있는 값이 아니다. 기본값 그대로 둔다.
       - id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          # 기본 10분. 배포가 deployment_queued 에서 10분을 채우고 죽는 일이
-          # 세 번 연속 있었다 (12:29, 12:44, 13:51). 우리 쪽 설정은 정상이었다
-          # — 저장소 공개, 페이지 활성, 배포 요청도 정상 생성됐다.
-          # 깃허브가 밀린 것뿐이라면 더 기다려서 통과한다. 아니면 그대로 실패한다.
-          timeout: 1200000   # 20분
 
       - name: 결과 안내
         if: always()
