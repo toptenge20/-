@@ -13,14 +13,31 @@ const IS_STANDALONE = window.navigator.standalone === true
   || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
 const LINK_ATTRS = IS_STANDALONE ? '' : ' target="_blank" rel="noopener"';
 
-// 글 주소가 없으면 카페 번호와 글 번호로 직접 만든다. 눌렀는데 아무 일도
-// 안 일어나는 것보다 낫다.
+// 핸드폰에서는 데스크톱 주소(cafe.naver.com/ca-fe/cafes/...)가 빈 화면으로
+// 뜬다. 모바일 주소로 보내야 글이 보인다.
+const IS_PHONE = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+  || (navigator.maxTouchPoints > 1 && window.innerWidth < 900);
+
 function listingUrl(l) {
-  if (l.url) return l.url;
-  if (l.club_id && l.article_id) {
-    return `https://cafe.naver.com/ca-fe/cafes/${l.club_id}/articles/${l.article_id}`;
+  // 카페 번호와 글 번호가 있으면 기기에 맞는 주소를 직접 만든다.
+  // 저장된 주소는 데스크톱 형식이라 그대로 쓰면 핸드폰에서 안 보인다.
+  const club = l.club_id || clubFromUrl(l.url);
+  const article = l.article_id || articleFromUrl(l.url);
+  if (club && article) {
+    const host = IS_PHONE ? 'https://m.cafe.naver.com/ca-fe/web' : 'https://cafe.naver.com/ca-fe';
+    return `${host}/cafes/${club}/articles/${article}`;
   }
-  return '';
+  return l.url || '';
+}
+
+function clubFromUrl(url) {
+  const m = /\/cafes\/(\d+)\//.exec(url || '');
+  return m ? m[1] : null;
+}
+
+function articleFromUrl(url) {
+  const m = /\/articles\/(\d+)/.exec(url || '');
+  return m ? m[1] : null;
 }
 
 // ── 표기 도우미 ──────────────────────────────────────────────────────────────
