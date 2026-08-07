@@ -4,7 +4,7 @@ INFO   제외: 트레이드 후기 게시판 ('후기' 때문)
 INFO   장터 게시판: 트레이드 게시판(사용 안함) (B/T)
 INFO   장터 게시판: 싱글 트레이드(안심거래) (B/T)
 INFO 포켓몬카드 카페: 수집할 게시판 7개 — 싱글 카드 트레이드, 덱 트레이드, 등급 카드 트레이드, 미개봉 제품/카드용품 트레이드, 트레이드 만남의 광장, 트레이드 게시판(사용 안함), 싱글 트레이드(안심거래)
-INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
+INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, lastCommentedTimestamp, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
 INFO   가격 비슷한 값: {'cost': '0'}
   … 25건 처리  … 50건 처리  … 75건 처리  … 100건 처리  … 125건 처리  … 150건 처리  … 175건 처리  … 200건 처리  … 225건 처리  … 250건 처리  … 275건 처리  … 300건 처리  … 325건 처리  … 350건 처리  … 375건 처리  … 400건 처리  … 425건 처리INFO club=19480246 menu=169 page=2: 더 이상 글이 없습니다
   … 450건 처리  … 475건 처리  … 500건 처리  … 525건 처리INFO club=19480246 menu=200 page=2: 더 이상 글이 없습니다
@@ -40,25 +40,25 @@ INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
   … 1550건 처리  … 1575건 처리  … 1600건 처리  … 1625건 처리INFO club=30418914 menu=49 page=2: 더 이상 글이 없습니다
 INFO 새 카페 (공유 링크): 글 548건 중 장터 가격이 붙은 글 0건
                                           포켓몬카드 카페: 새 글 1 / 갱신 541
-  카드마켓 카페: 새 글 16 / 갱신 532
+  카드마켓 카페: 새 글 7 / 갱신 541
   새 카페 (공유 링크): 새 글 0 / 갱신 548
 
-  누적: 매물 4,053건, 카드 2,793종, 가격 있는 글 205건
-  예제·후기 글 0건을 지웠습니다. (남은 매물 4,053건)
+  누적: 매물 4,065건, 카드 2,799종, 가격 있는 글 205건
+  예제·후기 글 0건을 지웠습니다. (남은 매물 4,065건)
 
-  전체 4,053건 · 게시판 14개
+  전체 4,065건 · 게시판 14개
 
-  ── 트레이드 게시판 (1532건, 가격 20 / 카드 658) ─────────
-    소수의 싱글카드 판매합니다.
+  ── 트레이드 게시판 (1543건, 가격 20 / 카드 662) ─────────
+    만세 피카츄 프로모(양천피카츄) 일판 PSA10 구매합니다!!
+      → 피카츄 | 가격 X | PROMO
+
+  ── 진행중인 카드 경매 (891건, 가격 33 / 카드 443) ─────────
+    (8/8마감) 피카츄,비크티니,프리즘레어 등 여러가지 잡카드 35장 판매
+      → 피카츄 | 가격 X | -
+
+  ── 싱글 카드 트레이드 (367건, 가격 3 / 카드 97) ─────────
+    고레어 덱소스 판매 !
       → 카드 X | 가격 X | -
-
-  ── 진행중인 카드 경매 (891건, 가격 33 / 카드 442) ─────────
-    (8/8마감) 여러가지 잡카드 35장 판매
-      → 카드 X | 가격 X | -
-
-  ── 싱글 카드 트레이드 (366건, 가격 3 / 카드 97) ─────────
-    아차모 샤이니컬렉션 상태 좋은 거 구합니다!
-      → 아차모 | 가격 X | -
 
   ── 종료된 카드 경매 (203건, 가격 12 / 카드 101) ─────────
     (8/7 마감) 중판 프로모 레드 피카츄들 경매!!
