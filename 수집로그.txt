@@ -4,7 +4,7 @@ INFO   제외: 트레이드 후기 게시판 ('후기' 때문)
 INFO   장터 게시판: 트레이드 게시판(사용 안함) (B/T)
 INFO   장터 게시판: 싱글 트레이드(안심거래) (B/T)
 INFO 포켓몬카드 카페: 수집할 게시판 7개 — 싱글 카드 트레이드, 덱 트레이드, 등급 카드 트레이드, 미개봉 제품/카드용품 트레이드, 트레이드 만남의 광장, 트레이드 게시판(사용 안함), 싱글 트레이드(안심거래)
-INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, lastCommentedTimestamp, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
+INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
 INFO   가격 비슷한 값: {'cost': '0'}
   … 25건 처리  … 50건 처리  … 75건 처리  … 100건 처리  … 125건 처리  … 150건 처리  … 175건 처리  … 200건 처리  … 225건 처리  … 250건 처리  … 275건 처리  … 300건 처리  … 325건 처리  … 350건 처리  … 375건 처리  … 400건 처리  … 425건 처리INFO club=19480246 menu=169 page=2: 더 이상 글이 없습니다
   … 450건 처리  … 475건 처리  … 500건 처리  … 525건 처리INFO club=19480246 menu=200 page=2: 더 이상 글이 없습니다
@@ -39,45 +39,45 @@ INFO club=30418914 menu=33 page=1: 더 이상 글이 없습니다
 INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
   … 1550건 처리  … 1575건 처리  … 1600건 처리  … 1625건 처리INFO club=30418914 menu=49 page=2: 더 이상 글이 없습니다
 INFO 새 카페 (공유 링크): 글 548건 중 장터 가격이 붙은 글 0건
-                                          포켓몬카드 카페: 새 글 1 / 갱신 541
-  카드마켓 카페: 새 글 7 / 갱신 541
-  새 카페 (공유 링크): 새 글 0 / 갱신 548
+                                          포켓몬카드 카페: 새 글 3 / 갱신 539
+  카드마켓 카페: 새 글 73 / 갱신 475
+  새 카페 (공유 링크): 새 글 1 / 갱신 547
 
-  누적: 매물 4,065건, 카드 2,799종, 가격 있는 글 205건
-  예제·후기 글 0건을 지웠습니다. (남은 매물 4,065건)
+  누적: 매물 4,174건, 카드 2,849종, 가격 있는 글 208건
+  예제·후기 글 0건을 지웠습니다. (남은 매물 4,174건)
 
-  전체 4,065건 · 게시판 14개
+  전체 4,174건 · 게시판 14개
 
-  ── 트레이드 게시판 (1543건, 가격 20 / 카드 662) ─────────
-    만세 피카츄 프로모(양천피카츄) 일판 PSA10 구매합니다!!
-      → 피카츄 | 가격 X | PROMO
+  ── 트레이드 게시판 (1630건, 가격 21 / 카드 708) ─────────
+    일판 각종 AR, SR 판매 합니다.
+      → 카드 X | 가격 X | SR
 
-  ── 진행중인 카드 경매 (891건, 가격 33 / 카드 443) ─────────
-    (8/8마감) 피카츄,비크티니,프리즘레어 등 여러가지 잡카드 35장 판매
+  ── 진행중인 카드 경매 (902건, 가격 35 / 카드 451) ─────────
+    (8/8마감) 일판 딸기 피카츄(딸기츄 2종) 판매
       → 피카츄 | 가격 X | -
 
-  ── 싱글 카드 트레이드 (367건, 가격 3 / 카드 97) ─────────
-    고레어 덱소스 판매 !
+  ── 싱글 카드 트레이드 (372건, 가격 3 / 카드 97) ─────────
+    북미 25주년 맥도날드 카톤 팝니다!!(150팩)
       → 카드 X | 가격 X | -
 
   ── 종료된 카드 경매 (203건, 가격 12 / 카드 101) ─────────
     (8/7 마감) 중판 프로모 레드 피카츄들 경매!!
       → 피카츄 | 가격 X | PROMO
 
-  ── 등급 카드 트레이드 (182건, 가격 2 / 카드 105) ─────────
-    한판 라프라스 psa10 판매합니다
-      → 라프라스 | 가격 X | -
+  ── 등급 카드 트레이드 (185건, 가격 2 / 카드 106) ─────────
+    펜텀 샤르8등급 및 싱글 일괄
+      → 카드 X | 가격 X | -
 
   ── 미개봉 제품/카드용품 트레이드 (164건, 가격 1 / 카드 22) ─────────
     구매) 미니리그 프로모 메가 4탄 구매합니다
       → 카드 X | 가격 X | PROMO
 
-  ── 띠부띠부실 거래소 (161건, 가격 3 / 카드 22) ─────────
-    아트웍 띠부씰 구매합니다 !
+  ── 띠부띠부실 거래소 (163건, 가격 3 / 카드 22) ─────────
+    아트윅 띠브씰 구매합니다
       → 카드 X | 가격 X | -
 
-  ── 덱 트레이드 (157건, 가격 0 / 카드 25) ─────────
-    덱및 덱소스 대량으로 판매합니다
+  ── 덱 트레이드 (158건, 가격 0 / 카드 25) ─────────
+    메가몰드류 덱 팝니다
       → 카드 X | 가격 X | -
 
   ── 덱 판매/구매 (157건, 가격 1 / 카드 48) ─────────
@@ -110,6 +110,7 @@ INFO 새 카페 (공유 링크): 글 548건 중 장터 가격이 붙은 글 0건
   칠색조                                 2만원      4,000원         3만원     5  ▼ -80.0%
   리자몽                              73.5만원        71만원        76만원     4  ─   -
   글레이시아 하이퍼 레어                 1만원         1만원       2.4만원     3  ─   -
+  부스터 (일판)                         38만원        38만원        38만원     2  ─   -
   윤겔라                               8.3만원       1.5만원      15.2만원     2  ─   -
   뮤 (한글)                            1.8만원       1.5만원         2만원     2  ─   -
   피카츄                              5,000원      1,000원      9,000원     2  ─   -
@@ -121,5 +122,4 @@ INFO 새 카페 (공유 링크): 글 548건 중 장터 가격이 붙은 글 0건
   또가스 캐릭터 레어                     5만원         5만원         5만원     1  ─   -
   거북왕 스페셜 아트 레어              4.5만원       4.5만원       4.5만원     1  ─   -
   페퍼 스페셜 아트 레어 (일판)         4.3만원       4.3만원       4.3만원     1  ─   -
-  이상해꽃                             3.8만원       3.8만원       3.8만원     1  ─   -
 
