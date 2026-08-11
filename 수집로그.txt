@@ -4,7 +4,7 @@ INFO   제외: 트레이드 후기 게시판 ('후기' 때문)
 INFO   장터 게시판: 트레이드 게시판(사용 안함) (B/T)
 INFO   장터 게시판: 싱글 트레이드(안심거래) (B/T)
 INFO 포켓몬카드 카페: 수집할 게시판 7개 — 싱글 카드 트레이드, 덱 트레이드, 등급 카드 트레이드, 미개봉 제품/카드용품 트레이드, 트레이드 만남의 광장, 트레이드 게시판(사용 안함), 싱글 트레이드(안심거래)
-INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useSafetyPayment, writeDateTimestamp, writerNickname
+INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
 INFO   가격 비슷한 값: {'cost': '0'}
   … 25건 처리  … 50건 처리  … 75건 처리  … 100건 처리  … 125건 처리  … 150건 처리  … 175건 처리  … 200건 처리  … 225건 처리  … 250건 처리  … 275건 처리  … 300건 처리  … 325건 처리  … 350건 처리  … 375건 처리  … 400건 처리  … 425건 처리INFO club=19480246 menu=169 page=2: 더 이상 글이 없습니다
   … 450건 처리  … 475건 처리  … 500건 처리  … 525건 처리INFO club=19480246 menu=200 page=2: 더 이상 글이 없습니다
@@ -40,25 +40,25 @@ INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
   … 1550건 처리  … 1575건 처리  … 1600건 처리  … 1625건 처리INFO club=30418914 menu=49 page=2: 더 이상 글이 없습니다
 INFO 새 카페 (공유 링크): 글 548건 중 장터 가격이 붙은 글 0건
                                           포켓몬카드 카페: 새 글 1 / 갱신 541
-  카드마켓 카페: 새 글 2 / 갱신 546
+  카드마켓 카페: 새 글 1 / 갱신 547
   새 카페 (공유 링크): 새 글 0 / 갱신 548
 
-  누적: 매물 8,696건, 카드 5,341종, 가격 있는 글 298건
-  예제·후기 글 0건을 지웠습니다. (남은 매물 8,696건)
+  누적: 매물 8,698건, 카드 5,343종, 가격 있는 글 298건
+  예제·후기 글 0건을 지웠습니다. (남은 매물 8,698건)
 
-  전체 8,696건 · 게시판 14개
+  전체 8,698건 · 게시판 14개
 
-  ── 트레이드 게시판 (4370건, 가격 56 / 카드 1873) ─────────
-    한판 이브이히어로즈 슈링크O 로 등카나 싱글 구해요.
-      → 이브이 | 가격 X | V
+  ── 트레이드 게시판 (4371건, 가격 56 / 카드 1873) ─────────
+    카드 보관 용품 : 자석케이스 , 실리콘 등카 케이스 일괄판매
+      → 카드 X | 가격 X | -
 
   ── 진행중인 카드 경매 (2130건, 가격 80 / 카드 1049) ─────────
     [8/12 마감] 젬팩 일반카드 + rr/rrr/ar
       → 카드 X | 가격 X | RRR
 
-  ── 싱글 카드 트레이드 (678건, 가격 3 / 카드 184) ─────────
-    덱소스 구매합니다
-      → 카드 X | 가격 X | -
+  ── 싱글 카드 트레이드 (679건, 가격 3 / 카드 184) ─────────
+    AR~R 카드 일괄
+      → 카드 X | 가격 X | AR
 
   ── 종료된 카드 경매 (300건, 가격 15 / 카드 159) ─────────
     (8/11마감) BW 제크로무 레시라무 홀로 세트
