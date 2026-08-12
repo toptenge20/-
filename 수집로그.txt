@@ -4,7 +4,7 @@ INFO   제외: 트레이드 후기 게시판 ('후기' 때문)
 INFO   장터 게시판: 트레이드 게시판(사용 안함) (B/T)
 INFO   장터 게시판: 싱글 트레이드(안심거래) (B/T)
 INFO 포켓몬카드 카페: 수집할 게시판 7개 — 싱글 카드 트레이드, 덱 트레이드, 등급 카드 트레이드, 미개봉 제품/카드용품 트레이드, 트레이드 만남의 광장, 트레이드 게시판(사용 안함), 싱글 트레이드(안심거래)
-INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, lastCommentedTimestamp, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
+INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
 INFO   가격 비슷한 값: {'cost': '0'}
   … 25건 처리  … 50건 처리  … 75건 처리  … 100건 처리  … 125건 처리  … 150건 처리  … 175건 처리  … 200건 처리  … 225건 처리  … 250건 처리  … 275건 처리  … 300건 처리  … 325건 처리  … 350건 처리  … 375건 처리  … 400건 처리  … 425건 처리INFO club=19480246 menu=169 page=2: 더 이상 글이 없습니다
   … 450건 처리  … 475건 처리  … 500건 처리  … 525건 처리INFO club=19480246 menu=200 page=2: 더 이상 글이 없습니다
@@ -39,38 +39,38 @@ INFO club=30418914 menu=33 page=1: 더 이상 글이 없습니다
 INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
   … 1550건 처리  … 1575건 처리  … 1600건 처리  … 1625건 처리INFO club=30418914 menu=49 page=2: 더 이상 글이 없습니다
 INFO 새 카페 (공유 링크): 글 548건 중 장터 가격이 붙은 글 0건
-                                          포켓몬카드 카페: 새 글 2 / 갱신 540
-  카드마켓 카페: 새 글 73 / 갱신 475
+                                          포켓몬카드 카페: 새 글 7 / 갱신 535
+  카드마켓 카페: 새 글 102 / 갱신 446
   새 카페 (공유 링크): 새 글 0 / 갱신 548
 
-  누적: 매물 9,376건, 카드 5,678종, 가격 있는 글 308건
-  예제·후기 글 0건을 지웠습니다. (남은 매물 9,376건)
+  누적: 매물 9,485건, 카드 5,734종, 가격 있는 글 311건
+  예제·후기 글 0건을 지웠습니다. (남은 매물 9,485건)
 
-  전체 9,376건 · 게시판 14개
+  전체 9,485건 · 게시판 14개
 
-  ── 트레이드 게시판 (4862건, 가격 58 / 카드 2085) ─────────
-    오늘만 판매하던거 전부다해서 249000원에 팝니다(배포,내일아침배송)
-      → 카드 X | 24.9만원 | -
+  ── 트레이드 게시판 (4903건, 가격 58 / 카드 2105) ─────────
+    잉어킹 프로모, 닌자스피너 , brg 흑자몽 , 25주년 프로모 , 황금뮤 개굴닌자 등 싱글 및 등급 카드 팝니다
+      → 잉어킹 | 가격 X | PROMO
 
-  ── 진행중인 카드 경매 (2241건, 가격 86 / 카드 1105) ─────────
-    (8월12일 마감) 일판 태그볼트 박스 미개봉
-      → 카드 X | 가격 X | BOX
+  ── 진행중인 카드 경매 (2302건, 가격 88 / 카드 1138) ─────────
+    (8월12일 마감) (GUM-GUM GIANT / ゴムゴムの巨人) - Alternate Art PSA10
+      → 카드 X | 가격 X | -
 
-  ── 싱글 카드 트레이드 (725건, 가격 5 / 카드 197) ─────────
-    아르세우스 vstar ur(7), 초에너지ur(0.8) 팔아요
-      → 아르세우스 | 가격 X | VSTAR
+  ── 싱글 카드 트레이드 (730건, 가격 6 / 카드 198) ─────────
+    포켓몬고 카드박스 빠르게 판매
+      → 카드 X | 가격 X | -
 
   ── 종료된 카드 경매 (300건, 가격 15 / 카드 159) ─────────
     (8/11마감) BW 제크로무 레시라무 홀로 세트
       → 제크로무 | 가격 X | -
 
-  ── 등급 카드 트레이드 (268건, 가격 8 / 카드 155) ─────────
-    25주년 북미판 빛나는 잉어킹brg10 팝니다
-      → 잉어킹 | 가격 X | -
+  ── 등급 카드 트레이드 (269건, 가격 8 / 카드 155) ─────────
+    brg psa 등급카드 몇장 판매합니다.
+      → 카드 X | 가격 X | -
 
-  ── 미개봉 제품/카드용품 트레이드 (201건, 가격 1 / 카드 25) ─────────
-    미개봉 스타팅&피카츄  플레이매트, 틴케이스, 덱케이스, 바인더 세트
-      → 피카츄 | 가격 X | -
+  ── 미개봉 제품/카드용품 트레이드 (202건, 가격 1 / 카드 25) ─────────
+    [판매] 일판 미개봉 부스터 박스 (아크릴 케이스 포함)
+      → 카드 X | 가격 X | BOX
 
   ── 띠부띠부실 거래소 (183건, 가격 4 / 카드 23) ─────────
     중복 씰 일괄 판매합니다
