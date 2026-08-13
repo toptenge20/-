@@ -4,7 +4,7 @@ INFO   제외: 트레이드 후기 게시판 ('후기' 때문)
 INFO   장터 게시판: 트레이드 게시판(사용 안함) (B/T)
 INFO   장터 게시판: 싱글 트레이드(안심거래) (B/T)
 INFO 포켓몬카드 카페: 수집할 게시판 7개 — 싱글 카드 트레이드, 덱 트레이드, 등급 카드 트레이드, 미개봉 제품/카드용품 트레이드, 트레이드 만남의 광장, 트레이드 게시판(사용 안함), 싱글 트레이드(안심거래)
-INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
+INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, lastCommentedTimestamp, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useSafetyPayment, writeDateTimestamp, writerNickname
 INFO   가격 비슷한 값: {'cost': '0'}
   … 25건 처리  … 50건 처리  … 75건 처리  … 100건 처리  … 125건 처리  … 150건 처리  … 175건 처리  … 200건 처리  … 225건 처리  … 250건 처리  … 275건 처리  … 300건 처리  … 325건 처리  … 350건 처리  … 375건 처리  … 400건 처리  … 425건 처리INFO club=19480246 menu=169 page=2: 더 이상 글이 없습니다
   … 450건 처리  … 475건 처리  … 500건 처리  … 525건 처리INFO club=19480246 menu=200 page=2: 더 이상 글이 없습니다
@@ -39,30 +39,30 @@ INFO club=30418914 menu=33 page=1: 더 이상 글이 없습니다
 INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
   … 1550건 처리  … 1575건 처리  … 1600건 처리  … 1625건 처리INFO club=30418914 menu=49 page=2: 더 이상 글이 없습니다
 INFO 새 카페 (공유 링크): 글 548건 중 장터 가격이 붙은 글 0건
-                                          포켓몬카드 카페: 새 글 4 / 갱신 538
-  카드마켓 카페: 새 글 21 / 갱신 527
-  새 카페 (공유 링크): 새 글 0 / 갱신 548
+                                          포켓몬카드 카페: 새 글 3 / 갱신 539
+  카드마켓 카페: 새 글 86 / 갱신 462
+  새 카페 (공유 링크): 새 글 1 / 갱신 547
 
-  누적: 매물 9,945건, 카드 5,972종, 가격 있는 글 320건
-  예제·후기 글 0건을 지웠습니다. (남은 매물 9,945건)
+  누적: 매물 10,078건, 카드 6,031종, 가격 있는 글 323건
+  예제·후기 글 0건을 지웠습니다. (남은 매물 10,078건)
 
-  전체 9,945건 · 게시판 14개
+  전체 10,078건 · 게시판 14개
 
-  ── 트레이드 게시판 (5162건, 가격 59 / 카드 2234) ─────────
-    포켓몬 카드 박스 판매합니다
-      → 카드 X | 가격 X | BOX
+  ── 트레이드 게시판 (5269건, 가격 62 / 카드 2288) ─────────
+    글레이시아 sar 판매합니다
+      → 글레이시아 | 가격 X | SAR
 
-  ── 진행중인 카드 경매 (2439건, 가격 94 / 카드 1203) ─────────
-    (8월13일 마감)일판 피카츄 토후쿠 싱글
-      → 피카츄 | 가격 X | -
+  ── 진행중인 카드 경매 (2458건, 가격 94 / 카드 1211) ─────────
+    (8/13마감) 북미 메가가디안 푸크린 등
+      → 가디안 | 가격 X | -
 
-  ── 싱글 카드 트레이드 (750건, 가격 7 / 카드 203) ─────────
-    카드일괄
+  ── 싱글 카드 트레이드 (756건, 가격 7 / 카드 204) ─────────
+    태그팀 및 싱글카드 판매
+      → 카드 X | 가격 X | TAG
+
+  ── 종료된 카드 경매 (333건, 가격 16 / 카드 181) ─────────
+    (8/13 마감) 원피스 데이 '25 psa 10 2연번
       → 카드 X | 가격 X | -
-
-  ── 종료된 카드 경매 (332건, 가격 16 / 카드 181) ─────────
-    (8/12마감) 갑주무사 SAR 싱글
-      → 카드 X | 가격 X | SAR
 
   ── 등급 카드 트레이드 (273건, 가격 8 / 카드 157) ─────────
     Psa 및 Brg 등급 카드 판매합니다! (트레이너 위주)
@@ -112,10 +112,10 @@ INFO 새 카페 (공유 링크): 글 548건 중 장터 가격이 붙은 글 0건
   칠색조                                 2만원      4,000원         3만원     5  ▼ -80.0%
   피카츄                                60만원        60만원        60만원     3  ─   -
   부스터 (일판)                         38만원        38만원        38만원     3  ─   -
+  피카츄 (영문)                         35만원        35만원        35만원     3  ─   -
   글레이시아 하이퍼 레어                 1만원         1만원       2.4만원     3  ─   -
   이브이 V (한글)                     1,000원      1,000원      1,000원     3  ─   -
   팬텀 스페셜 아트 레어 (일판)          40만원        40만원        40만원     2  ─   -
-  피카츄 (영문)                         35만원        35만원        35만원     2  ─   -
   잉어킹 (일판)                         32만원        32만원        32만원     2  ─   -
   윤겔라                               8.3만원       1.5만원      15.2만원     2  ─   -
   뮤 (한글)                            1.8만원       1.5만원         2만원     2  ─   -
