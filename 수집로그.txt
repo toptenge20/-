@@ -4,7 +4,7 @@ INFO   제외: 트레이드 후기 게시판 ('후기' 때문)
 INFO   장터 게시판: 트레이드 게시판(사용 안함) (B/T)
 INFO   장터 게시판: 싱글 트레이드(안심거래) (B/T)
 INFO 포켓몬카드 카페: 수집할 게시판 7개 — 싱글 카드 트레이드, 덱 트레이드, 등급 카드 트레이드, 미개봉 제품/카드용품 트레이드, 트레이드 만남의 광장, 트레이드 게시판(사용 안함), 싱글 트레이드(안심거래)
-INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
+INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useSafetyPayment, writeDateTimestamp, writerNickname
 INFO   가격 비슷한 값: {'cost': '0'}
   … 25건 처리  … 50건 처리  … 75건 처리  … 100건 처리  … 125건 처리  … 150건 처리  … 175건 처리  … 200건 처리  … 225건 처리  … 250건 처리  … 275건 처리  … 300건 처리  … 325건 처리  … 350건 처리  … 375건 처리  … 400건 처리  … 425건 처리INFO club=19480246 menu=169 page=2: 더 이상 글이 없습니다
   … 450건 처리  … 475건 처리  … 500건 처리  … 525건 처리INFO club=19480246 menu=200 page=2: 더 이상 글이 없습니다
@@ -39,49 +39,49 @@ INFO club=30418914 menu=33 page=1: 더 이상 글이 없습니다
 INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
   … 1550건 처리  … 1575건 처리  … 1600건 처리  … 1625건 처리INFO club=30418914 menu=49 page=2: 더 이상 글이 없습니다
 INFO 새 카페 (공유 링크): 글 548건 중 장터 가격이 붙은 글 0건
-                                          포켓몬카드 카페: 새 글 4 / 갱신 538
-  카드마켓 카페: 새 글 57 / 갱신 491
+                                          포켓몬카드 카페: 새 글 1 / 갱신 541
+  카드마켓 카페: 새 글 0 / 갱신 548
   새 카페 (공유 링크): 새 글 0 / 갱신 548
 
-  누적: 매물 13,398건, 카드 7,645종, 가격 있는 글 384건
-  예제·후기 글 0건을 지웠습니다. (남은 매물 13,398건)
+  누적: 매물 14,405건, 카드 8,155종, 가격 있는 글 405건
+  예제·후기 글 0건을 지웠습니다. (남은 매물 14,405건)
 
-  전체 13,398건 · 게시판 14개
+  전체 14,405건 · 게시판 14개
 
-  ── 트레이드 게시판 (7330건, 가격 84 / 카드 3253) ─────────
-    일판 미개봉 박스 판매합니다
-      → 카드 X | 가격 X | BOX
-
-  ── 진행중인 카드 경매 (3327건, 가격 127 / 카드 1675) ─────────
-    (8/16마감) BW UR 피카츄BRG6
-      → 피카츄 | 가격 X | UR
-
-  ── 싱글 카드 트레이드 (981건, 가격 8 / 카드 268) ─────────
-    앨범용 옛날 rr 카드&일판ar 판매합니다
-      → 카드 X | 가격 X | RR
-
-  ── 종료된 카드 경매 (382건, 가격 16 / 카드 200) ─────────
-    (8/14 마감) ccg10 앤테이V sar
-      → 카드 X | 가격 X | SAR
-
-  ── 등급 카드 트레이드 (330건, 가격 10 / 카드 193) ─────────
-    샤이니스타 리자몽, 25주년 3대장 psa10판매합니다
-      → 리자몽 | 가격 X | -
-
-  ── 미개봉 제품/카드용품 트레이드 (227건, 가격 1 / 카드 27) ─────────
-    [구매] 잉어킹 카드실드 구합니다
-      → 잉어킹 | 가격 X | -
-
-  ── 덱 트레이드 (203건, 가격 0 / 카드 30) ─────────
-    왕큰부리덱 판매합니다
+  ── 트레이드 게시판 (7926건, 가격 94 / 카드 3509) ─────────
+    유니버스 사신 brg 10 케이스 택 포함
       → 카드 X | 가격 X | -
 
-  ── 띠부띠부실 거래소 (195건, 가격 7 / 카드 24) ─────────
-    아트웍 띠부씰 구매합니다 !
+  ── 진행중인 카드 경매 (3635건, 가격 137 / 카드 1830) ─────────
+    (8/17 마감) 썬문 프로모 과학연구소 피카츄 brg 8
+      → 피카츄 | 가격 X | PROMO
+
+  ── 싱글 카드 트레이드 (1053건, 가격 8 / 카드 287) ─────────
+    완덱 여러개 /고레어 카드 /프로모 판매합니다
+      → 카드 X | 가격 X | PROMO
+
+  ── 종료된 카드 경매 (383건, 가격 16 / 카드 201) ─────────
+    (8/16마감) 일판 151 어니부기 AR 싱글
+      → 어니부기 | 가격 X | AR
+
+  ── 등급 카드 트레이드 (349건, 가격 10 / 카드 207) ─────────
+    메가리자몽X ex MUR BRG 10 판매합니다
+      → 리자몽 | 가격 X | EX
+
+  ── 미개봉 제품/카드용품 트레이드 (232건, 가격 2 / 카드 30) ─────────
+    일판 미개봉 프로모팩모음 팝니다~(짐프로모 배틀의날등)
+      → 카드 X | 가격 X | PROMO
+
+  ── 덱 트레이드 (208건, 가격 0 / 카드 32) ─────────
+    메루카완덱 판매
+      → 카드 X | 가격 X | -
+
+  ── 띠부띠부실 거래소 (196건, 가격 7 / 카드 24) ─────────
+    포켓몬 아트워크 중복 띠부씰 판매나 교환합니다
       → 카드 X | 가격 X | -
 
   ── 덱 판매/구매 (183건, 가격 1 / 카드 59) ─────────
-    번치코 ex2장 구합니다
+    [거래 중]번치코 ex2장 구합니다
       → 카드 X | 가격 X | -
 
   ── 트레이드 게시판(사용 안함) (150건, 가격 127 / 카드 21) ─────────
@@ -107,10 +107,10 @@ INFO 새 카페 (공유 링크): 글 548건 중 장터 가격이 붙은 글 0건
 
   카드                                   중앙값        최저        최고    매물  추이
   ──────────────────────────────────────────────────────────────────────────────────
-  피카츄                              47.5만원        33만원        70만원     9  ▼ -41.7%
+  피카츄                              47.5만원        33만원        70만원    10  ▼ -41.7%
+  피카츄 (영문)                         33만원        33만원        35만원     7  ▼ -5.7%
   리자몽                                72만원        34만원        76만원     6  ▼ -27.2%
   이상해꽃 (일판)                       64만원       3.8만원        66만원     6  ─   -
-  피카츄 (영문)                         34만원        33만원        35만원     6  ▼ -5.7%
   칠색조 (일판)                          2만원      4,000원         3만원     6  ▼ -80.0%
   이브이 V (한글)                     1,000원      1,000원      1,000원     4  ─   -
   로켓단 (일판)                         84만원         8만원       160만원     3  ─   -
