@@ -4,7 +4,7 @@ INFO   제외: 트레이드 후기 게시판 ('후기' 때문)
 INFO   장터 게시판: 트레이드 게시판(사용 안함) (B/T)
 INFO   장터 게시판: 싱글 트레이드(안심거래) (B/T)
 INFO 포켓몬카드 카페: 수집할 게시판 7개 — 싱글 카드 트레이드, 덱 트레이드, 등급 카드 트레이드, 미개봉 제품/카드용품 트레이드, 트레이드 만남의 광장, 트레이드 게시판(사용 안함), 싱글 트레이드(안심거래)
-INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useSafetyPayment, writeDateTimestamp, writerNickname
+INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
 INFO   가격 비슷한 값: {'cost': '0'}
   … 25건 처리  … 50건 처리  … 75건 처리  … 100건 처리  … 125건 처리  … 150건 처리  … 175건 처리  … 200건 처리  … 225건 처리  … 250건 처리  … 275건 처리  … 300건 처리  … 325건 처리  … 350건 처리  … 375건 처리  … 400건 처리  … 425건 처리INFO club=19480246 menu=169 page=2: 더 이상 글이 없습니다
   … 450건 처리  … 475건 처리  … 500건 처리  … 525건 처리INFO club=19480246 menu=200 page=2: 더 이상 글이 없습니다
@@ -39,38 +39,38 @@ INFO club=30418914 menu=33 page=1: 더 이상 글이 없습니다
 INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
   … 1550건 처리  … 1575건 처리  … 1600건 처리  … 1625건 처리INFO club=30418914 menu=49 page=2: 더 이상 글이 없습니다
 INFO 새 카페 (공유 링크): 글 548건 중 장터 가격이 붙은 글 0건
-                                          포켓몬카드 카페: 새 글 5 / 갱신 537
-  카드마켓 카페: 새 글 36 / 갱신 512
+                                          포켓몬카드 카페: 새 글 7 / 갱신 535
+  카드마켓 카페: 새 글 48 / 갱신 500
   새 카페 (공유 링크): 새 글 0 / 갱신 548
 
-  누적: 매물 19,123건, 카드 10,471종, 가격 있는 글 503건
-  예제·후기 글 0건을 지웠습니다. (남은 매물 19,123건)
+  누적: 매물 19,287건, 카드 10,540종, 가격 있는 글 504건
+  예제·후기 글 0건을 지웠습니다. (남은 매물 19,287건)
 
-  전체 19,123건 · 게시판 14개
+  전체 19,287건 · 게시판 14개
 
-  ── 트레이드 게시판 (10805건, 가격 127 / 카드 4788) ─────────
-    앨범용 ar, sr, csr 구합니다
-      → 카드 X | 가격 X | CSR
+  ── 트레이드 게시판 (10929건, 가격 127 / 카드 4855) ─────────
+    모야모 프로모, 페러다임트리거 루기아, 151근육몬 ar 일판 판매합니다
+      → 루기아 | 가격 X | AR
 
-  ── 진행중인 카드 경매 (4987건, 가격 193 / 카드 2483) ─────────
-    (8/21마감) 비스크돌, 주술회전, 최애의아이 클리어 카드 +일반 카드 4장 일괄
+  ── 진행중인 카드 경매 (5008건, 가격 194 / 카드 2493) ─────────
+    [경매진행중] 8월23일마감  원피스 중판2주년 보아핸콕 시리얼  BGS10점 [프레스틴]  천원경매
       → 카드 X | 가격 X | -
 
-  ── 싱글 카드 트레이드 (1343건, 가격 9 / 카드 379) ─────────
-    고대카드등 여러가지 팝니다
+  ── 싱글 카드 트레이드 (1359건, 가격 9 / 카드 386) ─────────
+    글라디오 sar, 람다 일괄 판매
+      → 카드 X | 가격 X | SAR
+
+  ── 등급 카드 트레이드 (423건, 가격 11 / 카드 248) ─────────
+    PSA 10 카드들 몆장 팔아봅니다
       → 카드 X | 가격 X | -
 
   ── 종료된 카드 경매 (422건, 가격 19 / 카드 210) ─────────
     (8/20 마감) 타루카 드니차 PRISTINE CGC 10
       → 카드 X | 가격 X | -
 
-  ── 등급 카드 트레이드 (421건, 가격 11 / 카드 248) ─────────
-    실드전 비크티니 sar 9/9.5/10 판매
-      → 카드 X | 가격 X | SAR
-
-  ── 미개봉 제품/카드용품 트레이드 (258건, 가격 3 / 카드 34) ─────────
-    (가격조정) 일판 짐프로모 등 미개봉 프로모 모음 일괄판매
-      → 카드 X | 가격 X | PROMO
+  ── 미개봉 제품/카드용품 트레이드 (259건, 가격 3 / 카드 34) ─────────
+    일본 인페르노 미개봉 처분
+      → 카드 X | 가격 X | -
 
   ── 덱 트레이드 (234건, 가격 0 / 카드 42) ─────────
     메가 아쿠스타, 심향 블레이범, 난천 한카 완덱 팝니다.
