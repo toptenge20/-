@@ -4,7 +4,7 @@ INFO   제외: 트레이드 후기 게시판 ('후기' 때문)
 INFO   장터 게시판: 트레이드 게시판(사용 안함) (B/T)
 INFO   장터 게시판: 싱글 트레이드(안심거래) (B/T)
 INFO 포켓몬카드 카페: 수집할 게시판 7개 — 싱글 카드 트레이드, 덱 트레이드, 등급 카드 트레이드, 미개봉 제품/카드용품 트레이드, 트레이드 만남의 광장, 트레이드 게시판(사용 안함), 싱글 트레이드(안심거래)
-INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
+INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, lastCommentedTimestamp, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
 INFO   가격 비슷한 값: {'cost': '0'}
   … 25건 처리  … 50건 처리  … 75건 처리  … 100건 처리  … 125건 처리  … 150건 처리  … 175건 처리  … 200건 처리  … 225건 처리  … 250건 처리  … 275건 처리  … 300건 처리  … 325건 처리  … 350건 처리  … 375건 처리  … 400건 처리  … 425건 처리INFO club=19480246 menu=169 page=2: 더 이상 글이 없습니다
   … 450건 처리  … 475건 처리  … 500건 처리  … 525건 처리INFO club=19480246 menu=200 page=2: 더 이상 글이 없습니다
@@ -40,25 +40,25 @@ INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
   … 1550건 처리  … 1575건 처리  … 1600건 처리  … 1625건 처리INFO club=30418914 menu=49 page=2: 더 이상 글이 없습니다
 INFO 새 카페 (공유 링크): 글 548건 중 장터 가격이 붙은 글 0건
                                           포켓몬카드 카페: 새 글 1 / 갱신 541
-  카드마켓 카페: 새 글 4 / 갱신 544
-  새 카페 (공유 링크): 새 글 1 / 갱신 547
+  카드마켓 카페: 새 글 2 / 갱신 546
+  새 카페 (공유 링크): 새 글 0 / 갱신 548
 
-  누적: 매물 23,497건, 카드 12,651종, 가격 있는 글 588건
-  예제·후기 글 0건을 지웠습니다. (남은 매물 23,497건)
+  누적: 매물 23,504건, 카드 12,655종, 가격 있는 글 588건
+  예제·후기 글 0건을 지웠습니다. (남은 매물 23,504건)
 
-  전체 23,497건 · 게시판 14개
+  전체 23,504건 · 게시판 14개
 
-  ── 트레이드 게시판 (13310건, 가격 159 / 카드 5837) ─────────
-    카드쉘 9바인더 판매합니다
-      → 카드 X | 가격 X | -
+  ── 트레이드 게시판 (13316건, 가격 159 / 카드 5839) ─────────
+    psa10 다크라이, 이벨타르, 따라큐
+      → 다크라이 | 가격 X | -
 
   ── 진행중인 카드 경매 (6401건, 가격 240 / 카드 3166) ─────────
     (8/25 당일마감) 원피스 VOL.4컬렉션  나미+핸콕
       → 카드 X | 가격 X | -
 
-  ── 싱글 카드 트레이드 (1633건, 가격 11 / 카드 470) ─────────
-    메가프로모 4탄, 드래펄트덱 판매합니다
-      → 카드 X | 가격 X | PROMO
+  ── 싱글 카드 트레이드 (1634건, 가격 11 / 카드 471) ─────────
+    스페셜 ar 파이리 꼬부기 이상해씨
+      → 파이리 | 가격 X | AR
 
   ── 등급 카드 트레이드 (507건, 가격 13 / 카드 298) ─────────
     한판) 백마 버드렉스 Vmax 10 등급 구매합니다
