@@ -4,7 +4,7 @@ INFO   제외: 트레이드 후기 게시판 ('후기' 때문)
 INFO   장터 게시판: 트레이드 게시판(사용 안함) (B/T)
 INFO   장터 게시판: 싱글 트레이드(안심거래) (B/T)
 INFO 포켓몬카드 카페: 수집할 게시판 7개 — 싱글 카드 트레이드, 덱 트레이드, 등급 카드 트레이드, 미개봉 제품/카드용품 트레이드, 트레이드 만남의 광장, 트레이드 게시판(사용 안함), 싱글 트레이드(안심거래)
-INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useSafetyPayment, writeDateTimestamp, writerNickname
+INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
 INFO   가격 비슷한 값: {'cost': '0'}
   … 25건 처리  … 50건 처리  … 75건 처리  … 100건 처리  … 125건 처리  … 150건 처리  … 175건 처리  … 200건 처리  … 225건 처리  … 250건 처리  … 275건 처리  … 300건 처리  … 325건 처리  … 350건 처리  … 375건 처리  … 400건 처리  … 425건 처리INFO club=19480246 menu=169 page=2: 더 이상 글이 없습니다
   … 450건 처리  … 475건 처리  … 500건 처리  … 525건 처리INFO club=19480246 menu=200 page=2: 더 이상 글이 없습니다
@@ -39,49 +39,49 @@ INFO club=30418914 menu=33 page=1: 더 이상 글이 없습니다
 INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
   … 1550건 처리  … 1575건 처리  … 1600건 처리  … 1625건 처리INFO club=30418914 menu=49 page=2: 더 이상 글이 없습니다
 INFO 새 카페 (공유 링크): 글 548건 중 장터 가격이 붙은 글 0건
-                                          포켓몬카드 카페: 새 글 10 / 갱신 532
-  카드마켓 카페: 새 글 66 / 갱신 482
+                                          포켓몬카드 카페: 새 글 5 / 갱신 537
+  카드마켓 카페: 새 글 36 / 갱신 512
   새 카페 (공유 링크): 새 글 0 / 갱신 548
 
-  누적: 매물 26,891건, 카드 14,284종, 가격 있는 글 644건
-  예제·후기 글 0건을 지웠습니다. (남은 매물 26,891건)
+  누적: 매물 28,365건, 카드 15,004종, 가격 있는 글 661건
+  예제·후기 글 0건을 지웠습니다. (남은 매물 28,365건)
 
-  전체 26,891건 · 게시판 14개
+  전체 28,365건 · 게시판 14개
 
-  ── 트레이드 게시판 (15090건, 가격 181 / 카드 6642) ─────────
-    북미 퍼스트파트너 시리즈 1 전종 싱글 팝니다
+  ── 트레이드 게시판 (15770건, 가격 184 / 카드 6944) ─────────
+    일판 리자몽 gx psa10 구매
+      → 리자몽 | 가격 X | GX
+
+  ── 진행중인 카드 경매 (7818건, 가격 269 / 카드 3859) ─────────
+    (8월31 마감) BRG10 아머드뮤츠
+      → 뮤츠 | 가격 X | -
+
+  ── 싱글 카드 트레이드 (2027건, 가격 13 / 카드 569) ─────────
+    강철에너지ur 등 한판 일판 아이템 판매해요
       → 카드 X | 가격 X | -
 
-  ── 진행중인 카드 경매 (7395건, 가격 262 / 카드 3654) ─────────
-    (8/29 마감) 25주년 애니버셔리 일판 미개봉 1박스
-      → 카드 X | 가격 X | -
+  ── 종료된 카드 경매 (796건, 가격 34 / 카드 395) ─────────
+    (8/30마감)xy 초능력의 제왕 일판 퍼스트에디션 푸린 푸크린 싱글카드
+      → 푸린 | 가격 X | -
 
-  ── 싱글 카드 트레이드 (1887건, 가격 12 / 카드 532) ─────────
-    오늘 수원직으로 히어로망토 1장 구해봅니다.
-      → 카드 X | 가격 X | -
+  ── 등급 카드 트레이드 (625건, 가격 13 / 카드 374) ─────────
+    릴리에 일판 psa 10 팝니다
+      → 릴리에 | 가격 X | -
 
-  ── 종료된 카드 경매 (644건, 가격 29 / 카드 326) ─────────
-    (8/28마감) 블래키ex sar psa10
-      → 블래키 | 가격 X | SAR
-
-  ── 등급 카드 트레이드 (585건, 가격 13 / 카드 345) ─────────
-    메가리자몽 brg10 구매합니다
-      → 리자몽 | 가격 X | -
-
-  ── 미개봉 제품/카드용품 트레이드 (303건, 가격 3 / 카드 40) ─────────
-    일판 클래식 미개봉 박스 및 미개봉 프로모 판매
+  ── 미개봉 제품/카드용품 트레이드 (319건, 가격 3 / 카드 44) ─────────
+    프로모팩 45장 판매합니다
       → 카드 X | 가격 X | PROMO
 
-  ── 덱 트레이드 (292건, 가격 1 / 카드 61) ─────────
-    토오 완덱 삽니다
+  ── 덱 트레이드 (309건, 가격 2 / 카드 67) ─────────
+    이브이 덱소스 판매합니다
+      → 이브이 | 가격 X | V
+
+  ── 띠부띠부실 거래소 (237건, 가격 12 / 카드 29) ─────────
+    띠부씰 아트웍 및 여러가지 교환
       → 카드 X | 가격 X | -
 
-  ── 띠부띠부실 거래소 (233건, 가격 12 / 카드 28) ─────────
-    띠부씰 8장 일괄 0.5
-      → 카드 X | 가격 X | -
-
-  ── 덱 판매/구매 (222건, 가격 1 / 카드 73) ─────────
-    일본에서 사온 ex스타터덱 8개 일괄 판매합니다.
+  ── 덱 판매/구매 (224건, 가격 1 / 카드 74) ─────────
+    덱 소스 구매합니다!
       → 카드 X | 가격 X | -
 
   ── 트레이드 게시판(사용 안함) (150건, 가격 127 / 카드 21) ─────────
@@ -107,19 +107,19 @@ INFO 새 카페 (공유 링크): 글 548건 중 장터 가격이 붙은 글 0건
 
   카드                                   중앙값        최저        최고    매물  추이
   ──────────────────────────────────────────────────────────────────────────────────
-  피카츄                              31.5만원        28만원        70만원    19  ▼ -36.8%
+  피카츄                              31.5만원        28만원        70만원    20  ▼ -36.8%
   리자몽 (한글)                         72만원        34만원        76만원     8  ▼ -27.2%
   피카츄 (영문)                         33만원        30만원        35만원     8  ▼ -5.7%
+  레쿠쟈                                30만원        30만원        30만원     7  ─   -
   칠색조 (일판)                          2만원      4,000원         3만원     7  ▼ -80.0%
   이브이 V (한글)                    222.5만원       220만원       225만원     6  ─   -
   이상해꽃 (일판)                       64만원       3.8만원        66만원     6  ─   -
   잉어킹 (일판)                         32만원      28.5만원        32만원     6  ─   -
-  피카츄 (일판)                       1,000원      1,000원      1,000원     5  ─   -
+  피카츄 (일판)                       1,000원      1,000원      1,000원     6  ─   -
   고라파덕 (일판)                    322.5만원       320만원       325만원     4  ─   -
   로켓단 (일판)                         84만원         8만원       160만원     4  ─   -
-  레쿠쟈                                30만원        30만원        30만원     4  ─   -
   뮤                                    24만원        24만원        24만원     4  ─   -
   부스터 (일판)                         38만원        38만원        38만원     3  ─   -
   로켓단 스페셜 아트 레어 (일…          21만원        21만원        21만원     3  ─   -
-  릴리에 (일판)                        8.5만원       8.5만원       8.5만원     3  ─   -
+  리자몽 스페셜 아트 레어               10만원      1,000원        22만원     3  ─   -
 
