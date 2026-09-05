@@ -4,7 +4,7 @@ INFO   제외: 트레이드 후기 게시판 ('후기' 때문)
 INFO   장터 게시판: 트레이드 게시판(사용 안함) (B/T)
 INFO   장터 게시판: 싱글 트레이드(안심거래) (B/T)
 INFO 포켓몬카드 카페: 수집할 게시판 7개 — 싱글 카드 트레이드, 덱 트레이드, 등급 카드 트레이드, 미개봉 제품/카드용품 트레이드, 트레이드 만남의 광장, 트레이드 게시판(사용 안함), 싱글 트레이드(안심거래)
-INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, lastCommentedTimestamp, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
+INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
 INFO   가격 비슷한 값: {'cost': '0'}
   … 25건 처리  … 50건 처리  … 75건 처리  … 100건 처리  … 125건 처리  … 150건 처리  … 175건 처리  … 200건 처리  … 225건 처리  … 250건 처리  … 275건 처리  … 300건 처리  … 325건 처리  … 350건 처리  … 375건 처리  … 400건 처리  … 425건 처리INFO club=19480246 menu=169 page=2: 더 이상 글이 없습니다
   … 450건 처리  … 475건 처리  … 500건 처리  … 525건 처리INFO club=19480246 menu=200 page=2: 더 이상 글이 없습니다
@@ -39,45 +39,45 @@ INFO club=30418914 menu=33 page=1: 더 이상 글이 없습니다
 INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
   … 1550건 처리  … 1575건 처리  … 1600건 처리  … 1625건 처리INFO club=30418914 menu=49 page=2: 더 이상 글이 없습니다
 INFO 새 카페 (공유 링크): 글 548건 중 장터 가격이 붙은 글 0건
-                                          포켓몬카드 카페: 새 글 19 / 갱신 523
-  카드마켓 카페: 새 글 151 / 갱신 397
+                                          포켓몬카드 카페: 새 글 14 / 갱신 528
+  카드마켓 카페: 새 글 201 / 갱신 347
   새 카페 (공유 링크): 새 글 2 / 갱신 546
 
-  누적: 매물 32,732건, 카드 17,116종, 가격 있는 글 764건
-  예제·후기 글 0건을 지웠습니다. (남은 매물 32,732건)
+  누적: 매물 32,949건, 카드 17,224종, 가격 있는 글 765건
+  예제·후기 글 0건을 지웠습니다. (남은 매물 32,949건)
 
-  전체 32,732건 · 게시판 14개
+  전체 32,949건 · 게시판 14개
 
-  ── 트레이드 게시판 (18060건, 가격 219 / 카드 7941) ─────────
-    싱글카드 판매합니다
-      → 카드 X | 가격 X | -
+  ── 트레이드 게시판 (18161건, 가격 220 / 카드 7979) ─────────
+    일판 미개봉 박스 판매합니다.(상태 A급 박스)
+      → 카드 X | 가격 X | BOX
 
-  ── 진행중인 카드 경매 (9023건, 가격 315 / 카드 4489) ─────────
-    9/5 마감 리자몽upc 서플라이
-      → 리자몽 | 가격 X | -
+  ── 진행중인 카드 경매 (9124건, 가격 315 / 카드 4549) ─────────
+    (9/5 마감)일판 태그팀올스타 미개봉 박스
+      → 카드 X | 가격 X | TAG
 
-  ── 싱글 카드 트레이드 (2386건, 가격 18 / 카드 678) ─────────
-    일판 레시라무 bwr 리자몽 sar 싱글, 기라티나 hr psa10 팝니다
-      → 레시라무 | 가격 X | SAR
+  ── 싱글 카드 트레이드 (2396건, 가격 18 / 카드 682) ─────────
+    메가레쿠쟈sr 파이어로sr
+      → 레쿠쟈 | 가격 X | -
 
   ── 종료된 카드 경매 (1129건, 가격 48 / 카드 574) ─────────
     (9월4일 마감) 미개봉 고대팩 'CP2 레전드컬렉션'
       → 카드 X | 가격 X | -
 
-  ── 등급 카드 트레이드 (720건, 가격 14 / 카드 433) ─────────
-    한판 프레셔스츄 psa10 팝니다
+  ── 등급 카드 트레이드 (723건, 가격 14 / 카드 435) ─────────
+    brg 정리
       → 카드 X | 가격 X | -
 
-  ── 미개봉 제품/카드용품 트레이드 (349건, 가격 3 / 카드 48) ─────────
-    N 바인더 판매
+  ── 미개봉 제품/카드용품 트레이드 (350건, 가격 3 / 카드 48) ─────────
+    스톰, 어비스, 닌자 ,니힐 정가 판매합니다. 
       → 카드 X | 가격 X | -
 
   ── 덱 트레이드 (340건, 가격 3 / 카드 77) ─────────
     덱 판매합니다 - 마지막 가격 내림
       → 카드 X | 가격 X | -
 
-  ── 띠부띠부실 거래소 (251건, 가격 13 / 카드 31) ─────────
-    띠뿌띠뿌씰 구 시즌 판매
+  ── 띠부띠부실 거래소 (252건, 가격 13 / 카드 31) ─────────
+    30주년 로그 띠부씰
       → 카드 X | 가격 X | -
 
   ── 덱 판매/구매 (234건, 가격 1 / 카드 76) ─────────
