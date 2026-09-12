@@ -4,7 +4,7 @@ INFO   제외: 트레이드 후기 게시판 ('후기' 때문)
 INFO   장터 게시판: 트레이드 게시판(사용 안함) (B/T)
 INFO   장터 게시판: 싱글 트레이드(안심거래) (B/T)
 INFO 포켓몬카드 카페: 수집할 게시판 7개 — 싱글 카드 트레이드, 덱 트레이드, 등급 카드 트레이드, 미개봉 제품/카드용품 트레이드, 트레이드 만남의 광장, 트레이드 게시판(사용 안함), 싱글 트레이드(안심거래)
-INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, lastCommentedTimestamp, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
+INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
 INFO   가격 비슷한 값: {'cost': '0'}
   … 25건 처리  … 50건 처리  … 75건 처리  … 100건 처리  … 125건 처리  … 150건 처리  … 175건 처리  … 200건 처리  … 225건 처리  … 250건 처리  … 275건 처리  … 300건 처리  … 325건 처리  … 350건 처리  … 375건 처리  … 400건 처리  … 425건 처리INFO club=19480246 menu=169 page=2: 더 이상 글이 없습니다
   … 450건 처리  … 475건 처리  … 500건 처리  … 525건 처리INFO club=19480246 menu=200 page=2: 더 이상 글이 없습니다
@@ -39,49 +39,49 @@ INFO club=30418914 menu=33 page=1: 더 이상 글이 없습니다
 INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
   … 1550건 처리  … 1575건 처리  … 1600건 처리  … 1625건 처리INFO club=30418914 menu=49 page=2: 더 이상 글이 없습니다
 INFO 새 카페 (공유 링크): 글 548건 중 장터 가격이 붙은 글 0건
-                                          포켓몬카드 카페: 새 글 0 / 갱신 542
-  카드마켓 카페: 새 글 13 / 갱신 535
+                                          포켓몬카드 카페: 새 글 28 / 갱신 514
+  카드마켓 카페: 새 글 144 / 갱신 404
   새 카페 (공유 링크): 새 글 0 / 갱신 548
 
-  누적: 매물 38,333건, 카드 19,881종, 가격 있는 글 861건
-  예제·후기 글 0건을 지웠습니다. (남은 매물 38,333건)
+  누적: 매물 38,581건, 카드 20,015종, 가격 있는 글 864건
+  예제·후기 글 0건을 지웠습니다. (남은 매물 38,581건)
 
-  전체 38,333건 · 게시판 14개
+  전체 38,581건 · 게시판 14개
 
-  ── 트레이드 게시판 (20898건, 가격 253 / 카드 9066) ─────────
-    메가브레이브 일판 한박스 판매합니다.
+  ── 트레이드 게시판 (21062건, 가격 256 / 카드 9123) ─────────
+    히로시마 박스 미개봉 16.5
+      → 카드 X | 가격 X | BOX
+
+  ── 진행중인 카드 경매 (10662건, 가격 359 / 카드 5317) ─────────
+    (9/12 마감) 원피스 에이스 수배서 psa 10
       → 카드 X | 가격 X | -
 
-  ── 진행중인 카드 경매 (10616건, 가격 359 / 카드 5304) ─────────
-    (9월12일 마감) 인페르노 x 메가리자몽 sar 싱글카드 중판 파이리 싱글카드 일괄경매
-      → 리자몽 | 가격 X | SAR
-
-  ── 싱글 카드 트레이드 (2796건, 가격 20 / 카드 773) ─────────
-    썬문 트레이너 카드 외 여러장 급처해요(일괄시 할인)
+  ── 싱글 카드 트레이드 (2817건, 가격 20 / 카드 777) ─────────
+    BW N N 수집라인 카드 일괄 판매합니다
       → 카드 X | 가격 X | -
 
   ── 종료된 카드 경매 (1672건, 가격 63 / 카드 835) ─────────
     (9월11일마감)일판 덱소스 및 북미판 팩 카드
       → 카드 X | 가격 X | -
 
-  ── 등급 카드 트레이드 (846건, 가격 14 / 카드 507) ─────────
-    판쵸피카츄 psa10
-      → 피카츄 | 가격 X | -
+  ── 등급 카드 트레이드 (855건, 가격 14 / 카드 512) ─────────
+    일판 트레이너 psa 등급카드 판매합니다. (도정, 아가씨)
+      → 카드 X | 가격 X | -
 
-  ── 미개봉 제품/카드용품 트레이드 (380건, 가격 4 / 카드 49) ─────────
-    메가프로모팩 3탄, 4탄 판매합니다
-      → 카드 X | 가격 X | PROMO
+  ── 미개봉 제품/카드용품 트레이드 (383건, 가격 4 / 카드 49) ─────────
+    해외 리저널 매트 삽니다!!
+      → 카드 X | 가격 X | -
 
-  ── 덱 트레이드 (378건, 가격 3 / 카드 92) ─────────
-    덱 두개 판매합니다
+  ── 덱 트레이드 (382건, 가격 3 / 카드 92) ─────────
+    [9월 12일] 월드 챔피온쉽 2026 및 덱소스 판매
       → 카드 X | 가격 X | -
 
   ── 띠부띠부실 거래소 (263건, 가격 14 / 카드 34) ─────────
     아트위크 띠부씰 판매 교환 구매 다 합니다!
       → 카드 X | 가격 X | -
 
-  ── 덱 판매/구매 (244건, 가격 1 / 카드 78) ─────────
-    크림슨헤이즈 구합니다.
+  ── 덱 판매/구매 (245건, 가격 1 / 카드 78) ─────────
+    [9월 12일] 월드 챔피온쉽 2026 및 덱소스 판매
       → 카드 X | 가격 X | -
 
   ── 트레이드 게시판(사용 안함) (150건, 가격 127 / 카드 21) ─────────
