@@ -4,7 +4,7 @@ INFO   제외: 트레이드 후기 게시판 ('후기' 때문)
 INFO   장터 게시판: 트레이드 게시판(사용 안함) (B/T)
 INFO   장터 게시판: 싱글 트레이드(안심거래) (B/T)
 INFO 포켓몬카드 카페: 수집할 게시판 7개 — 싱글 카드 트레이드, 덱 트레이드, 등급 카드 트레이드, 미개봉 제품/카드용품 트레이드, 트레이드 만남의 광장, 트레이드 게시판(사용 안함), 싱글 트레이드(안심거래)
-INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
+INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, lastCommentedTimestamp, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
 INFO   가격 비슷한 값: {'cost': '0'}
   … 25건 처리  … 50건 처리  … 75건 처리  … 100건 처리  … 125건 처리  … 150건 처리  … 175건 처리  … 200건 처리  … 225건 처리  … 250건 처리  … 275건 처리  … 300건 처리  … 325건 처리  … 350건 처리  … 375건 처리  … 400건 처리  … 425건 처리INFO club=19480246 menu=169 page=2: 더 이상 글이 없습니다
   … 450건 처리  … 475건 처리  … 500건 처리  … 525건 처리INFO club=19480246 menu=200 page=2: 더 이상 글이 없습니다
@@ -39,49 +39,49 @@ INFO club=30418914 menu=33 page=1: 더 이상 글이 없습니다
 INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
   … 1550건 처리  … 1575건 처리  … 1600건 처리  … 1625건 처리INFO club=30418914 menu=49 page=2: 더 이상 글이 없습니다
 INFO 새 카페 (공유 링크): 글 548건 중 장터 가격이 붙은 글 0건
-                                          포켓몬카드 카페: 새 글 7 / 갱신 535
-  카드마켓 카페: 새 글 55 / 갱신 493
+                                          포켓몬카드 카페: 새 글 0 / 갱신 542
+  카드마켓 카페: 새 글 4 / 갱신 544
   새 카페 (공유 링크): 새 글 0 / 갱신 548
 
-  누적: 매물 39,318건, 카드 20,373종, 가격 있는 글 882건
-  예제·후기 글 0건을 지웠습니다. (남은 매물 39,318건)
+  누적: 매물 40,045건, 카드 20,729종, 가격 있는 글 910건
+  예제·후기 글 0건을 지웠습니다. (남은 매물 40,045건)
 
-  전체 39,318건 · 게시판 14개
+  전체 40,045건 · 게시판 14개
 
-  ── 트레이드 게시판 (21423건, 가격 260 / 카드 9258) ─────────
-    북미 퍼스트파트너 9세대(가격인하)
-      → 카드 X | 가격 X | -
-
-  ── 진행중인 카드 경매 (10926건, 가격 372 / 카드 5441) ─────────
-    (9/13 마감) 니케 PcSR 4종을 비롯한 미소녀 고레어 무중복 9종+2025 서울카드쇼 입장권 2종+포케몬 아트워크 미개
-      → 카드 X | 가격 X | -
-
-  ── 싱글 카드 트레이드 (2862건, 가격 20 / 카드 785) ─────────
-    일판 모야모의 찌리베리 ex sar 및 여러가지 한미일판 팝니다
-      → 카드 X | 가격 X | SAR
-
-  ── 종료된 카드 경매 (1720건, 가격 64 / 카드 861) ─────────
-    [9월 12 마감] 북미 호브의 잠만보 프로모
-      → 잠만보 | 가격 X | PROMO
-
-  ── 등급 카드 트레이드 (863건, 가격 14 / 카드 518) ─────────
-    일판 리자몽 x mur psa10 판매합니다
+  ── 트레이드 게시판 (21745건, 가격 271 / 카드 9389) ─────────
+    일판) 메가리자몽SAR PSA10 팝니다.
       → 리자몽 | 가격 X | -
 
-  ── 미개봉 제품/카드용품 트레이드 (390건, 가격 4 / 카드 49) ─────────
-    프로모팩 팝니다
-      → 카드 X | 가격 X | PROMO
+  ── 진행중인 카드 경매 (11142건, 가격 386 / 카드 5542) ─────────
+    9.14마감] 25주년 프로모 빛나는 잉어킹 brg9
+      → 잉어킹 | 가격 X | PROMO
 
-  ── 덱 트레이드 (385건, 가격 3 / 카드 94) ─────────
-    몰드류 완덱, 드펄 고레어, 샹델라 덱소스 등 다양한 덱소스 판매합니다!
+  ── 싱글 카드 트레이드 (2918건, 가격 21 / 카드 803) ─────────
+    카드 구매합니다
       → 카드 X | 가격 X | -
 
-  ── 띠부띠부실 거래소 (264건, 가격 14 / 카드 34) ─────────
-    1세대띠부실 일괄 판매
+  ── 종료된 카드 경매 (1820건, 가격 66 / 카드 924) ─────────
+    (9/13 마감) 명희의 격려 sar 일판
+      → 카드 X | 가격 X | SAR
+
+  ── 등급 카드 트레이드 (880건, 가격 14 / 카드 527) ─────────
+    등카판매합니다
       → 카드 X | 가격 X | -
 
-  ── 덱 판매/구매 (245건, 가격 1 / 카드 78) ─────────
-    [9월 12일] 월드 챔피온쉽 2026 및 덱소스 판매
+  ── 미개봉 제품/카드용품 트레이드 (398건, 가격 4 / 카드 49) ─────────
+    고흐츄 미개봉 처분합니다
+      → 카드 X | 가격 X | -
+
+  ── 덱 트레이드 (389건, 가격 3 / 카드 94) ─────────
+    판매완료
+      → 카드 X | 가격 X | -
+
+  ── 띠부띠부실 거래소 (267건, 가격 14 / 카드 35) ─────────
+    [민음사 책갈피] 4종 판매합니다.
+      → 카드 X | 가격 X | -
+
+  ── 덱 판매/구매 (246건, 가격 1 / 카드 78) ─────────
+    메가 샤프니아 완덱 판매합니다.
       → 카드 X | 가격 X | -
 
   ── 트레이드 게시판(사용 안함) (150건, 가격 127 / 카드 21) ─────────
@@ -108,18 +108,18 @@ INFO 새 카페 (공유 링크): 글 548건 중 장터 가격이 붙은 글 0건
   카드                                   중앙값        최저        최고    매물  추이
   ──────────────────────────────────────────────────────────────────────────────────
   피카츄                                33만원        28만원     2,600만원    25  ▼ -36.8%
-  리자몽                              74.5만원        34만원     1,200만원    10  ▲ +1475.3%
+  리자몽                              74.5만원        34만원     1,200만원    12  ▲ +1475.3%
   피카츄 (영문)                         33만원        30만원        35만원     9  ▼ -5.7%
+  레쿠쟈                                30만원        30만원        30만원     9  ─   -
   잉어킹 (일판)                       28.5만원        16만원        32만원     9  ▼ -18.7%
-  레쿠쟈                                30만원        30만원        30만원     8  ─   -
   칠색조 (일판)                          2만원      4,000원         3만원     7  ▼ -80.0%
   이브이 V (한글)                    222.5만원       220만원       225만원     6  ─   -
   이상해꽃 (일판)                       64만원       3.8만원        66만원     6  ─   -
   피카츄 (일판)                       1,000원      1,000원      1,000원     6  ─   -
   고라파덕 (일판)                    322.5만원       320만원       325만원     5  ─   -
+  뮤                                    24만원        24만원        24만원     5  ─   -
   부스터 (일판)                       20.4만원       2.9만원        38만원     5  ─   -
-  뮤                                    24만원        24만원        24만원     4  ─   -
   릴리에 (일판)                        8.2만원         8만원       8.5만원     4  ─   -
-  릴리에 스페셜 아트 레어 (일…        1,000원      1,000원        13만원     4  ─   -
-  메타몽 (한글)                        495만원       390만원       600만원     3  ─   -
+  다크라이 (일판)                      7.9만원       7.9만원       7.9만원     4  ─   -
+  피카츄 프로모                        4.0만원      1,000원        86만원     4  ─   -
 
