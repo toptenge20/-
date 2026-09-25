@@ -4,7 +4,7 @@ INFO   제외: 트레이드 후기 게시판 ('후기' 때문)
 INFO   장터 게시판: 트레이드 게시판(사용 안함) (B/T)
 INFO   장터 게시판: 싱글 트레이드(안심거래) (B/T)
 INFO 포켓몬카드 카페: 수집할 게시판 7개 — 싱글 카드 트레이드, 덱 트레이드, 등급 카드 트레이드, 미개봉 제품/카드용품 트레이드, 트레이드 만남의 광장, 트레이드 게시판(사용 안함), 싱글 트레이드(안심거래)
-INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
+INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, lastCommentedTimestamp, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useSafetyPayment, writeDateTimestamp, writerNickname
 INFO   가격 비슷한 값: {'cost': '0'}
   … 25건 처리  … 50건 처리  … 75건 처리  … 100건 처리  … 125건 처리  … 150건 처리  … 175건 처리  … 200건 처리  … 225건 처리  … 250건 처리  … 275건 처리  … 300건 처리  … 325건 처리  … 350건 처리  … 375건 처리  … 400건 처리  … 425건 처리INFO club=19480246 menu=169 page=2: 더 이상 글이 없습니다
   … 450건 처리  … 475건 처리  … 500건 처리  … 525건 처리INFO club=19480246 menu=200 page=2: 더 이상 글이 없습니다
@@ -40,49 +40,49 @@ INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
   … 1550건 처리  … 1575건 처리  … 1600건 처리  … 1625건 처리INFO club=30418914 menu=49 page=2: 더 이상 글이 없습니다
 INFO 새 카페 (공유 링크): 글 548건 중 장터 가격이 붙은 글 0건
                                           포켓몬카드 카페: 새 글 23 / 갱신 519
-  카드마켓 카페: 새 글 273 / 갱신 275
+  카드마켓 카페: 새 글 108 / 갱신 440
   새 카페 (공유 링크): 새 글 0 / 갱신 548
 
-  누적: 매물 48,683건, 카드 24,586종, 가격 있는 글 1,099건
-  예제·후기 글 0건을 지웠습니다. (남은 매물 48,683건)
+  누적: 매물 48,949건, 카드 24,698종, 가격 있는 글 1,102건
+  예제·후기 글 0건을 지웠습니다. (남은 매물 48,949건)
 
-  전체 48,683건 · 게시판 14개
+  전체 48,949건 · 게시판 14개
 
-  ── 트레이드 게시판 (25990건, 가격 358 / 카드 11433) ─────────
-    일판 PSA10 등급카드 판매합니다 [이슬칸나,민화,투희]
+  ── 트레이드 게시판 (26173건, 가격 360 / 카드 11513) ─────────
+    30주년 복각 루기아
+      → 루기아 | 가격 X | -
+
+  ── 진행중인 카드 경매 (13520건, 가격 459 / 카드 6805) ─────────
+    (9/25 마감) 이브이즈, 디아루가, 라티아스 등 ccg 등카 8종 일괄 경먀
+      → 이브이 | 가격 X | V
+
+  ── 싱글 카드 트레이드 (3765건, 가격 29 / 카드 1115) ─────────
+    루기아 복각 급처
+      → 루기아 | 가격 X | -
+
+  ── 종료된 카드 경매 (2743건, 가격 80 / 카드 1412) ─────────
+    일판 트레이너 sar + 한판 Ar
+      → 카드 X | 가격 X | SAR
+
+  ── 등급 카드 트레이드 (1054건, 가격 19 / 카드 628) ─────────
+    psa10 샤트 모야모 일판~
       → 카드 X | 가격 X | -
 
-  ── 진행중인 카드 경매 (13490건, 가격 459 / 카드 6784) ─────────
-    (9/24마감) 복각2장 에이알3장
+  ── 미개봉 제품/카드용품 트레이드 (463건, 가격 7 / 카드 54) ─────────
+    사이버저지, 배틀파트너즈 미개봉 1박스 정가에 팝니다.
       → 카드 X | 가격 X | -
 
-  ── 싱글 카드 트레이드 (3728건, 가격 28 / 카드 1104) ─────────
-    30주년, V, Vmax, SR등 판매합니다
-      → 카드 X | 가격 X | VMAX
+  ── 덱 트레이드 (443건, 가격 3 / 카드 108) ─────────
+    일본판 익스펜디드 가디안ex 덱 팝니다
+      → 가디안 | 가격 X | -
 
-  ── 종료된 카드 경매 (2738건, 가격 80 / 카드 1412) ─────────
-    (9월24일 마감)30주년 메타그로스 복각
-      → 메타그로스 | 가격 X | -
-
-  ── 등급 카드 트레이드 (1050건, 가격 19 / 카드 626) ─────────
-    릴리에 brg 9
-      → 릴리에 | 가격 X | -
-
-  ── 미개봉 제품/카드용품 트레이드 (459건, 가격 7 / 카드 54) ─────────
-    모험의 시작 플레이매트,덱케이스 판매
+  ── 띠부띠부실 거래소 (284건, 가격 14 / 카드 38) ─────────
+    띠부실 총정리해서 판매합니다
       → 카드 X | 가격 X | -
 
-  ── 덱 트레이드 (442건, 가격 3 / 카드 107) ─────────
-    메가이어롭, 오거폰우레 완덱 및 싱글카드 팝니다.
-      → 오거폰 | 가격 X | -
-
-  ── 띠부띠부실 거래소 (283건, 가격 14 / 카드 38) ─────────
-    [민음사 책갈피] 이쁜 책갈피 9종 입니다.
-      → 카드 X | 가격 X | -
-
-  ── 덱 판매/구매 (263건, 가격 1 / 카드 85) ─────────
-    [9월 24일] 챔피언스리그 2027 / 월드챔피온쉽 2026 그외 세계 대회 및 덱소스 판매
-      → 카드 X | 가격 X | -
+  ── 덱 판매/구매 (264건, 가격 1 / 카드 86) ─────────
+    일판30주년 개굴닌자sar 한판 메가리지몽sar판매
+      → 개굴닌자 | 가격 X | -
 
   ── 트레이드 게시판(사용 안함) (150건, 가격 127 / 카드 21) ─────────
     UR/SR/HR/RR 판매합니다.(1.5이상은 택배비 무료)
