@@ -4,7 +4,7 @@ INFO   제외: 트레이드 후기 게시판 ('후기' 때문)
 INFO   장터 게시판: 트레이드 게시판(사용 안함) (B/T)
 INFO   장터 게시판: 싱글 트레이드(안심거래) (B/T)
 INFO 포켓몬카드 카페: 수집할 게시판 7개 — 싱글 카드 트레이드, 덱 트레이드, 등급 카드 트레이드, 미개봉 제품/카드용품 트레이드, 트레이드 만남의 광장, 트레이드 게시판(사용 안함), 싱글 트레이드(안심거래)
-INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLevelIconUrl, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
+INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLevelIconUrl, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useSafetyPayment, writeDateTimestamp, writerNickname
 INFO   가격 비슷한 값: {'cost': '0'}
   … 25건 처리  … 50건 처리  … 75건 처리  … 100건 처리  … 125건 처리  … 150건 처리  … 175건 처리  … 200건 처리  … 225건 처리  … 250건 처리  … 275건 처리  … 300건 처리  … 325건 처리  … 350건 처리  … 375건 처리  … 400건 처리  … 425건 처리INFO club=19480246 menu=169 page=2: 더 이상 글이 없습니다
   … 450건 처리  … 475건 처리  … 500건 처리  … 525건 처리INFO club=19480246 menu=200 page=2: 더 이상 글이 없습니다
@@ -41,37 +41,37 @@ INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
   … 1550건 처리  … 1575건 처리  … 1600건 처리  … 1625건 처리INFO club=30418914 menu=94 page=2: 더 이상 글이 없습니다
 INFO club=30418914 menu=49 page=2: 더 이상 글이 없습니다
 INFO 새 카페 (공유 링크): 글 549건 중 장터 가격이 붙은 글 0건
-                                          포켓몬카드 카페: 새 글 32 / 갱신 510
-  카드마켓 카페: 새 글 301 / 갱신 248
+                                          포켓몬카드 카페: 새 글 6 / 갱신 536
+  카드마켓 카페: 새 글 32 / 갱신 517
   새 카페 (공유 링크): 새 글 0 / 갱신 549
 
-  누적: 매물 79,798건, 카드 38,583종, 가격 있는 글 1,756건
-  예제·후기 글 0건을 지웠습니다. (남은 매물 79,798건)
+  누적: 매물 79,836건, 카드 38,604종, 가격 있는 글 1,756건
+  예제·후기 글 0건을 지웠습니다. (남은 매물 79,836건)
 
-  전체 79,798건 · 게시판 15개
+  전체 79,836건 · 게시판 15개
 
-  ── 트레이드 게시판 (41384건, 가격 570 / 카드 18517) ─────────
-    Brg10 Ma메가리자몽.루카리오 팝니다
-      → 리자몽 | 가격 X | -
-
-  ── 진행중인 카드 경매 (21325건, 가격 701 / 카드 11038) ─────────
-    (11/8 마감) 한판 MEGA '30주년' 미개봉 2박스 (슈링크O)
+  ── 트레이드 게시판 (41409건, 가격 570 / 카드 18530) ─────────
+    (최종가격조정)  포켓몬 등카 조금팝니다~
       → 카드 X | 가격 X | -
+
+  ── 진행중인 카드 경매 (21332건, 가격 701 / 카드 11041) ─────────
+    쥬라기공원 tcg 프로모 미개봉
+      → 카드 X | 가격 X | PROMO
 
   ── 종료된 카드 경매 (6794건, 가격 237 / 카드 3503) ─────────
     (11/7 마감) 일판 올드백 고오스 1000원 경매
       → 고오스 | 1,000원 | -
 
-  ── 싱글 카드 트레이드 (6510건, 가격 53 / 카드 2030) ─────────
-    구매-메가개굴닌자,망나뇽특일,제라오라영화프로모
-      → 개굴닌자 | 가격 X | PROMO
-
-  ── 등급 카드 트레이드 (1558건, 가격 27 / 카드 932) ─────────
-    군대 가야해서 일괄 17에 떨이해요
+  ── 싱글 카드 트레이드 (6513건, 가격 53 / 카드 2031) ─────────
+    30주년 싱글카드들 조금 구합니다
       → 카드 X | 가격 X | -
 
-  ── 미개봉 제품/카드용품 트레이드 (681건, 가격 10 / 카드 84) ─────────
-    북미판 30주년 ETB, 번들 판매합니다
+  ── 등급 카드 트레이드 (1559건, 가격 27 / 카드 932) ─────────
+    (최종가격조정) 등급카드 조금팝니다~
+      → 카드 X | 가격 X | -
+
+  ── 미개봉 제품/카드용품 트레이드 (683건, 가격 10 / 카드 84) ─────────
+    [구매]사이버저지, 와일드포스 한박스씩 구합니다.
       → 카드 X | 가격 X | -
 
   ── 덱 트레이드 (659건, 가격 6 / 카드 169) ─────────
