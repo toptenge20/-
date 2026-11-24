@@ -4,7 +4,7 @@ INFO   제외: 트레이드 후기 게시판 ('후기' 때문)
 INFO   장터 게시판: 트레이드 게시판(사용 안함) (B/T)
 INFO   장터 게시판: 싱글 트레이드(안심거래) (B/T)
 INFO 포켓몬카드 카페: 수집할 게시판 7개 — 싱글 카드 트레이드, 덱 트레이드, 등급 카드 트레이드, 미개봉 제품/카드용품 트레이드, 트레이드 만남의 광장, 트레이드 게시판(사용 안함), 싱글 트레이드(안심거래)
-INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLevelIconUrl, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useSafetyPayment, writeDateTimestamp, writerNickname
+INFO 글 목록 항목이 가진 값: articleId, attachCalendar, attachFile, attachGpx, attachImage, attachLink, attachMap, attachMovie, attachMusic, attachPoll, blindArticle, blogScrap, boardType, cafeId, commentCount, cost, delParent, enableComment, enableRecommendation, escrow, formattedCost, hasNewComment, headId, headName, likeItCount, marketArticle, maskedMemberId, memberKey, memberLevel, memberLevelIconId, memberLevelIconUrl, memberLiked, menuId, menuName, menuType, newArticle, nfleaMarketSale, onSale, openArticle, popular, productSale, profileImage, readCount, refArticleCount, refArticleId, replyArticle, replyListOrder, restrictMenu, self, subject, useHead, useSafetyPayment, writeDateTimestamp, writerNickname
 INFO   가격 비슷한 값: {'cost': '0'}
   … 25건 처리  … 50건 처리  … 75건 처리  … 100건 처리  … 125건 처리  … 150건 처리  … 175건 처리  … 200건 처리  … 225건 처리  … 250건 처리  … 275건 처리  … 300건 처리  … 325건 처리  … 350건 처리  … 375건 처리  … 400건 처리  … 425건 처리INFO club=19480246 menu=169 page=2: 더 이상 글이 없습니다
   … 450건 처리  … 475건 처리  … 500건 처리  … 525건 처리INFO club=19480246 menu=200 page=2: 더 이상 글이 없습니다
@@ -41,38 +41,38 @@ INFO club=30418914 menu=53 page=1: 더 이상 글이 없습니다
   … 1550건 처리  … 1575건 처리  … 1600건 처리  … 1625건 처리INFO club=30418914 menu=94 page=2: 더 이상 글이 없습니다
 INFO club=30418914 menu=49 page=2: 더 이상 글이 없습니다
 INFO 새 카페 (공유 링크): 글 551건 중 장터 가격이 붙은 글 0건
-                                          포켓몬카드 카페: 새 글 55 / 갱신 487
-  카드마켓 카페: 새 글 307 / 갱신 244
+                                          포켓몬카드 카페: 새 글 16 / 갱신 526
+  카드마켓 카페: 새 글 123 / 갱신 428
   새 카페 (공유 링크): 새 글 0 / 갱신 551
 
-  누적: 매물 89,714건, 카드 43,115종, 가격 있는 글 2,025건
-  예제·후기 글 0건을 지웠습니다. (남은 매물 89,714건)
+  누적: 매물 89,853건, 카드 43,171종, 가격 있는 글 2,026건
+  예제·후기 글 0건을 지웠습니다. (남은 매물 89,853건)
 
-  전체 89,714건 · 게시판 15개
+  전체 89,853건 · 게시판 15개
 
-  ── 트레이드 게시판 (45963건, 가격 633 / 카드 20512) ─────────
-    니벨아레나 bt09 블루아카이브 spl 리더 싸인카드 장당 10
-      → 벨 | 가격 X | -
+  ── 트레이드 게시판 (46063건, 가격 634 / 카드 20570) ─────────
+    데굴레오 카드 판매
+      → 카드 X | 가격 X | -
 
-  ── 진행중인 카드 경매 (23847건, 가격 791 / 카드 12374) ─────────
-    11.24마감] xy2 와일드 블레이즈 리자몽SR brg7
-      → 리자몽 | 가격 X | -
+  ── 진행중인 카드 경매 (23870건, 가격 791 / 카드 12381) ─────────
+    [11월 24일마감] 원피스 ebk-04 미개봉카톤 경매
+      → 카드 X | 가격 X | -
 
   ── 종료된 카드 경매 (8295건, 가격 324 / 카드 4224) ─────────
     (11/23 마감) 이브이히어로즈 리피아 V
       → 이브이 | 가격 X | V
 
-  ── 싱글 카드 트레이드 (7412건, 가격 72 / 카드 2302) ─────────
-    [판매/교환] 로켓단의 뮤츠 개굴닌자 크림슨 번치코 특일 판매합니다~~ 
-      → 로켓단 | 가격 X | -
-
-  ── 등급 카드 트레이드 (1736건, 가격 29 / 카드 1030) ─────────
-    일판 루티아의 어필 psa10 판매
+  ── 싱글 카드 트레이드 (7422건, 가격 72 / 카드 2306) ─────────
+    고전 귀여운카드 구매해요‼️
       → 카드 X | 가격 X | -
 
-  ── 미개봉 제품/카드용품 트레이드 (792건, 가격 11 / 카드 99) ─────────
-    메가 엘리이드 sar 2장 판매합니다
-      → 카드 X | 가격 X | SAR
+  ── 등급 카드 트레이드 (1739건, 가격 29 / 카드 1032) ─────────
+    아이리스의 투지 SAR PSA10
+      → 아이리스 | 가격 X | SAR
+
+  ── 미개봉 제품/카드용품 트레이드 (795건, 가격 11 / 카드 100) ─────────
+    미개봉 박스 정가 판매
+      → 카드 X | 가격 X | BOX
 
   ── 덱 트레이드 (726건, 가격 6 / 카드 196) ─────────
     [가람아빠] 2027년 Korean League Season 1 완덱 및 덱소스(스탠/익펜) 판매
@@ -113,7 +113,7 @@ INFO 새 카페 (공유 링크): 글 551건 중 장터 가격이 붙은 글 0건
 
   카드                                   중앙값        최저        최고    매물  추이
   ──────────────────────────────────────────────────────────────────────────────────
-  피카츄                                30만원         4만원     2,600만원    75  ▼ -81.0%
+  피카츄                                30만원         4만원     2,600만원    76  ▼ -81.0%
   피카츄 (일판)                        123만원       3.5만원       500만원    33  ▼ -98.1%
   리자몽                                72만원      8,000원     1,200만원    24  ▲ +703.5%
   피카츄 스페셜 아트 레어             1,000원      1,000원      1,000원    23  ─ +0.0%
